@@ -69,6 +69,31 @@ jobs:
         run: |
           dotnet test RhythmGameUtilities.Tests/*.csproj
           ./bin/documentation-test-csharp.sh
+  test-lua:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Install Lua
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.4 liblua5.4-dev
+          sudo update-alternatives --set lua-interpreter /usr/bin/lua5.4
+          sudo ln -s /usr/include/lua5.4 /usr/include/lua
+          lua -v
+
+      - name: Run tests
+        working-directory: LuaPlugin/
+        run: |
+          g++ -std=c++17 -shared -fPIC -o rhythmgameutilities.so lua_bindings.cpp -I../include -I/usr/include/lua5.4
+          lua test.lua
+          ../bin/documentation-test-lua.sh
+
   test-copy:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
