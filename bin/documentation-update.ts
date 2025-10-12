@@ -24,7 +24,8 @@ const sourceFiles = (
           'Documentation/**/*.cpp',
           'Documentation/**/*.cs',
           'Documentation/**/*.gd',
-          'Documentation/**/*.js'
+          'Documentation/**/*.js',
+          'Documentation/**/*.lua'
         ])
       )
     ).map(async path => {
@@ -37,7 +38,7 @@ const sourceFiles = (
 
 for (let [markdownPath, markdownContents] of Object.entries(markdownFiles)) {
   for (const [path, contents] of Object.entries(sourceFiles)) {
-    const pattern = new RegExp(`(#|//) ${path}.+?([\`]{3})`, 'ms');
+    const pattern = new RegExp(`(#|[/]{2}|[-]{2}) ${path}.+?([\`]{3})`, 'ms');
 
     const matches = markdownContents.match(pattern);
 

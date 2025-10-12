@@ -1,6 +1,6 @@
 #### `Utilities.CalculateAccuracyRatio`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -95,4 +95,25 @@ const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resol
 const accuracyRatio = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPosition, positionDelta);
 
 console.log(accuracyRatio.toFixed(2)); // -0.36
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/CalculateAccuracyRatio.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local seconds = 2;
+local resolution = 192;
+local position_delta = 50;
+
+local tempo_changes = { { position = 0, bpm = 120000 } };
+
+local current_position =
+    rhythmgameutilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes);
+
+local value = rhythmgameutilities.calculate_accuracy_ratio(750, current_position, position_delta);
+
+print(string.format("%.2f", value)) -- -0.36
 ```

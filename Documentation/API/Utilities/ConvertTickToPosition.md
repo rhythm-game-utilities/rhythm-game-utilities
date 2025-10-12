@@ -1,6 +1,6 @@
 #### `Utilities.ConvertTickToPosition`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -67,4 +67,19 @@ const resolution = 192;
 const position = RhythmGameUtilities.ConvertTickToPosition(tick, resolution);
 
 console.log(position); // 5.5
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/ConvertTickToPosition.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local tick = 1056;
+local resolution = 192;
+
+local value = rhythmgameutilities.convert_tick_to_position(tick, resolution);
+
+print(value) -- 5.5
 ```

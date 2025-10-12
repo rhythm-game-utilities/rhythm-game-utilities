@@ -1,6 +1,6 @@
 #### `Utilities.RoundUpToTheNearestMultiplier`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -55,4 +55,16 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 const value = RhythmGameUtilities.RoundUpToTheNearestMultiplier(12, 10);
 
 console.log(value); // 20
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/RoundUpToTheNearestMultiplier.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.round_up_to_the_nearest_multiplier(12, 10);
+
+print(value) -- 20
 ```

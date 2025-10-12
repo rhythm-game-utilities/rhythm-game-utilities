@@ -1,6 +1,6 @@
 #### `Common.InverseLerp`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -55,4 +55,16 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 const value = RhythmGameUtilities.InverseLerp(0, 10, 5);
 
 console.log(value); // 0.5
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Common/InverseLerp.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.inverse_lerp(0, 10, 5);
+
+print(tonumber(string.format("%.1f", value))) -- 0.5
 ```

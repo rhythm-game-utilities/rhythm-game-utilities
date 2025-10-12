@@ -99,6 +99,7 @@ This library aims to offer support for multiple platforms through a single codeb
 | C#         | NuGet - [com.neogeek.rhythm-game-utilities](https://nuget.org/packages/com.neogeek.rhythm-game-utilities/) |   ✅   |   ❌   |
 | C++        | GitHub Releases                                                                                            |   ✅   |   ❌   |
 | JavaScript | NPM                                                                                                        |   ✅   |   ❌   |
+| Lua        | GitHub Releases                                                                                            |   X    |   ❌   |
 
 ## Examples
 
@@ -212,7 +213,7 @@ _texture2D.Apply();
 
 #### `Common.InverseLerp`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -269,9 +270,21 @@ const value = RhythmGameUtilities.InverseLerp(0, 10, 5);
 console.log(value); // 0.5
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Common/InverseLerp.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.inverse_lerp(0, 10, 5);
+
+print(tonumber(string.format("%.1f", value))) -- 0.5
+```
+
 #### `Common.InverseLerpUnclamped`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -328,9 +341,21 @@ const value = RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11);
 console.log(value.toFixed(1)); // 1.1
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Common/InverseLerpUnclamped.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.inverse_lerp_unclamped(0, 10, 11);
+
+print(tonumber(string.format("%.1f", value))) -- 1.1
+```
+
 #### `Common.Lerp`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -387,13 +412,25 @@ const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
 console.log(value); // 5
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Common/Lerp.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.lerp(0, 10, 0.5);
+
+print(tonumber(string.format("%i", value))) -- 5
+```
+
 ### Parsers
 
 Read more about `.chart` files: <https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Core%20Infrastructure.md>
 
 #### `Chart.ReadNotesFromChartData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -473,9 +510,29 @@ for (let note of notes) {
 }
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Chart/ReadNotesFromChartData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local file = io.open("./tests/Mocks/song.chart", "r")
+
+if file then
+    local content = file:read("*a")
+
+    local notes = rhythmgameutilities.read_notes_from_chart_data(content, Difficulty.Expert);
+
+    for _, note in pairs(notes) do
+        print(note["position"] .. " " .. note["hand_position"])
+    end
+end
+```
+
 #### `Chart.ReadResolutionFromChartData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -545,9 +602,27 @@ const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
 console.log(resolution); // 192
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Chart/ReadResolutionFromChartData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local file = io.open("./tests/Mocks/song.chart", "r")
+
+if file then
+    local content = file:read("*a")
+
+    local value = rhythmgameutilities.read_resolution_from_chart_data(content);
+
+    print(value) -- 192
+end
+```
+
 #### `Chart.ReadTempoChangesFromChartData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -617,9 +692,35 @@ const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents)
 console.log(tempoChanges.length); // 7
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local function get_table_length(table)
+    local count = 0
+    for _ in pairs(table) do
+        count = count + 1
+    end
+    return count
+end
+
+local file = io.open("./tests/Mocks/song.chart", "r")
+
+if file then
+    local content = file:read("*a")
+
+    local value = rhythmgameutilities.read_tempo_changes_from_chart_data(content);
+
+    print(get_table_length(value)) -- 7
+end
+```
+
 #### `Chart.ReadTimeSignatureChangesFromChartData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -688,6 +789,32 @@ const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(contents);
 
 console.log(timeSignatureChanges.length); // 4
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local function get_table_length(table)
+    local count = 0
+    for _ in pairs(table) do
+        count = count + 1
+    end
+    return count
+end
+
+local file = io.open("./tests/Mocks/song.chart", "r")
+
+if file then
+    local content = file:read("*a")
+
+    local value = rhythmgameutilities.read_time_signature_changes_from_chart_data(content);
+
+    print(get_table_length(value)) -- 4
+end
 ```
 
 #### `Midi.ReadNotesFromMidiData`
@@ -940,7 +1067,7 @@ func _ready() -> void:
 
 #### `Utilities.CalculateAccuracy`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1046,9 +1173,30 @@ const accuracy = RhythmGameUtilities.CalculateAccuracy(750, currentPosition, pos
 console.log(accuracy); // Good
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/CalculateAccuracy.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local seconds = 2;
+local resolution = 192;
+local position_delta = 50;
+
+local tempo_changes = { { position = 0, bpm = 120000 } };
+
+local current_position =
+    rhythmgameutilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes);
+
+local value = rhythmgameutilities.calculate_accuracy(750, current_position, position_delta);
+
+print(value) -- Good
+```
+
 #### `Utilities.CalculateAccuracyRatio`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1145,9 +1293,30 @@ const accuracyRatio = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPos
 console.log(accuracyRatio.toFixed(2)); // -0.36
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/CalculateAccuracyRatio.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local seconds = 2;
+local resolution = 192;
+local position_delta = 50;
+
+local tempo_changes = { { position = 0, bpm = 120000 } };
+
+local current_position =
+    rhythmgameutilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes);
+
+local value = rhythmgameutilities.calculate_accuracy_ratio(750, current_position, position_delta);
+
+print(string.format("%.2f", value)) -- -0.36
+```
+
 #### `Utilities.CalculateBeatBars`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1244,9 +1413,38 @@ const beatBars = RhythmGameUtilities.CalculateBeatBars(tempoChanges, resolution,
 console.log(beatBars.length); // 440
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/CalculateBeatBars.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local function get_table_length(table)
+    local count = 0
+    if table ~= nil then
+        for _ in pairs(table) do
+            count = count + 1
+        end
+    end
+    return count
+end
+
+local resolution = 192;
+
+local tempo_changes = { { position = 0, bpm = 88000 }, { position = 3840, bpm = 112000 },
+    { position = 9984, bpm = 89600 }, { position = 22272, bpm = 112000 },
+    { position = 33792, bpm = 111500 }, { position = 34560, bpm = 112000 },
+    { position = 42240, bpm = 111980 } };
+
+local value = rhythmgameutilities.calculate_beat_bars(tempo_changes, resolution, true);
+
+print(get_table_length(value)) -- 440
+```
+
 #### `Utilities.CalculateTiming`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1350,9 +1548,30 @@ const timing = RhythmGameUtilities.CalculateTiming(750, currentPosition, positio
 console.log(timing); // Hit
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/CalculateTiming.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local seconds = 2;
+local resolution = 192;
+local position_delta = 50;
+
+local tempo_changes = { { position = 0, bpm = 120000 } };
+
+local current_position =
+    rhythmgameutilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes);
+
+local value = rhythmgameutilities.calculate_timing(750, current_position, position_delta);
+
+print(value) -- Hit
+```
+
 #### `Utilities.ConvertSecondsToTicks`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1453,9 +1672,35 @@ var ticks = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempo
 console.log(ticks); // 1408
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/ConvertSecondsToTicks.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local seconds = 5;
+local resolution = 192;
+
+local tempo_changes = {
+    { position = 0,     bpm = 88000 },
+    { position = 3840,  bpm = 112000 },
+    { position = 9984,  bpm = 89600 },
+    { position = 22272, bpm = 112000 },
+    { position = 33792, bpm = 111500 },
+    { position = 34560, bpm = 112000 },
+    { position = 42240, bpm = 111980 }
+}
+
+local ticks =
+    rhythmgameutilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes);
+
+print(ticks); --1408
+```
+
 #### `Utilities.ConvertTickToPosition`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1524,9 +1769,24 @@ const position = RhythmGameUtilities.ConvertTickToPosition(tick, resolution);
 console.log(position); // 5.5
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/ConvertTickToPosition.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local tick = 1056;
+local resolution = 192;
+
+local value = rhythmgameutilities.convert_tick_to_position(tick, resolution);
+
+print(value) -- 5.5
+```
+
 #### `Utilities.FindNotesNearGivenTick`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1631,9 +1891,35 @@ if (foundNotes?.length > 0) {
 }
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/FindNotesNearGivenTick.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local delta = 50;
+
+local notes = { { id = 1, position = 768, hand_position = 0, length = 0 },
+    { id = 2,  position = 960,  hand_position = 0, length = 0 },
+    { id = 3,  position = 1152, hand_position = 0, length = 0 },
+    { id = 4,  position = 1536, hand_position = 0, length = 0 },
+    { id = 5,  position = 1728, hand_position = 0, length = 0 },
+    { id = 6,  position = 1920, hand_position = 0, length = 0 },
+    { id = 7,  position = 2304, hand_position = 0, length = 0 },
+    { id = 8,  position = 2496, hand_position = 0, length = 0 },
+    { id = 9,  position = 2688, hand_position = 0, length = 0 },
+    { id = 10, position = 3072, hand_position = 0, length = 0 },
+    { id = 11, position = 3264, hand_position = 0, length = 0 } };
+
+local value = rhythmgameutilities.find_notes_near_given_tick(notes, 750, delta);
+
+print(value[1].position) -- 768
+```
+
 #### `Utilities.IsOnTheBeat`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1710,9 +1996,29 @@ const isOnTheBeat = RhythmGameUtilities.IsOnTheBeat(bpm, currentTime, delta);
 console.log(isOnTheBeat ? 'Is on the beat!' : 'Is not on the beat!'); // Is on the beat!
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/IsOnTheBeat.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local bpm = 120;
+local current_time = 10;
+local delta = 0.05;
+
+local isOnTheBeat = rhythmgameutilities.is_on_the_beat(bpm, current_time, delta);
+
+if isOnTheBeat then
+    print("Is on the beat!") -- Is on the beat!
+else
+    print("Is not on the beat!")
+end
+```
+
 #### `Utilities.RoundUpToTheNearestMultiplier`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1767,6 +2073,18 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 const value = RhythmGameUtilities.RoundUpToTheNearestMultiplier(12, 10);
 
 console.log(value); // 20
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Utilities/RoundUpToTheNearestMultiplier.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.round_up_to_the_nearest_multiplier(12, 10);
+
+print(value) -- 20
 ```
 
 ## Architecture

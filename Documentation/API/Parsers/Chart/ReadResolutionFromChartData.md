@@ -1,6 +1,6 @@
 #### `Chart.ReadResolutionFromChartData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -68,4 +68,22 @@ const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
 
 console.log(resolution); // 192
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Chart/ReadResolutionFromChartData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local file = io.open("./tests/Mocks/song.chart", "r")
+
+if file then
+    local content = file:read("*a")
+
+    local value = rhythmgameutilities.read_resolution_from_chart_data(content);
+
+    print(value) -- 192
+end
 ```

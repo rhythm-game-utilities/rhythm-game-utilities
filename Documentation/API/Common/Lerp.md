@@ -1,6 +1,6 @@
 #### `Common.Lerp`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -55,4 +55,16 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
 
 console.log(value); // 5
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Common/Lerp.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.lerp(0, 10, 0.5);
+
+print(tonumber(string.format("%i", value))) -- 5
 ```

@@ -1,6 +1,6 @@
 #### `Common.InverseLerpUnclamped`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -55,4 +55,16 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 const value = RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11);
 
 console.log(value.toFixed(1)); // 1.1
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Common/InverseLerpUnclamped.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.inverse_lerp_unclamped(0, 10, 11);
+
+print(tonumber(string.format("%.1f", value))) -- 1.1
 ```
