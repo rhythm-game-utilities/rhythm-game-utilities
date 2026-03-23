@@ -122,8 +122,8 @@ void Song::load_song_from_chart(const String &contents, const int &difficulty)
     notes =
         rhythm_game_utilities::read_notes_from_chart_data(contents, difficulty);
 
-    beat_bars = rhythm_game_utilities::calculate_beat_bars(
-        tempo_changes, time_signature_changes, resolution, true);
+    beat_bars = rhythm_game_utilities::calculate_beat_bars(tempo_changes,
+                                                           resolution, true);
 }
 
 // load_song_from_midi
@@ -140,8 +140,8 @@ void Song::load_song_from_midi(const Variant &data)
 
     notes = rhythm_game_utilities::read_notes_from_midi_data(data);
 
-    beat_bars = rhythm_game_utilities::calculate_beat_bars(
-        tempo_changes, time_signature_changes, resolution, true);
+    beat_bars = rhythm_game_utilities::calculate_beat_bars(tempo_changes,
+                                                           resolution, true);
 }
 
 // recalculate_beat_bars_with_song_length
@@ -150,7 +150,7 @@ void Song::recalculate_beat_bars_with_song_length(const float &song_length,
                                                   bool include_half_notes)
 {
     auto last_tick = rhythm_game_utilities::convert_seconds_to_ticks(
-        song_length, resolution, tempo_changes, time_signature_changes);
+        song_length, resolution, tempo_changes);
 
     auto position = rhythm_game_utilities::round_up_to_the_nearest_multiplier(
         last_tick, resolution);
@@ -174,5 +174,5 @@ void Song::recalculate_beat_bars_with_song_length(const float &song_length,
     tempo_changes.push_back(tempo_change_dictionary);
 
     beat_bars = rhythm_game_utilities::calculate_beat_bars(
-        tempo_changes, time_signature_changes, resolution, include_half_notes);
+        tempo_changes, resolution, include_half_notes);
 }

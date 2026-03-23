@@ -30,7 +30,8 @@ auto main() -> int
 {
     auto contents = ReadStringFromFile("./song.chart");
 
-    auto timeSignatureChanges = ReadTimeSignatureChangesFromChartData(contents.c_str());
+    auto timeSignatureChanges =
+        ReadTimeSignatureChangesFromChartData(contents.c_str());
 
     std::cout << size(timeSignatureChanges) << std::endl; // 4
 

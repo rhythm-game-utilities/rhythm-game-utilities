@@ -16,12 +16,9 @@ namespace RhythmGameUtilities.Tests
 
             var tempoChanges = new Tempo[] { new() { Position = 0, BPM = 120000 } };
 
-            var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
             var note = new Note { Position = 750 };
 
-            var currentPosition =
-                Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+            var currentPosition = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
             var value = Utilities.CalculateAccuracyRatio(note.Position, currentPosition, positionDelta);
 
@@ -71,9 +68,7 @@ namespace RhythmGameUtilities.Tests
                 new() { Position = 42240, BPM = 111980 }
             };
 
-            var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4 } };
-
-            var beatBars = Utilities.CalculateBeatBars(tempoChanges, timeSignatureChanges);
+            var beatBars = Utilities.CalculateBeatBars(tempoChanges);
 
             Assert.That(beatBars.Length, Is.EqualTo(440));
         }
@@ -92,9 +87,7 @@ namespace RhythmGameUtilities.Tests
                 new() { Position = 42240, BPM = 111980 }
             };
 
-            var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
-            var ticks = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+            var ticks = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
             Assert.That(ticks, Is.EqualTo(1408));
         }

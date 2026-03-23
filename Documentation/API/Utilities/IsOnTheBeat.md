@@ -26,7 +26,7 @@ Console.WriteLine(isOnTheBeat ? "Is on the beat!" : "Is not on the beat!"); // "
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int bpm = 120;
     const float currentTime = 10;

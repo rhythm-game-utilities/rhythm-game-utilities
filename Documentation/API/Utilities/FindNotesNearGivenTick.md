@@ -5,12 +5,14 @@
 ##### C#
 
 ```csharp
+using System;
+using RhythmGameUtilities;
+
 var notes = new Note[]
 {
-    new() { Position = 768 }, new() { Position = 960 }, new() { Position = 1152 },
-    new() { Position = 1536 }, new() { Position = 1728 }, new() { Position = 1920 },
-    new() { Position = 2304 }, new() { Position = 2496 }, new() { Position = 2688 },
-    new() { Position = 3072 }, new() { Position = 3264 }
+    new() { Position = 768 }, new() { Position = 960 }, new() { Position = 1152 }, new() { Position = 1536 },
+    new() { Position = 1728 }, new() { Position = 1920 }, new() { Position = 2304 }, new() { Position = 2496 },
+    new() { Position = 2688 }, new() { Position = 3072 }, new() { Position = 3264 }
 };
 
 var foundNotes = Utilities.FindNotesNearGivenTick(notes, 750);
@@ -30,7 +32,7 @@ if (foundNotes?.Length > 0)
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     std::vector<Note> notes = {{768, 0, 0},  {960, 0, 0},  {1152, 0, 0},
                                {1536, 0, 0}, {1728, 0, 0}, {1920, 0, 0},

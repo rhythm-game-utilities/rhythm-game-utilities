@@ -14,12 +14,10 @@ const int positionDelta = 50;
 
 var tempoChanges = new Tempo[] { new() { Position = 0, BPM = 120000 } };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
 var note = new Note { Position = 750 };
 
 var currentPosition =
-    Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+    Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
 var value = Utilities.CalculateAccuracyRatio(note.Position, currentPosition, positionDelta);
 
@@ -35,18 +33,17 @@ Console.WriteLine(value); // 0.64
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int seconds = 2;
     const int resolution = 192;
     const int positionDelta = 50;
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
 
     auto note = new Note{750};
-    auto currentPosition = ConvertSecondsToTicks(
-        seconds, resolution, tempoChanges, timeSignatureChanges);
+    auto currentPosition =
+        ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     auto value =
         CalculateAccuracyRatio(note->Position, currentPosition, positionDelta);
@@ -71,11 +68,7 @@ func _ready() -> void:
 		{"position": 0, "bpm": 120000 }
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2 }
-	]
-
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	var value: float = rhythm_game_utilities.calculate_accuracy_ratio(750, current_position, position_delta)
 

@@ -22,7 +22,7 @@ Console.WriteLine(value); // 20
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = RoundUpToTheNearestMultiplier(12, 10);
 
