@@ -22,7 +22,7 @@ Console.WriteLine(value); // 0.5
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = InverseLerp(0, 10, 5);
 

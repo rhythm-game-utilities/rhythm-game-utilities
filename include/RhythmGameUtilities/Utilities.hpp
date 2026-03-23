@@ -21,7 +21,6 @@
 #include "Structs/BeatBar.hpp"
 #include "Structs/Note.hpp"
 #include "Structs/Tempo.hpp"
-#include "Structs/TimeSignature.hpp"
 
 #include "Common.hpp"
 
@@ -59,13 +58,11 @@ extern "C"
  * @param seconds The seconds to generate ticks with.
  * @param resolution The resolution of the song.
  * @param tempoChanges All tempo changes within the song.
- * @param timeSignatureChanges All time signature changes within the song.
  * @public
  */
 
-inline auto ConvertSecondsToTicks(
-    float seconds, int resolution, const std::vector<Tempo> &tempoChanges,
-    const std::vector<TimeSignature> &timeSignatureChanges) -> int
+inline auto ConvertSecondsToTicks(float seconds, int resolution,
+                                  const std::vector<Tempo> &tempoChanges) -> int
 {
     if (tempoChanges.empty())
     {
@@ -73,7 +70,6 @@ inline auto ConvertSecondsToTicks(
     }
 
     auto tempoChangesIterator = tempoChanges.begin();
-    auto timeSignatureIterator = timeSignatureChanges.begin();
 
     auto totalTicks = 0;
     auto remainingSeconds = seconds;
@@ -86,12 +82,7 @@ inline auto ConvertSecondsToTicks(
                                   ? tempoChangesIterator->Position
                                   : INT_MAX;
 
-        int nextTimeSignatureChange =
-            timeSignatureIterator != timeSignatureChanges.end()
-                ? timeSignatureIterator->Position
-                : INT_MAX;
-
-        int nextChangeTick = std::min(nextTempoChange, nextTimeSignatureChange);
+        int nextChangeTick = nextTempoChange;
 
         float ticksPerSecond = CalculateTicksPerSecond(previousBPM, resolution);
         float timeForSegment = (nextChangeTick - previousTick) / ticksPerSecond;
@@ -111,11 +102,6 @@ inline auto ConvertSecondsToTicks(
         {
             previousBPM = tempoChangesIterator->BPM / MILLISECONDS;
             ++tempoChangesIterator;
-        }
-
-        if (nextChangeTick == nextTimeSignatureChange)
-        {
-            ++timeSignatureIterator;
         }
     }
 
@@ -153,10 +139,9 @@ inline auto GenerateAdjacentKeyPairs(const std::map<int, int> &keyValuePairs)
     return adjacentKeyPairs;
 }
 
-inline auto
-CalculateBeatBars(const std::vector<Tempo> &tempoChanges,
-                  const std::vector<TimeSignature> &timeSignatureChanges,
-                  int resolution, bool includeHalfNotes) -> std::vector<BeatBar>
+inline auto CalculateBeatBars(const std::vector<Tempo> &tempoChanges,
+                              int resolution, bool includeHalfNotes)
+    -> std::vector<BeatBar>
 {
     std::vector<BeatBar> beatBars;
 

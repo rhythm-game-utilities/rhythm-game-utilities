@@ -22,7 +22,7 @@ Console.WriteLine(value); // 1.1
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = InverseLerpUnclamped(0, 10, 11);
 

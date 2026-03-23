@@ -64,8 +64,7 @@ class Song
             ReadTimeSignatureChangesFromChartData(contents.c_str());
         song.notes = ReadNotesFromChartData(contents.c_str(), difficulty);
         song.beatBars =
-            CalculateBeatBars(song.tempoChanges, song.timeSignatureChanges,
-                              song.resolution, true);
+            CalculateBeatBars(song.tempoChanges, song.resolution, true);
 
         return song;
     }
@@ -79,8 +78,7 @@ class Song
         song.timeSignatureChanges = ReadTimeSignatureChangesFromMidiData(bytes);
         song.notes = ReadNotesFromMidiData(bytes);
         song.beatBars =
-            CalculateBeatBars(song.tempoChanges, song.timeSignatureChanges,
-                              song.resolution, true);
+            CalculateBeatBars(song.tempoChanges, song.resolution, true);
 
         return song;
     }

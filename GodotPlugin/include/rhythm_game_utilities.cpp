@@ -107,14 +107,13 @@ void rhythm_game_utilities::_bind_methods()
 
     ClassDB::bind_static_method("rhythm_game_utilities",
                                 D_METHOD("calculate_beat_bars", "tempo_changes",
-                                         "time_signature_changes", "resolution",
-                                         "include_half_notes"),
+                                         "resolution", "include_half_notes"),
                                 &rhythm_game_utilities::calculate_beat_bars);
 
     ClassDB::bind_static_method(
         "rhythm_game_utilities",
         D_METHOD("convert_seconds_to_ticks", "seconds", "resolution",
-                 "tempo_changes", "time_signature_changes"),
+                 "tempo_changes"),
         &rhythm_game_utilities::convert_seconds_to_ticks);
 
     ClassDB::bind_static_method(
@@ -386,7 +385,6 @@ auto rhythm_game_utilities::calculate_timing(int position, int current_position,
 }
 
 auto rhythm_game_utilities::calculate_beat_bars(Array tempo_changes,
-                                                Array time_signature_changes,
                                                 int resolution,
                                                 bool include_half_notes)
     -> Array
@@ -409,30 +407,8 @@ auto rhythm_game_utilities::calculate_beat_bars(Array tempo_changes,
         tempo_changes_internal.push_back(tempo_change_internal);
     }
 
-    std::vector<RhythmGameUtilities::TimeSignature>
-        time_signature_changes_internal;
-    time_signature_changes_internal.reserve(time_signature_changes.size());
-
-    for (auto i = 0; i < time_signature_changes.size(); i += 1)
-    {
-        RhythmGameUtilities::TimeSignature time_signature_change_internal;
-
-        if (time_signature_changes[i].get_type() == Variant::DICTIONARY)
-        {
-            Dictionary variant = time_signature_changes[i];
-
-            time_signature_change_internal.Position = variant["position"];
-            time_signature_change_internal.Numerator = variant["numerator"];
-            time_signature_change_internal.Denominator = variant["denominator"];
-        }
-
-        time_signature_changes_internal.push_back(
-            time_signature_change_internal);
-    }
-
     auto beat_bars_internal = RhythmGameUtilities::CalculateBeatBars(
-        tempo_changes_internal, time_signature_changes_internal, resolution,
-        include_half_notes);
+        tempo_changes_internal, resolution, include_half_notes);
 
     Array beat_bars_dictionary_array;
 
@@ -449,9 +425,9 @@ auto rhythm_game_utilities::calculate_beat_bars(Array tempo_changes,
     return beat_bars_dictionary_array;
 }
 
-auto rhythm_game_utilities::convert_seconds_to_ticks(
-    float seconds, int resolution, Array tempo_changes,
-    Array time_signature_changes) -> int
+auto rhythm_game_utilities::convert_seconds_to_ticks(float seconds,
+                                                     int resolution,
+                                                     Array tempo_changes) -> int
 {
     std::vector<RhythmGameUtilities::Tempo> tempo_changes_internal;
     tempo_changes_internal.reserve(tempo_changes.size());
@@ -471,29 +447,8 @@ auto rhythm_game_utilities::convert_seconds_to_ticks(
         tempo_changes_internal.push_back(tempo_change_internal);
     }
 
-    std::vector<RhythmGameUtilities::TimeSignature>
-        time_signature_changes_internal;
-    time_signature_changes_internal.reserve(time_signature_changes.size());
-
-    for (auto i = 0; i < time_signature_changes.size(); i += 1)
-    {
-        RhythmGameUtilities::TimeSignature time_signature_internal;
-
-        if (time_signature_changes[i].get_type() == Variant::DICTIONARY)
-        {
-            Dictionary variant = time_signature_changes[i];
-
-            time_signature_internal.Position = variant["position"];
-            time_signature_internal.Numerator = variant["numerator"];
-            time_signature_internal.Denominator = variant["denominator"];
-        }
-
-        time_signature_changes_internal.push_back(time_signature_internal);
-    }
-
-    return RhythmGameUtilities::ConvertSecondsToTicks(
-        seconds, resolution, tempo_changes_internal,
-        time_signature_changes_internal);
+    return RhythmGameUtilities::ConvertSecondsToTicks(seconds, resolution,
+                                                      tempo_changes_internal);
 }
 
 auto rhythm_game_utilities::convert_tick_to_position(int tick, int resolution)

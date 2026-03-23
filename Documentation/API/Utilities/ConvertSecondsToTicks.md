@@ -19,9 +19,7 @@ var tempoChanges = new Tempo[]
     new() { Position = 42240, BPM = 111980 }
 };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
-var ticks = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+var ticks = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
 Console.WriteLine(ticks); // 1408
 ```
@@ -35,7 +33,7 @@ Console.WriteLine(ticks); // 1408
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int seconds = 5;
     const int resolution = 192;
@@ -44,10 +42,7 @@ int main()
         {0, 88000},      {3840, 112000},  {9984, 89600},  {22272, 112000},
         {33792, 111500}, {34560, 112000}, {42240, 111980}};
 
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4, 2}};
-
-    auto ticks = ConvertSecondsToTicks(seconds, resolution, tempoChanges,
-                                       timeSignatureChanges);
+    auto ticks = ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     std::cout << ticks << std::endl; // 1408
 
@@ -74,11 +69,7 @@ func _ready() -> void:
 		{"position": 42240, "bpm": 111980}
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
-
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	print(current_position) # 1408
 ```

@@ -83,9 +83,8 @@ namespace RhythmGameUtilities
                 return;
             }
 
-            var tickOffset =
-                Utilities.ConvertSecondsToTicks(_audioSource.time, _song.resolution, _song.tempoChanges,
-                    _song.timeSignatureChanges);
+            var tickOffset = Utilities.ConvertSecondsToTicks(_audioSource.time,
+                _song.resolution, _song.tempoChanges);
 
             RenderNotes(_song.notes, _song.resolution, tickOffset);
             RenderBeatBars(_song.beatBars, _song.resolution, tickOffset);

@@ -210,7 +210,7 @@ Console.WriteLine(value); // 0.5
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = InverseLerp(0, 10, 5);
 
@@ -255,7 +255,7 @@ Console.WriteLine(value); // 1.1
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = InverseLerpUnclamped(0, 10, 11);
 
@@ -300,7 +300,7 @@ Console.WriteLine(value); // 5
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = Lerp(0, 10, 0.5f);
 
@@ -527,7 +527,8 @@ auto main() -> int
 {
     auto contents = ReadStringFromFile("./song.chart");
 
-    auto timeSignatureChanges = ReadTimeSignatureChangesFromChartData(contents.c_str());
+    auto timeSignatureChanges =
+        ReadTimeSignatureChangesFromChartData(contents.c_str());
 
     std::cout << size(timeSignatureChanges) << std::endl; // 4
 
@@ -791,12 +792,9 @@ const int positionDelta = 50;
 
 var tempoChanges = new Tempo[] { new() { Position = 0, BPM = 120000 } };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
 var note = new Note { Position = 750 };
 
-var currentPosition =
-    Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+var currentPosition = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
 var accuracy = Utilities.CalculateAccuracy(note.Position, currentPosition, positionDelta);
 
@@ -812,18 +810,17 @@ Console.WriteLine(accuracy); // Good
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int seconds = 2;
     const int resolution = 192;
     const int positionDelta = 50;
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
 
     auto note = new Note{750};
-    auto currentPosition = ConvertSecondsToTicks(
-        seconds, resolution, tempoChanges, timeSignatureChanges);
+    auto currentPosition =
+        ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     auto accuracy =
         CalculateAccuracy(note->Position, currentPosition, positionDelta);
@@ -848,11 +845,7 @@ func _ready() -> void:
 		{"position": 0, "bpm": 120000}
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
-
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	var accuracy: int = rhythm_game_utilities.calculate_accuracy(750, current_position, position_delta)
 
@@ -885,12 +878,10 @@ const int positionDelta = 50;
 
 var tempoChanges = new Tempo[] { new() { Position = 0, BPM = 120000 } };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
 var note = new Note { Position = 750 };
 
 var currentPosition =
-    Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+    Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
 var value = Utilities.CalculateAccuracyRatio(note.Position, currentPosition, positionDelta);
 
@@ -906,18 +897,17 @@ Console.WriteLine(value); // 0.64
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int seconds = 2;
     const int resolution = 192;
     const int positionDelta = 50;
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
 
     auto note = new Note{750};
-    auto currentPosition = ConvertSecondsToTicks(
-        seconds, resolution, tempoChanges, timeSignatureChanges);
+    auto currentPosition =
+        ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     auto value =
         CalculateAccuracyRatio(note->Position, currentPosition, positionDelta);
@@ -942,11 +932,7 @@ func _ready() -> void:
 		{"position": 0, "bpm": 120000 }
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2 }
-	]
-
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	var value: float = rhythm_game_utilities.calculate_accuracy_ratio(750, current_position, position_delta)
 
@@ -960,6 +946,11 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+using System;
+using RhythmGameUtilities;
+
+const int resolution = 192;
+
 var tempoChanges = new Tempo[]
 {
     new() { Position = 0, BPM = 88000 }, new() { Position = 3840, BPM = 112000 },
@@ -968,9 +959,7 @@ var tempoChanges = new Tempo[]
     new() { Position = 42240, BPM = 111980 }
 };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4 } };
-
-var beatBars = Utilities.CalculateBeatBars(tempoChanges, timeSignatureChanges);
+var beatBars = Utilities.CalculateBeatBars(tempoChanges, resolution, true);
 
 Console.WriteLine(beatBars.Length); // 440
 ```
@@ -984,7 +973,7 @@ Console.WriteLine(beatBars.Length); // 440
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int resolution = 192;
 
@@ -992,10 +981,7 @@ int main()
         {0, 88000},      {3840, 112000},  {9984, 89600},  {22272, 112000},
         {33792, 111500}, {34560, 112000}, {42240, 111980}};
 
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
-
-    auto beatBars =
-        CalculateBeatBars(tempoChanges, timeSignatureChanges, resolution, true);
+    auto beatBars = CalculateBeatBars(tempoChanges, resolution, true);
 
     std::cout << size(beatBars) << std::endl; // 440
 
@@ -1021,11 +1007,7 @@ func _ready() -> void:
 		{"position": 42240, "bpm": 111980}
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4}
-	]
-
-	var beat_bars: Array = rhythm_game_utilities.calculate_beat_bars(tempo_changes, time_signature_changes, resolution, true)
+	var beat_bars: Array = rhythm_game_utilities.calculate_beat_bars(tempo_changes, resolution, true)
 
 	print(beat_bars)
 ```
@@ -1046,12 +1028,9 @@ const int positionDelta = 50;
 
 var tempoChanges = new Tempo[] { new() { Position = 0, BPM = 120000 } };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
 var note = new Note { Position = 750 };
 
-var currentPosition =
-    Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+var currentPosition = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
 var timing = Utilities.CalculateTiming(note.Position, currentPosition, positionDelta);
 
@@ -1067,18 +1046,17 @@ Console.WriteLine(timing); // Hit
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int seconds = 2;
     const int resolution = 192;
     const int positionDelta = 50;
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
 
     auto note = new Note{750};
-    auto currentPosition = ConvertSecondsToTicks(
-        seconds, resolution, tempoChanges, timeSignatureChanges);
+    auto currentPosition =
+        ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     auto timing =
         CalculateTiming(note->Position, currentPosition, positionDelta);
@@ -1087,6 +1065,7 @@ int main()
 
     return 0;
 }
+
 ```
 
 ##### GDScript
@@ -1103,11 +1082,7 @@ func _ready() -> void:
 		{"position": 0, "bpm": 120000}
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
-
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	var timing: int = rhythm_game_utilities.calculate_timing(750, current_position, position_delta)
 
@@ -1143,9 +1118,7 @@ var tempoChanges = new Tempo[]
     new() { Position = 42240, BPM = 111980 }
 };
 
-var timeSignatureChanges = new TimeSignature[] { new() { Position = 0, Numerator = 4, Denominator = 2 } };
-
-var ticks = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges, timeSignatureChanges);
+var ticks = Utilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
 Console.WriteLine(ticks); // 1408
 ```
@@ -1159,7 +1132,7 @@ Console.WriteLine(ticks); // 1408
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int seconds = 5;
     const int resolution = 192;
@@ -1168,10 +1141,7 @@ int main()
         {0, 88000},      {3840, 112000},  {9984, 89600},  {22272, 112000},
         {33792, 111500}, {34560, 112000}, {42240, 111980}};
 
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4, 2}};
-
-    auto ticks = ConvertSecondsToTicks(seconds, resolution, tempoChanges,
-                                       timeSignatureChanges);
+    auto ticks = ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     std::cout << ticks << std::endl; // 1408
 
@@ -1198,11 +1168,7 @@ func _ready() -> void:
 		{"position": 42240, "bpm": 111980}
 	]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
-
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	print(current_position) # 1408
 ```
@@ -1234,7 +1200,7 @@ Console.WriteLine(position); // 5.5
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int tick = 1056;
     const int resolution = 192;
@@ -1268,12 +1234,14 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+using System;
+using RhythmGameUtilities;
+
 var notes = new Note[]
 {
-    new() { Position = 768 }, new() { Position = 960 }, new() { Position = 1152 },
-    new() { Position = 1536 }, new() { Position = 1728 }, new() { Position = 1920 },
-    new() { Position = 2304 }, new() { Position = 2496 }, new() { Position = 2688 },
-    new() { Position = 3072 }, new() { Position = 3264 }
+    new() { Position = 768 }, new() { Position = 960 }, new() { Position = 1152 }, new() { Position = 1536 },
+    new() { Position = 1728 }, new() { Position = 1920 }, new() { Position = 2304 }, new() { Position = 2496 },
+    new() { Position = 2688 }, new() { Position = 3072 }, new() { Position = 3264 }
 };
 
 var foundNotes = Utilities.FindNotesNearGivenTick(notes, 750);
@@ -1293,7 +1261,7 @@ if (foundNotes?.Length > 0)
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     std::vector<Note> notes = {{768, 0, 0},  {960, 0, 0},  {1152, 0, 0},
                                {1536, 0, 0}, {1728, 0, 0}, {1920, 0, 0},
@@ -1359,7 +1327,7 @@ Console.WriteLine(isOnTheBeat ? "Is on the beat!" : "Is not on the beat!"); // "
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int bpm = 120;
     const float currentTime = 10;
@@ -1416,7 +1384,7 @@ Console.WriteLine(value); // 20
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = RoundUpToTheNearestMultiplier(12, 10);
 

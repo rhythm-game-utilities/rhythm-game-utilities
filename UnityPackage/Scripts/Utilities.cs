@@ -20,7 +20,7 @@ namespace RhythmGameUtilities
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern int ConvertSecondsToTicksInternal(float seconds, int resolution, Tempo[] tempoChanges,
-            int tempoChangesSize, TimeSignature[] timeSignatures, int timeSignaturesSize);
+            int tempoChangesSize);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
@@ -64,7 +64,6 @@ namespace RhythmGameUtilities
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern IntPtr CalculateBeatBarsInternal(Tempo[] tempoChanges, int tempoChangesSize,
-            TimeSignature[] timeSignatureChanges, int timeSignatureChangesSize,
             int resolution,
             bool includeHalfNotes, out int size);
 
@@ -101,13 +100,10 @@ namespace RhythmGameUtilities
         /// <param name="seconds">The seconds to generate ticks with.</param>
         /// <param name="resolution">The resolution of the song.</param>
         /// <param name="tempoChanges">All tempo changes within the song.</param>
-        /// <param name="timeSignatureChanges">All time signature changes within the song.</param>
-        public static int ConvertSecondsToTicks(float seconds, int resolution, Tempo[] tempoChanges,
-            TimeSignature[] timeSignatureChanges)
+        public static int ConvertSecondsToTicks(float seconds, int resolution, Tempo[] tempoChanges)
         {
             return UtilitiesInternal.ConvertSecondsToTicksInternal(seconds, resolution, tempoChanges,
-                tempoChanges.Length,
-                timeSignatureChanges, timeSignatureChanges.Length);
+                tempoChanges.Length);
         }
 
         /// <summary>
@@ -131,13 +127,11 @@ namespace RhythmGameUtilities
             return UtilitiesInternal.RoundUpToTheNearestMultiplier(value, multiplier);
         }
 
-        public static BeatBar[] CalculateBeatBars(Tempo[] tempoChanges, TimeSignature[] timeSignatureChanges,
-            int resolution = 192,
+        public static BeatBar[] CalculateBeatBars(Tempo[] tempoChanges, int resolution = 192,
             bool includeHalfNotes = true)
         {
             var ptrArray = UtilitiesInternal.CalculateBeatBarsInternal(tempoChanges, tempoChanges.Length,
-                timeSignatureChanges, timeSignatureChanges.Length, resolution, includeHalfNotes,
-                out var size);
+                resolution, includeHalfNotes, out var size);
 
             var beatBars = InternalUtilities.CaptureArrayFromInternalMethod<BeatBar>(ptrArray, size);
 

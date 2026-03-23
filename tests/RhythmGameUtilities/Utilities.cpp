@@ -6,7 +6,6 @@
 #include "RhythmGameUtilities/Enums/Accuracy.hpp"
 #include "RhythmGameUtilities/Enums/Timing.hpp"
 #include "RhythmGameUtilities/Structs/Tempo.hpp"
-#include "RhythmGameUtilities/Structs/TimeSignature.hpp"
 
 #include "RhythmGameUtilities/Utilities.hpp"
 
@@ -61,11 +60,10 @@ void testCalculateAccuracyRatio()
     const int positionDelta = 50;
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
 
     auto *note = new Note{750};
-    auto currentPosition = ConvertSecondsToTicks(
-        seconds, resolution, tempoChanges, timeSignatureChanges);
+    auto currentPosition =
+        ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     auto value =
         CalculateAccuracyRatio(note->Position, currentPosition, positionDelta);
@@ -97,10 +95,7 @@ void testCalculateBeatBars()
         {0, 88000},      {3840, 112000},  {9984, 89600},  {22272, 112000},
         {33792, 111500}, {34560, 112000}, {42240, 111980}};
 
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4}};
-
-    auto beatBars =
-        CalculateBeatBars(tempoChanges, timeSignatureChanges, resolution, true);
+    auto beatBars = CalculateBeatBars(tempoChanges, resolution, true);
 
     assert(beatBars.size() == 440);
 
@@ -116,10 +111,7 @@ void testConvertSecondsToTicks()
         {0, 88000},      {3840, 112000},  {9984, 89600},  {22272, 112000},
         {33792, 111500}, {34560, 112000}, {42240, 111980}};
 
-    std::vector<TimeSignature> timeSignatureChanges = {{0, 4, 2}};
-
-    auto ticks = ConvertSecondsToTicks(seconds, resolution, tempoChanges,
-                                       timeSignatureChanges);
+    auto ticks = ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
     assert(1408 == ticks);
 

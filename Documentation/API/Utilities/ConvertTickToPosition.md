@@ -25,7 +25,7 @@ Console.WriteLine(position); // 5.5
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     const int tick = 1056;
     const int resolution = 192;

@@ -22,7 +22,7 @@ Console.WriteLine(value); // 5
 
 using namespace RhythmGameUtilities;
 
-int main()
+auto main() -> int
 {
     auto value = Lerp(0, 10, 0.5f);
 
