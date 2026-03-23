@@ -1,5 +1,5 @@
-> [!CAUTION]
-> This package is in early development and should not be used in production.
+> [!注意]
+> 该项目处于早期开发阶段，暂不应用于生产环境。
 
 ![Rhythm Game Utilities](https://github.com/rhythm-game-utilities/rhythm-game-utilities/blob/main/cover.svg?raw=true)
 
@@ -8,40 +8,40 @@
 [![Nuget](https://img.shields.io/nuget/v/com.neogeek.rhythm-game-utilities)](https://www.nuget.org/packages/com.neogeek.rhythm-game-utilities/)
 [![Join the chat at https://discord.gg/nNtFsfd](https://img.shields.io/badge/discord-join%20chat-7289DA.svg)](https://discord.gg/nNtFsfd)
 
-**English** | [简体中文][readme-zh-link]
+[English][readme-en-link] | **简体中文**
 
-This library is a collection of utilities for creating rhythm games like Tap Tap Revenge, Guitar Hero, and Rock Band. It is meant to be used within any game engine that supports loading C++ libraries, such as Unity, Unreal, Godot, SDL and MonoGame.
+本项目是一组用于制作如《Tap Tap Revenge》、《Guitar Hero》和《Rock Band》这样的节奏游戏的实用工具。它旨在用于任何支持加载C++库的游戏引擎，如Unity、Unreal、Godot、SDL和MonoGame。
 
 ![Prototype game built using these utilities.](https://github.com/rhythm-game-utilities/rhythm-game-utilities/blob/main/screenshot.png?raw=true)
-_Prototype game built using these utilities._
+_用这些实用工具制作的原型游戏_
 
-## Features
+## 特性
 
-- 🎵 Parse `.chart` and `.midi` song files
-- 🎼 Calculate position to render notes
-- 💯 Calculate hit accuracy
-- 🥁 Determine if the current time is on the beat
-- 💫 And more!
+- 🎵 解析 `.chart` 和 `.midi` 音频文件
+- 🎼 计算位置以便于渲染音符
+- 💯 计算命中精准度
+- 🥁 确定当前时间是否踩在节拍上
+- 💫  还有更多!
 
-## Social
+## 社群
 
-- Star [this repo on GitHub](https://github.com/rhythm-game-utilities/rhythm-game-utilities) for updates
-- Follow me on [Bluesky](https://bsky.app/profile/scottdoxey.com)
-- Join the [Discord](https://discord.gg/nNtFsfd)
-- Follow me on [GitHub](https://github.com/neogeek/)
+- Star [本仓库](https://github.com/rhythm-game-utilities/rhythm-game-utilities) 以便获取更新
+- 在 [Bluesky](https://bsky.app/profile/scottdoxey.com) 上关注我
+- 加入 [Discord](https://discord.gg/nNtFsfd)
+- 在 [GitHub](https://github.com/neogeek/) 关注我
 
-## Table of Contents
+## 目录
 
-- [Platforms](#platforms)
-- [Install](#install)
+- [适用引擎](#platforms)
+- [安装](#install)
 - [API](#api)
-  1. [Audio](#audio)
+  1. [音频](#audio)
      1. [ConvertSamplesToWaveform](#audioconvertsamplestowaveform)
-  1. [Common](#common)
+  1. [通用](#common)
      1. [InverseLerpUnclamped](#commoninverselerpunclamped)
      1. [InverseLerp](#commoninverselerp)
      1. [Lerp](#commonlerp)
-  1. [Parsers](#parsers)
+  1. [解析器](#parsers)
      1. [ReadNotesFromChartData](#chartreadnotesfromchartdata)
      1. [ReadResolutionFromChartData](#chartreadresolutionfromchartdata)
      1. [ReadTempoChangesFromChartData](#chartreadtempochangesfromchartdata)
@@ -50,7 +50,7 @@ _Prototype game built using these utilities._
      1. [ReadResolutionFromMidiData](#midireadresolutionfrommididata)
      1. [ReadTempoChangesFromMidiData](#midireadtempochangesfrommididata)
      1. [ReadTimeSignatureChangesFromMidiData](#midireadtimesignaturechangesfrommididata)
-  1. [Utilities](#utilities)
+  1. [计算工具](#utilities)
      1. [CalculateAccuracy](#utilitiescalculateaccuracy)
      1. [CalculateAccuracyRatio](#utilitiescalculateaccuracyratio)
      1. [CalculateTiming](#utilitiescalculatetiming)
@@ -61,20 +61,22 @@ _Prototype game built using these utilities._
      1. [IsOnTheBeat](#utilitiesisonthebeat)
      1. [RoundUpToTheNearestMultiplier](#utilitiesrounduptothenearestmultiplier)
 
-- [Architecture](#architecture)
+- [项目结构](#architecture)
 - [Git Hooks](#git-hooks)
-- [Testing](#testing)
-- [Build](#build)
-- [Contributing](#contributing)
-- [Community Roadmap](#community-roadmap)
-- [Other Projects](#other-projects)
-- [License](#license)
+- [关于测试](#testing)
+- [编译](#build)
+- [做出贡献](#contributing)
+- [社区链接](#community-roadmap)
+- [其他项目](#other-projects)
+- [许可](#license)
 
-## Platforms
+## 适用引擎
 
-This library aims to offer support for multiple platforms through a single codebase. This is highly ambitious, so if you run into an issue with your platform of choice during development, please leave a detailed bug report with as much information as possible. Also, as this library is relatively new, mobile platforms will be fully supported after all other platforms are complete.
+该库旨在通过单一代码库支持多个引擎。这是一个非常雄心勃勃的目标，因此如果您在开发过程中遇到所选平台的问题，请留下详细的错误报告，并尽可能多地提供信息。此外，由于该库相对较新，移动平台将在所有其他平台完成后才得到全面支持。
 
-| Engine                                  | Language | Platform |                  Version                  | Tested | Stable |
+
+
+| 引擎                                  | 编程语言 | 操作系统 |                  版本                  | 是否测试 | 是否稳定 |
 | --------------------------------------- | -------- | -------- | :---------------------------------------: | :----: | :----: |
 | [Unity](https://unity.com/)             | C#       | macOS    | 6000.0.22f1<br>2022.3.50f1<br>2021.3.44f1 |   ✅   |   ❌   |
 | [Unity](https://unity.com/)             | C#       | Windows  | 6000.0.22f1<br>2022.3.50f1<br>2021.3.44f1 |   ✅   |   ❌   |
@@ -90,21 +92,21 @@ This library aims to offer support for multiple platforms through a single codeb
 | [MonoGame](https://monogame.net/)       | C#       | macOS    |                   3.8.2                   |   ✅   |   ❌   |
 | [MonoGame](https://monogame.net/)       | C#       | Windows  |                   3.8.2                   |   ✅   |   ❌   |
 
-## Install
+## 安装
 
 ### Unity
 
-1. Add package via git URL
+1. 通过 git URL 添加包体
    ```
    https://github.com/rhythm-game-utilities/rhythm-game-utilities.git?path=/UnityPackage
    ```
-1. Import the sample project (optional)
-   - Check the materials to make sure they work in the version of Unity and render pipeline you selected.
+1. 导入范例项目 (可选)
+   - 检查材质并确保它们能在你选择的Unity版本和渲染管线中正常工作。
 
-### Unreal
+### 虚幻引擎
 
-1. Clone this repo locally (using either a tagged release or the main development branch).
-1. Add the include path to your `<project>.Build.cs` file.
+1. 本地克隆这个仓库（使用带标签的版本或主开发分支）。
+1. 把项目路径添加到你的 `<项目名>.Build.cs` 文件。
    ```csharp
    PublicIncludePaths.AddRange(new string[] { "D:/git/github/rhythm-game-utilities/include" });
    ```
@@ -113,11 +115,11 @@ This library aims to offer support for multiple platforms through a single codeb
 
 #### GDScript
 
-Download and install the latest release from <https://github.com/rhythm-game-utilities/godot-plugin>.
+从 <https://github.com/rhythm-game-utilities/godot-plugin> 下载并安装最新版本。
 
 #### C#
 
-Install the nuget package [com.neogeek.rhythm-game-utilities](https://www.nuget.org/packages/com.neogeek.rhythm-game-utilities/) via the CLI or from within your IDE.
+通过CLI或在IDE内安装nuget包 [com.neogeek.rhythm-game-utilities](https://www.nuget.org/packages/com.neogeek.rhythm-game-utilities/)。
 
 ```bash
 dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.6
@@ -157,11 +159,11 @@ dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.6
 
 ## API
 
-### `Audio`
+### `音频`
 
 #### `Audio.ConvertSamplesToWaveform`
 
-> Languages: `C#`
+> 编程语言: `C#`
 
 ```csharp
 using RhythmGameUtilities;
@@ -186,11 +188,11 @@ for (var x = 0; x < waveform.Length; x += 1)
 _texture2D.Apply();
 ```
 
-### Common
+### 通用
 
 #### `Common.InverseLerp`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -228,14 +230,14 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var value: float = rhythm_game_utilities.inverse_lerp(0, 10, 5)
+    var value: float = rhythm_game_utilities.inverse_lerp(0, 10, 5)
 
-	print(value) # 0.5
+    print(value) # 0.5
 ```
 
 #### `Common.InverseLerpUnclamped`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -273,14 +275,14 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var value: float = rhythm_game_utilities.inverse_lerp_unclamped(0, 10, 11)
+    var value: float = rhythm_game_utilities.inverse_lerp_unclamped(0, 10, 11)
 
-	print(value) # 1.1
+    print(value) # 1.1
 ```
 
 #### `Common.Lerp`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -318,18 +320,18 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var value: float = rhythm_game_utilities.lerp(0, 10, 0.5)
+    var value: float = rhythm_game_utilities.lerp(0, 10, 0.5)
 
-	print(value) # 5
+    print(value) # 5
 ```
 
-### Parsers
+### 解析器
 
-Read more about `.chart` files: <https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Core%20Infrastructure.md>
+了解更多有关 `.chart` 文件的细节: <https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Core%20Infrastructure.md>
 
 #### `Chart.ReadNotesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -381,17 +383,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
-	var contents: String = file.get_as_text()
+    var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
+    var contents: String = file.get_as_text()
 
-	var notes: Array = rhythm_game_utilities.read_notes_from_chart_data(contents, rhythm_game_utilities.Expert)
+    var notes: Array = rhythm_game_utilities.read_notes_from_chart_data(contents, rhythm_game_utilities.Expert)
 
-	print(notes)
+    print(notes)
 ```
 
 #### `Chart.ReadResolutionFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -435,17 +437,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
-	var contents: String = file.get_as_text()
+    var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
+    var contents: String = file.get_as_text()
 
-	var resolution: int = rhythm_game_utilities.read_resolution_from_chart_data(contents)
+    var resolution: int = rhythm_game_utilities.read_resolution_from_chart_data(contents)
 
-	print(resolution)
+    print(resolution)
 ```
 
 #### `Chart.ReadTempoChangesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -489,17 +491,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
-	var contents: String = file.get_as_text()
+    var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
+    var contents: String = file.get_as_text()
 
-	var tempo_changes: Array = rhythm_game_utilities.read_tempo_changes_from_chart_data(contents)
+    var tempo_changes: Array = rhythm_game_utilities.read_tempo_changes_from_chart_data(contents)
 
-	print(tempo_changes)
+    print(tempo_changes)
 ```
 
 #### `Chart.ReadTimeSignatureChangesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -543,17 +545,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
-	var contents: String = file.get_as_text()
+    var file: FileAccess = FileAccess.open("res://song.chart", FileAccess.READ)
+    var contents: String = file.get_as_text()
 
-	var time_signature_changes: Array = rhythm_game_utilities.read_time_signature_changes_from_chart_data(contents)
+    var time_signature_changes: Array = rhythm_game_utilities.read_time_signature_changes_from_chart_data(contents)
 
-	print(time_signature_changes)
+    print(time_signature_changes)
 ```
 
 #### `Midi.ReadNotesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -605,17 +607,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
-	var bytes: PackedByteArray = file.get_buffer(file.get_length())
+    var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
+    var bytes: PackedByteArray = file.get_buffer(file.get_length())
 
-	var notes: Array = rhythm_game_utilities.read_notes_from_midi_data(bytes)
+    var notes: Array = rhythm_game_utilities.read_notes_from_midi_data(bytes)
 
-	print(notes)
+    print(notes)
 ```
 
 #### `Midi.ReadResolutionFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -659,17 +661,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
-	var bytes: PackedByteArray = file.get_buffer(file.get_length())
+    var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
+    var bytes: PackedByteArray = file.get_buffer(file.get_length())
 
-	var resolution: int = rhythm_game_utilities.read_resolution_from_midi_data(bytes)
+    var resolution: int = rhythm_game_utilities.read_resolution_from_midi_data(bytes)
 
-	print(resolution)
+    print(resolution)
 ```
 
 #### `Midi.ReadTempoChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -713,17 +715,17 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
-	var bytes: PackedByteArray = file.get_buffer(file.get_length())
+    var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
+    var bytes: PackedByteArray = file.get_buffer(file.get_length())
 
-	var tempo_changes: Array = rhythm_game_utilities.read_tempo_changes_from_midi_data(bytes)
+    var tempo_changes: Array = rhythm_game_utilities.read_tempo_changes_from_midi_data(bytes)
 
-	print(tempo_changes)
+    print(tempo_changes)
 ```
 
 #### `Midi.ReadTimeSignatureChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -767,19 +769,19 @@ auto main() -> int
 extends Node
 
 func _ready() -> void:
-	var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
-	var bytes: PackedByteArray = file.get_buffer(file.get_length())
+    var file: FileAccess = FileAccess.open("res://song.mid", FileAccess.READ)
+    var bytes: PackedByteArray = file.get_buffer(file.get_length())
 
-	var time_signature_changes: Array = rhythm_game_utilities.read_time_signature_changes_from_midi_data(bytes)
+    var time_signature_changes: Array = rhythm_game_utilities.read_time_signature_changes_from_midi_data(bytes)
 
-	print(time_signature_changes)
+    print(time_signature_changes)
 ```
 
 ### Utilities
 
 #### `Utilities.CalculateAccuracy`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -842,38 +844,38 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var seconds: int = 2
-	var resolution: int = 192
-	var position_delta: int = 50
+    var seconds: int = 2
+    var resolution: int = 192
+    var position_delta: int = 50
 
-	var tempo_changes: Array = [
-		{"position": 0, "bpm": 120000}
-	]
+    var tempo_changes: Array = [
+        {"position": 0, "bpm": 120000}
+    ]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
+    var time_signature_changes: Array = [
+        {"position": 0, "numerator": 4, "denominator": 2}
+    ]
 
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+    var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
 
-	var accuracy: int = rhythm_game_utilities.calculate_accuracy(750, current_position, position_delta)
+    var accuracy: int = rhythm_game_utilities.calculate_accuracy(750, current_position, position_delta)
 
-	match accuracy:
-		rhythm_game_utilities.Poor:
-			print("Poor")
-		rhythm_game_utilities.Fair:
-			print("Fair")
-		rhythm_game_utilities.Good:
-			print("Good")
-		rhythm_game_utilities.Great:
-			print("Great")
-		rhythm_game_utilities.Perfect:
-			print("Perfect")
+    match accuracy:
+        rhythm_game_utilities.Poor:
+            print("Poor")
+        rhythm_game_utilities.Fair:
+            print("Fair")
+        rhythm_game_utilities.Good:
+            print("Good")
+        rhythm_game_utilities.Great:
+            print("Great")
+        rhythm_game_utilities.Perfect:
+            print("Perfect")
 ```
 
 #### `Utilities.CalculateAccuracyRatio`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -936,28 +938,28 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var seconds: int = 2
-	var resolution: int = 192
-	var position_delta: int = 50
+    var seconds: int = 2
+    var resolution: int = 192
+    var position_delta: int = 50
 
-	var tempo_changes: Array = [
-		{"position": 0, "bpm": 120000 }
-	]
+    var tempo_changes: Array = [
+        {"position": 0, "bpm": 120000 }
+    ]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2 }
-	]
+    var time_signature_changes: Array = [
+        {"position": 0, "numerator": 4, "denominator": 2 }
+    ]
 
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+    var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
 
-	var value: float = rhythm_game_utilities.calculate_accuracy_ratio(750, current_position, position_delta)
+    var value: float = rhythm_game_utilities.calculate_accuracy_ratio(750, current_position, position_delta)
 
-	print(round(value * 100) / 100.0) # 0.64
+    print(round(value * 100) / 100.0) # 0.64
 ```
 
 #### `Utilities.CalculateBeatBars`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1011,30 +1013,30 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var resolution: int = 192
+    var resolution: int = 192
 
-	var tempo_changes: Array = [
-		{"position": 0, "bpm": 8800},
-		{"position": 3840, "bpm": 112000},
-		{"position": 9984, "bpm": 89600},
-		{"position": 22272, "bpm": 112000},
-		{"position": 33792, "bpm": 111500},
-		{"position": 34560, "bpm": 112000},
-		{"position": 42240, "bpm": 111980}
-	]
+    var tempo_changes: Array = [
+        {"position": 0, "bpm": 8800},
+        {"position": 3840, "bpm": 112000},
+        {"position": 9984, "bpm": 89600},
+        {"position": 22272, "bpm": 112000},
+        {"position": 33792, "bpm": 111500},
+        {"position": 34560, "bpm": 112000},
+        {"position": 42240, "bpm": 111980}
+    ]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4}
-	]
+    var time_signature_changes: Array = [
+        {"position": 0, "numerator": 4}
+    ]
 
-	var beat_bars: Array = rhythm_game_utilities.calculate_beat_bars(tempo_changes, time_signature_changes, resolution, true)
+    var beat_bars: Array = rhythm_game_utilities.calculate_beat_bars(tempo_changes, time_signature_changes, resolution, true)
 
-	print(beat_bars)
+    print(beat_bars)
 ```
 
 #### `Utilities.CalculateTiming`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1097,36 +1099,36 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var seconds: int = 2
-	var resolution: int = 192
-	var position_delta: int = 50
+    var seconds: int = 2
+    var resolution: int = 192
+    var position_delta: int = 50
 
-	var tempo_changes: Array = [
-		{"position": 0, "bpm": 120000}
-	]
+    var tempo_changes: Array = [
+        {"position": 0, "bpm": 120000}
+    ]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
+    var time_signature_changes: Array = [
+        {"position": 0, "numerator": 4, "denominator": 2}
+    ]
 
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+    var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
 
-	var timing: int = rhythm_game_utilities.calculate_timing(750, current_position, position_delta)
+    var timing: int = rhythm_game_utilities.calculate_timing(750, current_position, position_delta)
 
-	match timing:
-		rhythm_game_utilities.Miss:
-			print("Miss")
-		rhythm_game_utilities.Hit:
-			print("Hit")
-		rhythm_game_utilities.Early:
-			print("Early")
-		rhythm_game_utilities.Late:
-			print("Late")
+    match timing:
+        rhythm_game_utilities.Miss:
+            print("Miss")
+        rhythm_game_utilities.Hit:
+            print("Hit")
+        rhythm_game_utilities.Early:
+            print("Early")
+        rhythm_game_utilities.Late:
+            print("Late")
 ```
 
 #### `Utilities.ConvertSecondsToTicks`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1187,31 +1189,31 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var seconds: int = 5
-	var resolution: int = 192
+    var seconds: int = 5
+    var resolution: int = 192
 
-	var tempo_changes: Array = [
-		{"position": 0, "bpm": 88000},
-		{"position": 3840, "bpm": 112000},
-		{"position": 9984, "bpm": 89600},
-		{"position": 22272, "bpm": 112000},
-		{"position": 33792, "bpm": 111500},
-		{"position": 34560, "bpm": 112000},
-		{"position": 42240, "bpm": 111980}
-	]
+    var tempo_changes: Array = [
+        {"position": 0, "bpm": 88000},
+        {"position": 3840, "bpm": 112000},
+        {"position": 9984, "bpm": 89600},
+        {"position": 22272, "bpm": 112000},
+        {"position": 33792, "bpm": 111500},
+        {"position": 34560, "bpm": 112000},
+        {"position": 42240, "bpm": 111980}
+    ]
 
-	var time_signature_changes: Array = [
-		{"position": 0, "numerator": 4, "denominator": 2}
-	]
+    var time_signature_changes: Array = [
+        {"position": 0, "numerator": 4, "denominator": 2}
+    ]
 
-	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
+    var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes, time_signature_changes)
 
-	print(current_position) # 1408
+    print(current_position) # 1408
 ```
 
 #### `Utilities.ConvertTickToPosition`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1255,17 +1257,17 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var tick: int = 1056
-	var resolution: int = 192
+    var tick: int = 1056
+    var resolution: int = 192
 
-	var position: float = rhythm_game_utilities.convert_tick_to_position(tick, resolution)
+    var position: float = rhythm_game_utilities.convert_tick_to_position(tick, resolution)
 
-	print(position) # 5.5
+    print(position) # 5.5
 ```
 
 #### `Utilities.FindNotesNearGivenTick`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1319,23 +1321,23 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var delta: int = 50
+    var delta: int = 50
 
-	var notes: Array = [
-		{"position": 768}, {"position": 960}, {"position": 1152},
-		{"position": 1536}, {"position": 1728}, {"position": 1920},
-		{"position": 2304}, {"position": 2496}, {"position": 2688},
-		{"position": 3072}, {"position": 3264}
-	]
+    var notes: Array = [
+        {"position": 768}, {"position": 960}, {"position": 1152},
+        {"position": 1536}, {"position": 1728}, {"position": 1920},
+        {"position": 2304}, {"position": 2496}, {"position": 2688},
+        {"position": 3072}, {"position": 3264}
+    ]
 
-	var found_notes: Array = rhythm_game_utilities.find_notes_near_given_tick(notes, 750, delta);
+    var found_notes: Array = rhythm_game_utilities.find_notes_near_given_tick(notes, 750, delta);
 
-	print(found_notes[0]["position"]) # 768
+    print(found_notes[0]["position"]) # 768
 ```
 
 #### `Utilities.IsOnTheBeat`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1382,21 +1384,21 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var bpm: int = 120
-	var current_time: int = 10
-	var delta: float = 0.05
+    var bpm: int = 120
+    var current_time: int = 10
+    var delta: float = 0.05
 
-	var is_on_the_beat: bool = rhythm_game_utilities.is_on_the_beat(bpm, current_time, delta)
+    var is_on_the_beat: bool = rhythm_game_utilities.is_on_the_beat(bpm, current_time, delta)
 
-	if is_on_the_beat: # "Is on the beat!"
-		print("Is on the beat!")
-	else:
-		print("Is not on the beat!")
+    if is_on_the_beat: # "Is on the beat!"
+        print("Is on the beat!")
+    else:
+        print("Is not on the beat!")
 ```
 
 #### `Utilities.RoundUpToTheNearestMultiplier`
 
-> Languages: `C#` `C++` `GDScript`
+> 编程语言: `C#` `C++` `GDScript`
 
 ##### C#
 
@@ -1434,16 +1436,16 @@ int main()
 extends Node
 
 func _ready() -> void:
-	var value: int = rhythm_game_utilities.round_up_to_the_nearest_multiplier(12, 10)
+    var value: int = rhythm_game_utilities.round_up_to_the_nearest_multiplier(12, 10)
 
-	print(value) # 20
+    print(value) # 20
 ```
 
-## Architecture
+## 项目结构
 
-The current architecture for this project looks like this:
+项目目前的结构如下图所示:
 
-### C++ Library / C# Plugin
+### C++ 库 / C# 插件
 
 ```mermaid
 graph LR;
@@ -1507,39 +1509,39 @@ graph LR;
     readNotesFromMidiData-->calculateAccuracyRatio
 ```
 
-### Unity Plugin
+### Unity 插件
 
-The Unity plugin includes compiled C++ libraries (macOS, Windows and Linux) and wraps the internal calls in native C# functions. These functions pass and retrieve the data from the C++ library and clean up memory upon completion.
+Unity 插件包含编译的 C++ 库（macOS、Windows 和 Linux），并将内部调用封装为原生 C# 函数。这些函数会传递和检索 C++ 库的数据，并在完成后清理内存。
 
-### Unreal Plugin
+### Unreal 插件
 
-There isn't a custom wrapper or plugin for Unreal, as the C++ library works as is when included as a header-only library.
+Unreal 没有自定义的封装器或插件，因为 C++ 库作为仅带头库时可以直接使用。
 
-### Godot Plugin
+### Godot 插件
 
-The Godot plugin is automatically generated in <https://github.com/rhythm-game-utilities/godot-plugin> based on the latest in this repo. Eventually the plugin will also be available via the [Godot Asset Store](https://store-beta.godotengine.org/).
+Godot 插件是基于该仓库 <https://github.com/rhythm-game-utilities/godot-plugin> 中最新的内容自动生成。最终该插件也会在 [Godot 字样商店](https://store-beta.godotengine.org/) 提供。
 
-### SDL Library
+### SDL 库
 
-There isn't a custom wrapper or plugin for SDL, as the C++ library works as is when included as a header-only library.
+SDL 没有自定义的封装器或插件，因为 C++ 库作为仅带头库时可以直接使用。
 
 ## Git Hooks
 
-The git hooks that run are quick file checks to ensure the files in the dotnet project and the UnityProject are the same and that the build files haven't changed.
+运行的 Git Hooks 是快速的文件检查，用于确保 dotnet 项目和 UnityProject 中的文件相同，编译文件没有变化。
 
 ```bash
 $ git config --local core.hooksPath .githooks/
 ```
 
-## Testing
+## 关于测试
 
-Run all tests via `make test`.
+通过 `make test` 运行所有测试.
 
-- Tests for the C++ library are authored using the C++ native library `cassert`.
-- Tests are run automatically via GitHub Actions on each new PR.
-- For you add a new feature or fix a bug, please include the benchmark output in the PR along with your device stats.
+- C++ 库的测试使用 C++ 原生库 编写。 `cassert`
+- 测试通过GitHub Actions自动运行于每个新的PR上。
+- 如果您要添加新功能或修复错误，请在 PR 中包含基准测试输出以及您的设备统计信息。
 
-If you want to test the project from within Unity, add the test namespace to your project by adding the following to your `Packages/manifest.json` file:
+如果你想在Unity内部测试项目，可以通过在 `Packages/manifest.json` 文件中添加以下内容将测试命名空间添加到你的项目中：
 
 ```json
 {
@@ -1549,14 +1551,14 @@ If you want to test the project from within Unity, add the test namespace to you
 }
 ```
 
-## Build
+## 编译
 
-> [!WARNING]
-> Do not commit any build changes to the repo. The build files are automatically generated via GitHub Actions.
+> [!警告]
+> 不要向仓库提交任何编译更改。编译文件是通过GitHub Actions自动生成的。
 
 ### macOS
 
-When developing on macOS, make sure that **Mac** is selected in the bottom right-hand corner of Visual Studio Code or C++ Intellisense will not work.
+在macOS上开发时，确保在Visual Studio Code右下角选择 **Mac** ，否则C++ Intellisense无法使用。
 
 ```bash
 ./bin/build.sh
@@ -1564,33 +1566,35 @@ When developing on macOS, make sure that **Mac** is selected in the bottom right
 
 ### Windows
 
-When developing on Windows, make sure that **Win32** is selected in the bottom right-hand corner of Visual Studio Code or C++ Intellisense will not work.
+在Windows上开发时，确保在Visual Studio Code右下角选择了 **Win32** ，否则C++ Intellisense无法使用。
 
-Run from **x64 Native Tools Command Prompt for VS**:
+在 **VS 的x64原生命令提示符** 中运行:
 
 ```cmd
 call "./bin/build.bat"
 ```
 
-## Contributing
+## 做出贡献
 
-Be sure to review the [Contributing Guidelines](./CONTRIBUTING.md) before logging an issue or making a pull request.
+在记录问题或发起拉取请求前，请务必阅读 [贡献指南](./CONTRIBUTING.md)。
 
-## Community Roadmap
+## 社区链接
 
-This project aims to help you build your rhythm game as fast as possible without needing to learn the complexities of a new library. Instead, you can utilize comprehensive examples and simple code recipes If you have feature requests or bugs, please create an issue and tag them with the appropriate tag. If an issue already exists, vote for it with 👍.
+该项目旨在帮助您尽可能快速地构建节奏游戏，而无需学习复杂的新库。相反，你可以使用全面的示例和简单的代码模板。如果你有功能请求或发现了漏洞，请创建一个并用相应标签标记。如果已有相关议题，请为它点个👍。
 
-- [Feature Requests](https://github.com/rhythm-game-utilities/rhythm-game-utilities/labels/enhancement)
-- [Bugs](https://github.com/rhythm-game-utilities/rhythm-game-utilities/labels/bug)
+.
 
-## Other Projects
+- [功能请求](https://github.com/rhythm-game-utilities/rhythm-game-utilities/labels/enhancement)
+- [漏洞反馈](https://github.com/rhythm-game-utilities/rhythm-game-utilities/labels/bug)
 
-| Name          | Description                                                                    | Link                                       |
+## 其他项目
+
+| 项目名          | 项目简介                                                                    | 项目链接                                       |
 | ------------- | ------------------------------------------------------------------------------ | ------------------------------------------ |
 | tiny-midi     | Tiny wrapper around Window/macOS native MIDI libraries for reading MIDI input. | <https://github.com/neogeek/tiny-midi>     |
 | chart-to-json | Parse .chart files in JavaScript or the command line.                          | <https://github.com/neogeek/chart-to-json> |
 
-## License
+## 许可
 
 [The MIT License (MIT)](./LICENSE)
 
