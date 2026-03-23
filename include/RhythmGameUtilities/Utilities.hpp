@@ -35,6 +35,7 @@ namespace RhythmGameUtilities
 {
 
 const float SECONDS_PER_MINUTE = 60.0F;
+const float MILLISECONDS = 1000.0F;
 
 extern "C"
 {
@@ -77,7 +78,7 @@ inline auto ConvertSecondsToTicks(
     auto totalTicks = 0;
     auto remainingSeconds = seconds;
     auto previousTick = 0;
-    auto previousBPM = tempoChangesIterator->BPM / 1000.0;
+    auto previousBPM = tempoChangesIterator->BPM / MILLISECONDS;
 
     while (remainingSeconds > 0)
     {
@@ -108,7 +109,7 @@ inline auto ConvertSecondsToTicks(
 
         if (nextChangeTick == nextTempoChange)
         {
-            previousBPM = tempoChangesIterator->BPM / 1000.0;
+            previousBPM = tempoChangesIterator->BPM / MILLISECONDS;
             ++tempoChangesIterator;
         }
 
