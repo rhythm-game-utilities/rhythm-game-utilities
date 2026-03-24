@@ -31,6 +31,7 @@ _Prototype game built using these utilities._
 ## Table of Contents
 
 - [Platforms](#platforms)
+- [Examples](#examples)
 - [Install](#install)
 - [API](#api)
   1. [Audio](#audio)

@@ -31,6 +31,7 @@ _Prototype game built using these utilities._
 ## Table of Contents
 
 - [Platforms](#platforms)
+- [Examples](#examples)
 - [Install](#install)
 - [API](#api)
   1. [Audio](#audio)
@@ -87,6 +88,14 @@ This library aims to offer support for multiple platforms through a single codeb
 | [SDL](https://www.libsdl.org/)          | C++      | Windows  |                  2.30.8                   |   -    |   -    |
 | [MonoGame](https://monogame.net/)       | C#       | macOS    |                   3.8.2                   |   ✅   |   ❌   |
 | [MonoGame](https://monogame.net/)       | C#       | Windows  |                   3.8.2                   |   ✅   |   ❌   |
+
+## Examples
+
+| Engine                              | Repo                                                     |
+| ----------------------------------- | -------------------------------------------------------- |
+| [Unity](https://unity.com/)         | <https://github.com/rhythm-game-utilities/unity-example> |
+| [Godot 4](https://godotengine.org/) | <https://github.com/rhythm-game-utilities/godot-example> |
+| [SDL](https://www.libsdl.org/)      | <https://github.com/rhythm-game-utilities/sdl-example>   |
 
 ## Install
 

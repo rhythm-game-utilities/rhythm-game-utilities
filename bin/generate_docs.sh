@@ -16,6 +16,7 @@ COLOROFF=$(tput sgr0)
 
   (cat "./Documentation/README.md" && printf '\n') >README.md
   (cat "./Documentation/Platforms.md" && printf '\n') >>README.md
+  (cat "./Documentation/Examples.md" && printf '\n') >>README.md
   (cat "./Documentation/Install.md" && printf '\n') >>README.md
 
   printf "## API\n\n" >>README.md
