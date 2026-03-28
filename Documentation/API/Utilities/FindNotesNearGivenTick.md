@@ -26,6 +26,7 @@ if (foundNotes?.Length > 0)
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/FindNotesNearGivenTick.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -43,7 +44,7 @@ auto main() -> int
 
     if (size(foundNotes) > 0)
     {
-        std::cout << foundNotes[0]->Position << std::endl; // 768
+        std::cout << foundNotes[0].Position << std::endl; // 768
     }
 
     return 0;

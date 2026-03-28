@@ -213,6 +213,7 @@ Console.WriteLine(value); // 0.5
 ##### C++
 
 ```cpp
+// Documentation/API/Common/InverseLerp.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Common.hpp"
@@ -258,6 +259,7 @@ Console.WriteLine(value); // 1.1
 ##### C++
 
 ```cpp
+// Documentation/API/Common/InverseLerpUnclamped.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Common.hpp"
@@ -303,6 +305,7 @@ Console.WriteLine(value); // 5
 ##### C++
 
 ```cpp
+// Documentation/API/Common/Lerp.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Common.hpp"
@@ -355,6 +358,7 @@ Console.WriteLine(notes.Length); // 8
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Chart/ReadNotesFromChartData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -417,6 +421,7 @@ Console.WriteLine(resolution); // 192
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Chart/ReadResolutionFromChartData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -471,6 +476,7 @@ Console.WriteLine(tempoChanges.Length); // 7
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -525,6 +531,7 @@ Console.WriteLine(timeSignatureChanges.Length); // 4
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -580,6 +587,7 @@ Console.WriteLine(notes.Length); // 8
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Midi/ReadNotesFromMidiData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -642,6 +650,7 @@ Console.WriteLine(resolution); // 192
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -696,6 +705,7 @@ Console.WriteLine(tempoChanges.Length); // 7
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -750,6 +760,7 @@ Console.WriteLine(timeSignatureChanges.Length); // 4
 ##### C++
 
 ```cpp
+// Documentation/API/Parsers/Midi/ReadTimeSignatureChangesFromMidiData.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/File.hpp"
@@ -813,6 +824,7 @@ Console.WriteLine(accuracy); // Good
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/CalculateAccuracy.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -900,6 +912,7 @@ Console.WriteLine(value); // 0.64
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/CalculateAccuracyRatio.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -976,6 +989,7 @@ Console.WriteLine(beatBars.Length); // 440
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/CalculateBeatBars.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -1049,6 +1063,7 @@ Console.WriteLine(timing); // Hit
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/CalculateTiming.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -1074,7 +1089,6 @@ auto main() -> int
 
     return 0;
 }
-
 ```
 
 ##### GDScript
@@ -1135,6 +1149,7 @@ Console.WriteLine(ticks); // 1408
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/ConvertSecondsToTicks.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -1203,6 +1218,7 @@ Console.WriteLine(position); // 5.5
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/ConvertTickToPosition.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -1264,6 +1280,7 @@ if (foundNotes?.Length > 0)
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/FindNotesNearGivenTick.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -1281,7 +1298,7 @@ auto main() -> int
 
     if (size(foundNotes) > 0)
     {
-        std::cout << foundNotes[0]->Position << std::endl; // 768
+        std::cout << foundNotes[0].Position << std::endl; // 768
     }
 
     return 0;
@@ -1330,6 +1347,7 @@ Console.WriteLine(isOnTheBeat ? "Is on the beat!" : "Is not on the beat!"); // "
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/IsOnTheBeat.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"
@@ -1387,6 +1405,7 @@ Console.WriteLine(value); // 20
 ##### C++
 
 ```cpp
+// Documentation/API/Utilities/RoundUpToTheNearestMultiplier.cpp
 #include <iostream>
 
 #include "RhythmGameUtilities/Utilities.hpp"

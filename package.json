@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "25.5.0"
+  },
+  "private": true
+}
