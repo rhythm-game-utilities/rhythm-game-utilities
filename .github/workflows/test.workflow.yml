@@ -34,7 +34,9 @@ jobs:
           fetch-depth: 0
 
       - name: Run tests
-        run: ./bin/test.sh
+        run: |
+          ./bin/test.sh
+          ./bin/documentation-test.sh
   test-csharp:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
