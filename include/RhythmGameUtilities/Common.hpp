@@ -12,7 +12,6 @@
 
 #include <cstring>
 #include <regex>
-#include <sstream>
 
 #ifdef _WIN32
 #define PACKAGE_API __declspec(dllexport)
@@ -94,14 +93,27 @@ inline auto Split(const char *contents, const char delimiter)
 {
     auto parts = std::vector<std::string>();
 
-    std::stringstream input(contents);
-
     std::string str;
 
-    while (std::getline(input, str, delimiter))
+    int i = 0;
+
+    while (contents[i] != '\0')
     {
-        parts.push_back(str);
+        if (contents[i] != delimiter)
+        {
+            str += contents[i];
+        }
+        else
+        {
+            parts.push_back(str);
+
+            str.clear();
+        }
+
+        i += 1;
     }
+
+    parts.push_back(str);
 
     return parts;
 }
