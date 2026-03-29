@@ -12,8 +12,8 @@
 
 #include <algorithm>
 #include <cstdint>
+#include <cstring>
 #include <optional>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -35,22 +35,50 @@ inline auto ByteSwap(uint32_t value) -> uint32_t
            ((value << 8) & 0xFF0000) | ((value << 24) & 0xFF000000);
 }
 
+struct ByteStream
+{
+    const uint8_t *data;
+    size_t size;
+    size_t pos = 0;
+    size_t lastReadCount = 0;
+
+    [[nodiscard]] auto good() const -> bool { return pos < size; }
+
+    auto seek(int offset) -> void { pos += static_cast<size_t>(offset); }
+
+    auto read(char *dest, size_t len) -> ByteStream &
+    {
+        if (pos + len <= size)
+        {
+            std::memcpy(dest, data + pos, len);
+            lastReadCount = len;
+            pos += len;
+        }
+        else
+        {
+            lastReadCount = 0;
+        }
+
+        return *this;
+    }
+};
+
 template <typename T>
-inline auto ReadChunk(std::istringstream &stream, int length = sizeof(T)) -> T
+inline auto ReadChunk(ByteStream &stream, int length = sizeof(T)) -> T
 {
     T chunk{};
     stream.read(reinterpret_cast<char *>(&chunk), length);
     return chunk;
 }
 
-inline auto ReadString(std::istringstream &stream, int length) -> std::string
+inline auto ReadString(ByteStream &stream, int length) -> std::string
 {
     auto chunk = std::string(length, '\0');
     stream.read(chunk.data(), length);
-    return stream.gcount() == length ? chunk : "";
+    return stream.lastReadCount == length ? chunk : "";
 }
 
-inline auto ReadVarLen(std::istringstream &stream) -> uint32_t
+inline auto ReadVarLen(ByteStream &stream) -> uint32_t
 {
     uint32_t value = 0;
     uint8_t byte = 0;
@@ -85,8 +113,7 @@ struct MidiHeader
     uint16_t resolution;
 };
 
-inline auto ReadMidiHeader(std::istringstream &stream)
-    -> std::optional<MidiHeader>
+inline auto ReadMidiHeader(ByteStream &stream) -> std::optional<MidiHeader>
 {
     if (ReadString(stream, 4) != "MThd")
     {
@@ -100,14 +127,13 @@ inline auto ReadMidiHeader(std::istringstream &stream)
 }
 
 inline auto CreateMidiStream(const std::vector<uint8_t> &data)
-    -> std::pair<std::istringstream, std::optional<MidiHeader>>
+    -> std::pair<ByteStream, std::optional<MidiHeader>>
 {
-    auto stream = std::istringstream(std::string(data.begin(), data.end()),
-                                     std::ios::binary);
+    auto stream = ByteStream{data.data(), data.size()};
 
     auto header = ReadMidiHeader(stream);
 
-    return {std::move(stream), header};
+    return {stream, header};
 }
 
 template <typename Callback>
@@ -128,7 +154,7 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
             break;
         }
 
-        stream.seekg(4, std::ios::cur);
+        stream.seek(4);
 
         uint32_t tick = 0;
 
@@ -149,15 +175,15 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
                     break;
                 }
 
-                auto posBefore = stream.tellg();
+                auto posBefore = stream.pos;
 
                 callback(MidiEventType::Meta, tick, type, length, stream);
 
-                auto consumed = static_cast<int>(stream.tellg() - posBefore);
+                auto consumed = static_cast<int>(stream.pos - posBefore);
 
                 if (consumed < static_cast<int>(length))
                 {
-                    stream.seekg(length - consumed, std::ios::cur);
+                    stream.seek(static_cast<int>(length) - consumed);
                 }
             }
             else if ((status & SYSTEM_COMMAND) == NOTE_ON_COMMAND)
@@ -168,11 +194,11 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
             else if ((status & SYSTEM_COMMAND) == PROGRAM_CHANGE_COMMAND ||
                      (status & SYSTEM_COMMAND) == CHANNEL_PRESSURE_COMMAND)
             {
-                stream.seekg(1, std::ios::cur);
+                stream.seek(1);
             }
             else
             {
-                stream.seekg(2, std::ios::cur);
+                stream.seek(2);
             }
         }
     }
@@ -196,7 +222,7 @@ inline auto ReadTempoChangesFromMidiData(const std::vector<uint8_t> &data)
     ForEachMidiEvent(
         data,
         [&](MidiEventType eventType, uint32_t tick, uint8_t metaType,
-            uint32_t length, std::istringstream &stream)
+            uint32_t length, ByteStream &stream) -> void
         {
             if (eventType == MidiEventType::Meta && metaType == TEMPO_CHANGE &&
                 length == 3)
@@ -234,7 +260,7 @@ ReadTimeSignatureChangesFromMidiData(const std::vector<uint8_t> &data)
     ForEachMidiEvent(
         data,
         [&](MidiEventType eventType, uint32_t tick, uint8_t metaType,
-            uint32_t length, std::istringstream &stream) -> void
+            uint32_t length, ByteStream &stream) -> void
         {
             if (eventType == MidiEventType::Meta &&
                 metaType == TIME_SIGNATURE_CHANGE && length >= 2)
@@ -262,13 +288,13 @@ inline auto ReadNotesFromMidiData(const std::vector<uint8_t> &data)
 
     ForEachMidiEvent(data,
                      [&](MidiEventType eventType, uint32_t tick, uint8_t,
-                         uint32_t, std::istringstream &stream) -> void
+                         uint32_t, ByteStream &stream) -> void
                      {
                          if (eventType == MidiEventType::NoteOn)
                          {
                              auto noteValue = ReadChunk<uint8_t>(stream);
 
-                             stream.seekg(1, std::ios::cur);
+                             stream.seek(1);
 
                              notes.push_back(
                                  Note{static_cast<int>(tick), noteValue});
