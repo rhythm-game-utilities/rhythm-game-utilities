@@ -82,8 +82,10 @@ This library aims to offer support for multiple platforms through a single codeb
 | [Unreal](https://www.unrealengine.com/) | C++      | Windows  |                   5.4.4                   |   ✅   |   ❌   |
 | [Godot 4](https://godotengine.org/)     | GDScript | macOS    |                    4.3                    |   ✅   |   ❌   |
 | [Godot 4](https://godotengine.org/)     | GDScript | Windows  |                    4.3                    |   ✅   |   ❌   |
+| [Godot 4](https://godotengine.org/)     | GDScript | WebGL    |                    4.3                    |   ✅   |   ❌   |
 | [Godot 4](https://godotengine.org/)     | C#       | macOS    |                    4.3                    |   ✅   |   ❌   |
 | [Godot 4](https://godotengine.org/)     | C#       | Windows  |                    4.3                    |   ✅   |   ❌   |
+| [Godot 4](https://godotengine.org/)     | C#       | WebGL    |                    4.3                    |   ✅   |   ❌   |
 | [SDL](https://www.libsdl.org/)          | C++      | macOS    |                  2.30.8                   |   ✅   |   ❌   |
 | [SDL](https://www.libsdl.org/)          | C++      | Windows  |                  2.30.8                   |   -    |   -    |
 | [MonoGame](https://monogame.net/)       | C#       | macOS    |                   3.8.2                   |   ✅   |   ❌   |
