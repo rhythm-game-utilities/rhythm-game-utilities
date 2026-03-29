@@ -219,7 +219,7 @@ inline auto ReadTempoChangesFromMidiData(const std::vector<uint8_t> &data)
     }
 
     std::sort(tempoChanges.begin(), tempoChanges.end(),
-              [](const Tempo &a, const Tempo &b)
+              [](const Tempo &a, const Tempo &b) -> bool
               { return a.Position < b.Position; });
 
     return tempoChanges;
@@ -234,7 +234,7 @@ ReadTimeSignatureChangesFromMidiData(const std::vector<uint8_t> &data)
     ForEachMidiEvent(
         data,
         [&](MidiEventType eventType, uint32_t tick, uint8_t metaType,
-            uint32_t length, std::istringstream &stream)
+            uint32_t length, std::istringstream &stream) -> void
         {
             if (eventType == MidiEventType::Meta &&
                 metaType == TIME_SIGNATURE_CHANGE && length >= 2)
@@ -249,7 +249,7 @@ ReadTimeSignatureChangesFromMidiData(const std::vector<uint8_t> &data)
         });
 
     std::sort(timeSignatureChanges.begin(), timeSignatureChanges.end(),
-              [](const TimeSignature &a, const TimeSignature &b)
+              [](const TimeSignature &a, const TimeSignature &b) -> bool
               { return a.Position < b.Position; });
 
     return timeSignatureChanges;
@@ -262,7 +262,7 @@ inline auto ReadNotesFromMidiData(const std::vector<uint8_t> &data)
 
     ForEachMidiEvent(data,
                      [&](MidiEventType eventType, uint32_t tick, uint8_t,
-                         uint32_t, std::istringstream &stream)
+                         uint32_t, std::istringstream &stream) -> void
                      {
                          if (eventType == MidiEventType::NoteOn)
                          {
@@ -276,7 +276,7 @@ inline auto ReadNotesFromMidiData(const std::vector<uint8_t> &data)
                      });
 
     std::sort(notes.begin(), notes.end(),
-              [](const Note &a, const Note &b)
+              [](const Note &a, const Note &b) -> bool
               {
                   if (a.Position != b.Position)
                   {

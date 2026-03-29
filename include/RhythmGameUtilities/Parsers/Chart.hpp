@@ -122,7 +122,8 @@ extern "C"
         {
             std::string key = line.first;
             std::transform(key.begin(), key.end(), key.begin(),
-                           [](unsigned char c) { return std::tolower(c); });
+                           [](unsigned char c) -> int
+                           { return std::tolower(c); });
 
             if (key == "resolution")
             {
@@ -155,7 +156,7 @@ inline auto ReadTempoChangesFromChartData(const char *contents)
     }
 
     std::sort(tempoChanges.begin(), tempoChanges.end(),
-              [](const Tempo &a, const Tempo &b)
+              [](const Tempo &a, const Tempo &b) -> bool
               { return a.Position < b.Position; });
 
     return tempoChanges;
@@ -184,7 +185,7 @@ inline auto ReadTimeSignatureChangesFromChartData(const char *contents)
     }
 
     std::sort(timeSignatureChanges.begin(), timeSignatureChanges.end(),
-              [](const TimeSignature &a, const TimeSignature &b)
+              [](const TimeSignature &a, const TimeSignature &b) -> bool
               { return a.Position < b.Position; });
 
     return timeSignatureChanges;
@@ -210,7 +211,7 @@ inline auto ReadNotesFromChartData(const char *contents, Difficulty difficulty)
     }
 
     std::sort(notes.begin(), notes.end(),
-              [](const Note &a, const Note &b)
+              [](const Note &a, const Note &b) -> bool
               {
                   if (a.Position != b.Position)
                   {
