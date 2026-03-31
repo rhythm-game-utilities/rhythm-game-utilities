@@ -36,7 +36,7 @@ jobs:
       - name: Run tests
         run: |
           ./bin/test.sh
-          ./bin/documentation-test.sh
+          ./bin/documentation-test-cpp.sh
   test-csharp:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
