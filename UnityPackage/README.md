@@ -204,6 +204,7 @@ _texture2D.Apply();
 ##### C#
 
 ```csharp
+// Documentation/API/Common/InverseLerp.cs
 using System;
 using RhythmGameUtilities;
 
@@ -250,6 +251,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Common/InverseLerpUnclamped.cs
 using System;
 using RhythmGameUtilities;
 
@@ -296,6 +298,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Common/Lerp.cs
 using System;
 using RhythmGameUtilities;
 
@@ -346,6 +349,7 @@ Read more about `.chart` files: <https://github.com/TheNathannator/GuitarGame_Ch
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Chart/ReadNotesFromChartData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -409,6 +413,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Chart/ReadResolutionFromChartData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -464,6 +469,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -519,6 +525,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -575,6 +582,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Midi/ReadNotesFromMidiData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -638,6 +646,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -693,6 +702,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -748,6 +758,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Midi/ReadTimeSignatureChangesFromMidiData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
@@ -805,6 +816,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/CalculateAccuracy.cs
 using System;
 using RhythmGameUtilities;
 
@@ -892,6 +904,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/CalculateAccuracyRatio.cs
 using System;
 using RhythmGameUtilities;
 
@@ -970,6 +983,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/CalculateBeatBars.cs
 using System;
 using RhythmGameUtilities;
 
@@ -1044,6 +1058,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/CalculateTiming.cs
 using System;
 using RhythmGameUtilities;
 
@@ -1129,6 +1144,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/ConvertSecondsToTicks.cs
 using System;
 using RhythmGameUtilities;
 
@@ -1206,6 +1222,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/ConvertTickToPosition.cs
 using System;
 using RhythmGameUtilities;
 
@@ -1261,6 +1278,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/FindNotesNearGivenTick.cs
 using System;
 using RhythmGameUtilities;
 
@@ -1334,6 +1352,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/IsOnTheBeat.cs
 using System;
 using RhythmGameUtilities;
 
@@ -1396,6 +1415,7 @@ func _ready() -> void:
 ##### C#
 
 ```csharp
+// Documentation/API/Utilities/RoundUpToTheNearestMultiplier.cs
 using System;
 using RhythmGameUtilities;
 
