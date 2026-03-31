@@ -5,6 +5,7 @@
 ##### C#
 
 ```csharp
+// Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.cs
 using System;
 using System.IO;
 using RhythmGameUtilities;
