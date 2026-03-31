@@ -3,6 +3,10 @@ RhythmGameUtilities/obj
 RhythmGameUtilities.Tests/bin
 RhythmGameUtilities.Tests/obj
 
+Documentation.Tests/bin
+Documentation.Tests/obj
+Documentation.Tests/*.cs
+
 RhythmGameUtilities.sln.DotSettings.user
 
 build/
