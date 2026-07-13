@@ -131,9 +131,7 @@ inline auto CreateMidiStream(const std::vector<uint8_t> &data)
 {
     auto stream = ByteStream{data.data(), data.size()};
 
-    auto header = ReadMidiHeader(stream);
-
-    return {stream, header};
+    return {stream, ReadMidiHeader(stream)};
 }
 
 template <typename Callback>
