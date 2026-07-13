@@ -173,16 +173,11 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
                     break;
                 }
 
-                auto posBefore = stream.pos;
+                auto next = stream.pos + length;
 
                 callback(MidiEventType::Meta, tick, type, length, stream);
 
-                auto consumed = static_cast<int>(stream.pos - posBefore);
-
-                if (consumed < static_cast<int>(length))
-                {
-                    stream.seek(static_cast<int>(length) - consumed);
-                }
+                stream.pos = next;
             }
             else if ((status & SYSTEM_COMMAND) == NOTE_ON_COMMAND)
             {
