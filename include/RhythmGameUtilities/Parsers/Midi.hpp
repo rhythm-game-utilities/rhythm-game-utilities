@@ -71,7 +71,7 @@ inline auto ReadChunk(ByteStream &stream, int length = sizeof(T)) -> T
     return chunk;
 }
 
-inline auto ReadString(ByteStream &stream, int length) -> std::string
+inline auto ReadString(ByteStream &stream, size_t length) -> std::string
 {
     auto chunk = std::string(length, '\0');
     stream.read(chunk.data(), length);
