@@ -71,7 +71,7 @@ jobs:
       - name: Build Release
         shell: cmd
         run: |
-          call "C:\Program Files\Microsoft Visual Studio\2026\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          call "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           mkdir -p build
           cl /EHsc /std:c++17 /c include/RhythmGameUtilities/RhythmGameUtilities.cpp /Fo:build\RhythmGameUtilities.obj
           link /DLL /MACHINE:X64 /OUT:build\libRhythmGameUtilities.dll /IMPLIB:build\libRhythmGameUtilities.lib build\RhythmGameUtilities.obj
