@@ -45,7 +45,7 @@ struct ByteStream
 
     auto seek(int offset) -> void { pos += static_cast<size_t>(offset); }
 
-    auto read(char *dest, size_t len) -> bool
+    auto read(void *dest, size_t len) -> bool
     {
         if (pos + len > size)
         {
@@ -59,11 +59,10 @@ struct ByteStream
     }
 };
 
-template <typename T>
-inline auto ReadChunk(ByteStream &stream, int length = sizeof(T)) -> T
+template <typename T> inline auto ReadChunk(ByteStream &stream) -> T
 {
     T chunk{};
-    stream.read(reinterpret_cast<char *>(&chunk), length);
+    stream.read(&chunk, sizeof(T));
     return chunk;
 }
 
