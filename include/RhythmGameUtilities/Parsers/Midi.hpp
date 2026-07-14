@@ -40,42 +40,36 @@ struct ByteStream
     const uint8_t *data;
     size_t size;
     size_t pos = 0;
-    size_t lastReadCount = 0;
 
     [[nodiscard]] auto good() const -> bool { return pos < size; }
 
     auto seek(int offset) -> void { pos += static_cast<size_t>(offset); }
 
-    auto read(char *dest, size_t len) -> ByteStream &
+    auto read(void *dest, size_t len) -> bool
     {
-        if (pos + len <= size)
+        if (pos + len > size)
         {
-            std::memcpy(dest, data + pos, len);
-            lastReadCount = len;
-            pos += len;
-        }
-        else
-        {
-            lastReadCount = 0;
+            return false;
         }
 
-        return *this;
+        std::memcpy(dest, data + pos, len);
+        pos += len;
+
+        return true;
     }
 };
 
-template <typename T>
-inline auto ReadChunk(ByteStream &stream, int length = sizeof(T)) -> T
+template <typename T> inline auto ReadChunk(ByteStream &stream) -> T
 {
     T chunk{};
-    stream.read(reinterpret_cast<char *>(&chunk), length);
+    stream.read(&chunk, sizeof(T));
     return chunk;
 }
 
-inline auto ReadString(ByteStream &stream, int length) -> std::string
+inline auto ReadString(ByteStream &stream, size_t length) -> std::string
 {
     auto chunk = std::string(length, '\0');
-    stream.read(chunk.data(), length);
-    return stream.lastReadCount == length ? chunk : "";
+    return stream.read(chunk.data(), length) ? chunk : "";
 }
 
 inline auto ReadVarLen(ByteStream &stream) -> uint32_t
@@ -131,9 +125,7 @@ inline auto CreateMidiStream(const std::vector<uint8_t> &data)
 {
     auto stream = ByteStream{data.data(), data.size()};
 
-    auto header = ReadMidiHeader(stream);
-
-    return {stream, header};
+    return {stream, ReadMidiHeader(stream)};
 }
 
 template <typename Callback>
@@ -175,16 +167,11 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
                     break;
                 }
 
-                auto posBefore = stream.pos;
+                auto next = stream.pos + length;
 
                 callback(MidiEventType::Meta, tick, type, length, stream);
 
-                auto consumed = static_cast<int>(stream.pos - posBefore);
-
-                if (consumed < static_cast<int>(length))
-                {
-                    stream.seek(static_cast<int>(length) - consumed);
-                }
+                stream.pos = next;
             }
             else if ((status & SYSTEM_COMMAND) == NOTE_ON_COMMAND)
             {
