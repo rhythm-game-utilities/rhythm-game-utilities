@@ -61,6 +61,11 @@ gdextension_copy = env.InstallAs(
     source="RhythmGameUtilities.gdextension",
 )
 
+gdextension_copy = env.InstallAs(
+    target="{}/RhythmGameUtilities.gdextension.uid".format(folder),
+    source="RhythmGameUtilities.gdextension.uid",
+)
+
 CacheDir(".scons_cache/")
 
 Default(library)
