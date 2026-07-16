@@ -12,7 +12,7 @@ auto main() -> int
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
 
-    auto note = new Note{750};
+    auto note = new Note{1, 750};
     auto currentPosition =
         ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 

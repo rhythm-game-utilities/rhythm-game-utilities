@@ -853,7 +853,7 @@ auto main() -> int
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
 
-    auto note = new Note{750};
+    auto note = new Note{1, 750};
     auto currentPosition =
         ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
@@ -942,7 +942,7 @@ auto main() -> int
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
 
-    auto note = new Note{750};
+    auto note = new Note{1, 750};
     auto currentPosition =
         ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
@@ -1095,7 +1095,7 @@ auto main() -> int
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
 
-    auto note = new Note{750};
+    auto note = new Note{1, 750};
     auto currentPosition =
         ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
@@ -1284,9 +1284,12 @@ using RhythmGameUtilities;
 
 var notes = new Note[]
 {
-    new() { Position = 768 }, new() { Position = 960 }, new() { Position = 1152 }, new() { Position = 1536 },
-    new() { Position = 1728 }, new() { Position = 1920 }, new() { Position = 2304 }, new() { Position = 2496 },
-    new() { Position = 2688 }, new() { Position = 3072 }, new() { Position = 3264 }
+    new() { ID = 1, Position = 768 }, new() { ID = 2, Position = 960 },
+    new() { ID = 3, Position = 1152 }, new() { ID = 4, Position = 1536 },
+    new() { ID = 5, Position = 1728 }, new() { ID = 6,  Position = 1920 },
+    new() { ID = 7, Position = 2304 }, new() { ID = 8, Position = 2496 },
+    new() { ID = 9, Position = 2688 }, new() { ID = 10, Position = 3072 },
+    new() { ID = 11, Position = 3264 }
 };
 
 var foundNotes = Utilities.FindNotesNearGivenTick(notes, 750);
@@ -1309,10 +1312,10 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    std::vector<Note> notes = {{768, 0, 0},  {960, 0, 0},  {1152, 0, 0},
-                               {1536, 0, 0}, {1728, 0, 0}, {1920, 0, 0},
-                               {2304, 0, 0}, {2496, 0, 0}, {2688, 0, 0},
-                               {3072, 0, 0}, {3264, 0, 0}};
+    std::vector<Note> notes = {
+        {1, 768, 0, 0},  {2, 960, 0, 0},   {3, 1152, 0, 0}, {4, 1536, 0, 0},
+        {5, 1728, 0, 0}, {6, 1920, 0, 0},  {7, 2304, 0, 0}, {8, 2496, 0, 0},
+        {9, 2688, 0, 0}, {10, 3072, 0, 0}, {11, 3264, 0, 0}};
 
     auto foundNotes = FindNotesNearGivenTick(notes, 750);
 

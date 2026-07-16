@@ -3,9 +3,12 @@ using RhythmGameUtilities;
 
 var notes = new Note[]
 {
-    new() { Position = 768 }, new() { Position = 960 }, new() { Position = 1152 }, new() { Position = 1536 },
-    new() { Position = 1728 }, new() { Position = 1920 }, new() { Position = 2304 }, new() { Position = 2496 },
-    new() { Position = 2688 }, new() { Position = 3072 }, new() { Position = 3264 }
+    new() { ID = 1, Position = 768 }, new() { ID = 2, Position = 960 },
+    new() { ID = 3, Position = 1152 }, new() { ID = 4, Position = 1536 },
+    new() { ID = 5, Position = 1728 }, new() { ID = 6,  Position = 1920 },
+    new() { ID = 7, Position = 2304 }, new() { ID = 8, Position = 2496 },
+    new() { ID = 9, Position = 2688 }, new() { ID = 10, Position = 3072 },
+    new() { ID = 11, Position = 3264 }
 };
 
 var foundNotes = Utilities.FindNotesNearGivenTick(notes, 750);
