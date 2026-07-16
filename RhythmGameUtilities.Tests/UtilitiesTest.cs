@@ -108,10 +108,11 @@ namespace RhythmGameUtilities.Tests
         {
             var notes = new Note[]
             {
-                new() { Position = 110 }, new() { Position = 120 }, new() { Position = 130 },
-                new() { Position = 140 }, new() { Position = 150 }, new() { Position = 160 },
-                new() { Position = 170 }, new() { Position = 180 }, new() { Position = 190 },
-                new() { Position = 200 }
+                new() { ID = 1, Position = 110 }, new() { ID = 2, Position = 120 },
+                new() { ID = 3, Position = 130 }, new() { ID = 4, Position = 140 },
+                new() { ID = 5, Position = 150 }, new() { ID = 6, Position = 160 },
+                new() { ID = 7, Position = 170 }, new() { ID = 8, Position = 180 },
+                new() { ID = 9, Position = 190 }, new() { ID = 10, Position = 200 }
             };
 
             var foundNotes = Utilities.FindNotesNearGivenTick(notes, 160, 20);
@@ -130,10 +131,11 @@ namespace RhythmGameUtilities.Tests
         {
             var notes = new Note[]
             {
-                new() { Position = 110 }, new() { Position = 120 }, new() { Position = 130 },
-                new() { Position = 140 }, new() { Position = 150 }, new() { Position = 160 },
-                new() { Position = 170 }, new() { Position = 180 }, new() { Position = 190 },
-                new() { Position = 200 }
+                new() { ID = 1, Position = 110 }, new() { ID = 2, Position = 120 },
+                new() { ID = 3, Position = 130 }, new() { ID = 4, Position = 140 },
+                new() { ID = 5, Position = 150 }, new() { ID = 6, Position = 160 },
+                new() { ID = 7, Position = 170 }, new() { ID = 8, Position = 180 },
+                new() { ID = 9, Position = 190 }, new() { ID = 10, Position = 200 }
             };
 
             Assert.That(Utilities.FindNotesNearGivenTick(notes, 50, 20), Is.Empty);

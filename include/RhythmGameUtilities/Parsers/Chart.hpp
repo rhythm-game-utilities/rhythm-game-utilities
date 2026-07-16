@@ -200,11 +200,13 @@ inline auto ReadNotesFromChartData(const char *contents, Difficulty difficulty)
 
     auto notes = std::vector<Note>();
 
+    int id = 0;
+
     for (const auto &line : section)
     {
         if (line.second.front() == ToString(TypeCode::NoteMarker))
         {
-            notes.push_back({std::stoi(line.first),
+            notes.push_back({++id, std::stoi(line.first),
                              std::stoi(line.second.at(1)),
                              std::stoi(line.second.at(2))});
         }

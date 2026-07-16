@@ -8,6 +8,8 @@ namespace RhythmGameUtilities
     public struct Note : IEquatable<Note>
     {
 
+        public int ID;
+
         public int Position;
 
         public int HandPosition;
@@ -16,12 +18,12 @@ namespace RhythmGameUtilities
 
         public override int GetHashCode()
         {
-            return (Position, HandPosition, Length).GetHashCode();
+            return (ID, Position, HandPosition, Length).GetHashCode();
         }
 
         public bool Equals(Note other)
         {
-            return Position == other.Position && HandPosition == other.HandPosition && Length == other.Length;
+            return ID == other.ID && Position == other.Position && HandPosition == other.HandPosition && Length == other.Length;
         }
 
         public override bool Equals(object obj)

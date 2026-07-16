@@ -273,6 +273,8 @@ inline auto ReadNotesFromMidiData(const std::vector<uint8_t> &data)
 {
     auto notes = std::vector<Note>{};
 
+    int id = 0;
+
     ForEachMidiEvent(data,
                      [&](MidiEventType eventType, uint32_t tick, uint8_t,
                          uint32_t, ByteStream &stream) -> void
@@ -284,7 +286,7 @@ inline auto ReadNotesFromMidiData(const std::vector<uint8_t> &data)
                              stream.seek(1);
 
                              notes.push_back(
-                                 Note{static_cast<int>(tick), noteValue});
+                                 Note{++id, static_cast<int>(tick), noteValue});
                          }
                      });
 

@@ -228,6 +228,7 @@ auto rhythm_game_utilities::read_notes_from_chart_data(const String &contents,
     {
         Dictionary note;
 
+        note["id"] = note_internal.ID;
         note["position"] = note_internal.Position;
         note["hand_position"] = note_internal.HandPosition;
         note["length"] = note_internal.Length;
@@ -349,6 +350,7 @@ auto rhythm_game_utilities::read_notes_from_midi_data(const Variant &data)
     {
         Dictionary note;
 
+        note["id"] = note_internal.ID;
         note["position"] = note_internal.Position;
         note["hand_position"] = note_internal.HandPosition;
         note["length"] = note_internal.Length;
@@ -471,6 +473,7 @@ auto rhythm_game_utilities::find_notes_near_given_tick(Array notes, int tick,
         {
             Dictionary variant = notes[i];
 
+            note_internal.ID = variant["id"];
             note_internal.Position = variant["position"];
             note_internal.HandPosition = variant["hand_position"];
             note_internal.Length = variant["length"];
@@ -488,6 +491,7 @@ auto rhythm_game_utilities::find_notes_near_given_tick(Array notes, int tick,
     {
         Dictionary matched_note_dictionary;
 
+        matched_note_dictionary["id"] = matched_note_internal.ID;
         matched_note_dictionary["position"] = matched_note_internal.Position;
         matched_note_dictionary["hand_position"] =
             matched_note_internal.HandPosition;

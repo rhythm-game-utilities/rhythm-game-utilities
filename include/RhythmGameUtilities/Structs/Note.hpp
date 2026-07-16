@@ -15,6 +15,8 @@ namespace RhythmGameUtilities
 
 struct Note
 {
+    int ID;
+
     int Position;
 
     int HandPosition;
