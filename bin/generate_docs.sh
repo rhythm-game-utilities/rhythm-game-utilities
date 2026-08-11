@@ -2,10 +2,6 @@
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-REDON=$(tput setaf 1)
-GREENON=$(tput setaf 2)
-COLOROFF=$(tput sgr0)
-
 (
 
   mkdir -p build/
@@ -14,10 +10,12 @@ COLOROFF=$(tput sgr0)
 
   cd ..
 
-  (cat "./Documentation/README.md" && printf '\n') >README.md
-  (cat "./Documentation/Platforms.md" && printf '\n') >>README.md
-  (cat "./Documentation/Examples.md" && printf '\n') >>README.md
-  (cat "./Documentation/Install.md" && printf '\n') >>README.md
+  {
+    (cat "./Documentation/README.md" && printf '\n')
+    (cat "./Documentation/Platforms.md" && printf '\n')
+    (cat "./Documentation/Examples.md" && printf '\n')
+    (cat "./Documentation/Install.md" && printf '\n')
+  } > README.md
 
   printf "## API\n\n" >>README.md
 
@@ -49,13 +47,15 @@ COLOROFF=$(tput sgr0)
       (cat "${FILE}" && printf '\n') >>README.md
     done
 
-  (cat "./Documentation/Architecture.md" && printf '\n') >>README.md
-  (cat "./Documentation/Git Hooks.md" && printf '\n') >>README.md
-  (cat "./Documentation/Testing.md" && printf '\n') >>README.md
-  (cat "./Documentation/Build.md" && printf '\n') >>README.md
-  (cat "./Documentation/Contributing.md" && printf '\n') >>README.md
-  (cat "./Documentation/Community Roadmap.md" && printf '\n') >>README.md
-  (cat "./Documentation/Other Projects.md" && printf '\n') >>README.md
-  (cat "./Documentation/License.md" && printf '\n') >>README.md
+  {
+    (cat "./Documentation/Architecture.md" && printf '\n')
+    (cat "./Documentation/Git Hooks.md" && printf '\n')
+    (cat "./Documentation/Testing.md" && printf '\n')
+    (cat "./Documentation/Build.md" && printf '\n')
+    (cat "./Documentation/Contributing.md" && printf '\n')
+    (cat "./Documentation/Community Roadmap.md" && printf '\n')
+    (cat "./Documentation/Other Projects.md" && printf '\n')
+    (cat "./Documentation/License.md" && printf '\n')
+  } >> README.md
 
 )
