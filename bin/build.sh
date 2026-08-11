@@ -2,7 +2,6 @@
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-REDON=$(tput setaf 1)
 GREENON=$(tput setaf 2)
 COLOROFF=$(tput sgr0)
 
