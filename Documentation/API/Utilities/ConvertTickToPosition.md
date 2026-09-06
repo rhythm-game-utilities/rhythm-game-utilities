@@ -54,3 +54,17 @@ func _ready() -> void:
 
 	print(position) # 5.5
 ```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/ConvertTickToPosition.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const tick = 1056;
+const resolution = 192;
+
+const position = RhythmGameUtilities.ConvertTickToPosition(tick, resolution);
+
+console.log(position); // 5.5
+```

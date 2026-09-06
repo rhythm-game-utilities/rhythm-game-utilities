@@ -54,3 +54,18 @@ func _ready() -> void:
 
 	print(tempo_changes)
 ```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+
+const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents);
+
+console.log(tempoChanges.length); // 7
+```

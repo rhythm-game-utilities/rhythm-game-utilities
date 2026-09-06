@@ -4,11 +4,13 @@ import { glob, readFile, writeFile } from "node:fs/promises";
 
 const markdownFiles = (
   await Promise.all(
-    (await Array.fromAsync(glob(["README.md", "Documentation/**/*.md"]))).map(
-      async (path) => {
-        return [path, await readFile(path, "utf8")];
-      },
-    ),
+    (
+      await Array.fromAsync(
+        glob(["README.md", "Documentation/**/*.md", "JavaScript/README.md"]),
+      )
+    ).map(async (path) => {
+      return [path, await readFile(path, "utf8")];
+    }),
   )
 ).reduce((prev, [key, value]) => ({ ...prev, [key]: value }), {}) as {
   [key: string]: string;
@@ -22,6 +24,7 @@ const sourceFiles = (
           "Documentation/**/*.cpp",
           "Documentation/**/*.cs",
           "Documentation/**/*.gd",
+          "Documentation/**/*.js",
         ]),
       )
     ).map(async (path) => {

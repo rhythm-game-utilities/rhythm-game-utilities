@@ -1,0 +1,33 @@
+{
+  "name": "@rhythm-game-utilities/core",
+  "description": "A collection of utilities for creating rhythm games in Unity, Unreal, Godot, SDL and MonoGame.",
+  "version": "1.0.0-preview.1",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./module": {
+      "types": "./dist/module.d.ts",
+      "default": "./dist/module.mjs"
+    }
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
+  },
+  "scripts": {
+    "build": "mkdir -p dist/ && em++ -O3 --bind -s MODULARIZE=1 -s EXPORT_ES6=1 main.cpp -I../include/ -o dist/module.mjs --emit-tsd module.d.ts && tsc",
+    "test": "node --test './tests/**/*.test.mjs'"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhythm-game-utilities/rhythm-game-utilities.git"
+  },
+  "private": true
+}
