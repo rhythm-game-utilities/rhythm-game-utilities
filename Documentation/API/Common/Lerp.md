@@ -44,3 +44,15 @@ func _ready() -> void:
 
 	print(value) # 5
 ```
+
+##### Lua
+
+```lua
+-- Documentation/API/Common/Lerp.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.lerp(0, 10, 0.5);
+
+print(value) -- 5.0
+```

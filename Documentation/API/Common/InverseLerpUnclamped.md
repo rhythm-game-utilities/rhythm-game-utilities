@@ -44,3 +44,15 @@ func _ready() -> void:
 
 	print(value) # 1.1
 ```
+
+##### Lua
+
+```lua
+-- Documentation/API/Common/InverseLerpUnclamped.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local value = rhythmgameutilities.inverse_lerp_unclamped(0, 10, 11);
+
+print(value) -- 1.1
+```
