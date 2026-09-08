@@ -26,7 +26,7 @@ namespace RhythmGameUtilities
  * @public
  */
 
-inline auto ReadBytesFromFile(const char *path) -> std::vector<uint8_t>
+inline auto ReadBytesFromFile(const std::string &path) -> std::vector<uint8_t>
 {
     std::ifstream file(path, std::ios::binary | std::ios::ate);
 
@@ -53,7 +53,7 @@ inline auto ReadBytesFromFile(const char *path) -> std::vector<uint8_t>
  * @public
  */
 
-inline auto ReadStringFromFile(const char *path) -> std::string
+inline auto ReadStringFromFile(const std::string &path) -> std::string
 {
     std::ifstream file(path);
 
