@@ -48,7 +48,7 @@ inline std::regex CHART_SECTION_LINE_PATTERN(R"(([^=]+)\s*=([^\r\n]+))");
 
 inline std::regex JSON_VALUE_PATTERN(R"(("[^"]+"|\S+))");
 
-inline auto ParseSectionsFromChart(const char *contents)
+inline auto ParseSectionsFromChart(const std::string &contents)
     -> std::map<std::string,
                 std::vector<std::pair<std::string, std::vector<std::string>>>>
 {
@@ -69,26 +69,25 @@ inline auto ParseSectionsFromChart(const char *contents)
 
     for (auto i = 0; i < matches.size(); i += 1)
     {
-        auto parts = FindMatchGroups(matches[i].c_str(), CHART_SECTION_PATTERN);
+        auto parts = FindMatchGroups(matches[i], CHART_SECTION_PATTERN);
 
         if (parts.size() < 3)
         {
             continue;
         }
 
-        auto lines =
-            FindAllMatches(parts[2].c_str(), CHART_SECTION_LINE_PATTERN);
+        auto lines = FindAllMatches(parts[2], CHART_SECTION_LINE_PATTERN);
 
         std::vector<std::pair<std::string, std::vector<std::string>>> items;
 
         for (auto j = 0; j < lines.size(); j += 1)
         {
-            auto parts = Split(lines[j].c_str(), '=');
+            auto parts = Split(lines[j], '=');
 
-            auto key = Trim(parts[0].c_str());
-            auto value = Trim(parts[1].c_str());
+            auto key = Trim(parts[0]);
+            auto value = Trim(parts[1]);
 
-            auto values = FindAllMatches(value.c_str(), JSON_VALUE_PATTERN);
+            auto values = FindAllMatches(value, JSON_VALUE_PATTERN);
 
             for (auto k = 0; k < values.size(); k += 1)
             {
@@ -135,7 +134,7 @@ extern "C"
     }
 }
 
-inline auto ReadTempoChangesFromChartData(const char *contents)
+inline auto ReadTempoChangesFromChartData(const std::string &contents)
     -> std::vector<Tempo>
 {
     auto sections = ParseSectionsFromChart(contents);
@@ -162,7 +161,7 @@ inline auto ReadTempoChangesFromChartData(const char *contents)
     return tempoChanges;
 }
 
-inline auto ReadTimeSignatureChangesFromChartData(const char *contents)
+inline auto ReadTimeSignatureChangesFromChartData(const std::string &contents)
     -> std::vector<TimeSignature>
 {
     auto sections = ParseSectionsFromChart(contents);
@@ -191,8 +190,8 @@ inline auto ReadTimeSignatureChangesFromChartData(const char *contents)
     return timeSignatureChanges;
 }
 
-inline auto ReadNotesFromChartData(const char *contents, Difficulty difficulty)
-    -> std::vector<Note>
+inline auto ReadNotesFromChartData(const std::string &contents,
+                                   Difficulty difficulty) -> std::vector<Note>
 {
     auto sections = ParseSectionsFromChart(contents);
 
@@ -226,7 +225,7 @@ inline auto ReadNotesFromChartData(const char *contents, Difficulty difficulty)
     return notes;
 }
 
-inline auto ReadLyricsFromChartData(const char *contents)
+inline auto ReadLyricsFromChartData(const std::string &contents)
     -> std::map<int, std::string>
 {
     auto sections = ParseSectionsFromChart(contents);

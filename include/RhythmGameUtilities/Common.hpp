@@ -10,7 +10,6 @@
 
 #pragma once
 
-#include <cstring>
 #include <regex>
 
 #ifdef _WIN32
@@ -75,7 +74,7 @@ extern "C"
  * @private
  */
 
-inline auto Trim(const char *contents) -> std::string
+inline auto Trim(const std::string &contents) -> std::string
 {
     return std::regex_replace(contents, std::regex("^\\s+|\\s+$"), "");
 }
@@ -88,7 +87,7 @@ inline auto Trim(const char *contents) -> std::string
  * @private
  */
 
-inline auto Split(const char *contents, const char delimiter)
+inline auto Split(const std::string &contents, const char delimiter)
     -> std::vector<std::string>
 {
     auto parts = std::vector<std::string>();
@@ -118,15 +117,16 @@ inline auto Split(const char *contents, const char delimiter)
     return parts;
 }
 
-inline auto FindAllMatches(const char *contents, const std::regex &pattern)
+inline auto FindAllMatches(const std::string &contents,
+                           const std::regex &pattern)
     -> std::vector<std::string>
 {
     auto matches = std::vector<std::string>();
 
     auto begin =
-        std::cregex_iterator(contents, contents + strlen(contents), pattern);
+        std::sregex_iterator(contents.begin(), contents.end(), pattern);
 
-    auto end = std::cregex_iterator();
+    auto end = std::sregex_iterator();
 
     for (auto iterator = begin; iterator != end; iterator++)
     {
@@ -136,15 +136,16 @@ inline auto FindAllMatches(const char *contents, const std::regex &pattern)
     return matches;
 }
 
-inline auto FindMatchGroups(const char *contents, const std::regex &pattern)
+inline auto FindMatchGroups(const std::string &contents,
+                            const std::regex &pattern)
     -> std::vector<std::string>
 {
     auto matches = std::vector<std::string>();
 
     auto iterator =
-        std::cregex_iterator(contents, contents + strlen(contents), pattern);
+        std::sregex_iterator(contents.begin(), contents.end(), pattern);
 
-    if (iterator == std::cregex_iterator())
+    if (iterator == std::sregex_iterator())
     {
         return matches;
     }
