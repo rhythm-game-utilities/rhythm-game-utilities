@@ -22,7 +22,7 @@ void testReadTempoChangesFromChartData()
 {
     auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
-    auto tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
+    auto tempoChanges = ReadTempoChangesFromChartData(contents);
 
     assert(tempoChanges.size() == 7);
 
@@ -33,8 +33,7 @@ void testReadTimeSignatureChangesFromChartData()
 {
     auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
-    auto timeSignatureChanges =
-        ReadTimeSignatureChangesFromChartData(contents.c_str());
+    auto timeSignatureChanges = ReadTimeSignatureChangesFromChartData(contents);
 
     assert(timeSignatureChanges.size() == 4);
 
@@ -45,7 +44,7 @@ void testReadNotesFromChartData()
 {
     auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
-    auto notes = ReadNotesFromChartData(contents.c_str(), Difficulty::Expert);
+    auto notes = ReadNotesFromChartData(contents, Difficulty::Expert);
 
     assert(notes.size() == 8);
 
@@ -56,7 +55,7 @@ void testReadLyricsFromChartData()
 {
     auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
-    auto lyrics = ReadLyricsFromChartData(contents.c_str());
+    auto lyrics = ReadLyricsFromChartData(contents);
 
     assert(lyrics.size() == 12);
 
