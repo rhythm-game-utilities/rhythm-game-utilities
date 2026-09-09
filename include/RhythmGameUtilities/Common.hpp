@@ -104,7 +104,7 @@ inline auto Split(const std::string &contents, const char delimiter)
         }
         else
         {
-            parts.push_back(str);
+            parts.emplace_back(str);
 
             str.clear();
         }
@@ -112,7 +112,7 @@ inline auto Split(const std::string &contents, const char delimiter)
         i += 1;
     }
 
-    parts.push_back(str);
+    parts.emplace_back(str);
 
     return parts;
 }
@@ -130,7 +130,7 @@ inline auto FindAllMatches(const std::string &contents,
 
     for (auto iterator = begin; iterator != end; iterator++)
     {
-        matches.push_back(iterator->str(0));
+        matches.emplace_back(iterator->str(0));
     }
 
     return matches;
@@ -154,7 +154,7 @@ inline auto FindMatchGroups(const std::string &contents,
 
     for (auto i = 0; i < match.size(); i += 1)
     {
-        matches.push_back(match.str(i));
+        matches.emplace_back(match.str(i));
     }
 
     return matches;

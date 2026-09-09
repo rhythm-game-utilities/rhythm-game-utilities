@@ -18,6 +18,8 @@ struct BeatBar
     int Position;
 
     int BPM;
+
+    BeatBar(int position, int bpm) : Position(position), BPM(bpm) {}
 };
 
 } // namespace RhythmGameUtilities
