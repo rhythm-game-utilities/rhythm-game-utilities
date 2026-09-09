@@ -220,15 +220,15 @@ inline auto ReadTempoChangesFromMidiData(const std::vector<uint8_t> &data)
 
                 auto microsecondsPerBeat = (b1 << 16) | (b2 << 8) | b3;
 
-                tempoChanges.push_back(
-                    {static_cast<int>(tick),
-                     static_cast<int>(60000000000 / microsecondsPerBeat)});
+                tempoChanges.emplace_back(
+                    static_cast<int>(tick),
+                    static_cast<int>(60000000000 / microsecondsPerBeat));
             }
         });
 
     if (tempoChanges.empty())
     {
-        tempoChanges.push_back({0, 120000});
+        tempoChanges.emplace_back(0, 120000);
     }
 
     std::sort(tempoChanges.begin(), tempoChanges.end(),
@@ -256,8 +256,8 @@ ReadTimeSignatureChangesFromMidiData(const std::vector<uint8_t> &data)
                 auto denominator =
                     static_cast<uint8_t>(1 << ReadChunk<uint8_t>(stream));
 
-                timeSignatureChanges.push_back(
-                    {static_cast<int>(tick), numerator, denominator});
+                timeSignatureChanges.emplace_back(static_cast<int>(tick),
+                                                  numerator, denominator);
             }
         });
 
@@ -285,8 +285,8 @@ inline auto ReadNotesFromMidiData(const std::vector<uint8_t> &data)
 
                              stream.seek(1);
 
-                             notes.push_back(
-                                 Note{++id, static_cast<int>(tick), noteValue});
+                             notes.emplace_back(++id, static_cast<int>(tick),
+                                                noteValue, 0);
                          }
                      });
 

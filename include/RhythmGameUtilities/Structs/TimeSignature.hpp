@@ -20,6 +20,11 @@ struct TimeSignature
     int Numerator;
 
     int Denominator;
+
+    TimeSignature(int position, int numerator, int denominator)
+        : Position(position), Numerator(numerator), Denominator(denominator)
+    {
+    }
 };
 
 } // namespace RhythmGameUtilities

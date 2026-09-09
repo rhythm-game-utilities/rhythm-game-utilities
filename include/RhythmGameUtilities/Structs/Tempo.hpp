@@ -18,6 +18,8 @@ struct Tempo
     int Position;
 
     int BPM;
+
+    Tempo(int position, int bpm) : Position(position), BPM(bpm) {}
 };
 
 } // namespace RhythmGameUtilities

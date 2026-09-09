@@ -22,6 +22,11 @@ struct Note
     int HandPosition;
 
     int Length;
+
+    Note(int id, int position, int handPosition, int length)
+        : ID(id), Position(position), HandPosition(handPosition), Length(length)
+    {
+    }
 };
 
 } // namespace RhythmGameUtilities

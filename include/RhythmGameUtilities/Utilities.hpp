@@ -163,11 +163,11 @@ inline auto CalculateBeatBars(const std::vector<Tempo> &tempoChanges,
         {
             auto bpm = tempoChangePositions[startTick];
 
-            beatBars.push_back({tick, bpm});
+            beatBars.emplace_back(tick, bpm);
 
             if (includeHalfNotes && tick != endTick)
             {
-                beatBars.push_back({tick + (resolution / 2), bpm});
+                beatBars.emplace_back(tick + (resolution / 2), bpm);
             }
         }
     }

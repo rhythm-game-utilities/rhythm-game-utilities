@@ -32,7 +32,7 @@ extern "C"
 
         for (auto i = 0; i < tempoChangesSize; i += 1)
         {
-            tempoChangesVector.push_back(tempoChanges[i]);
+            tempoChangesVector.emplace_back(tempoChanges[i]);
         }
 
         return ConvertSecondsToTicks(seconds, resolution, tempoChangesVector);
@@ -48,7 +48,7 @@ extern "C"
 
         for (auto i = 0; i < tempoChangesSize; i += 1)
         {
-            tempoChangesVector.push_back(tempoChanges[i]);
+            tempoChangesVector.emplace_back(tempoChanges[i]);
         }
 
         auto internalBeatBars =
@@ -75,7 +75,7 @@ extern "C"
 
         for (auto i = 0; i < noteSize; i += 1)
         {
-            notesVector.push_back(notes[i]);
+            notesVector.emplace_back(notes[i]);
         }
 
         auto internalFoundNotes =

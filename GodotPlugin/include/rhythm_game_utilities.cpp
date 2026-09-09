@@ -396,17 +396,13 @@ auto rhythm_game_utilities::calculate_beat_bars(Array tempo_changes,
 
     for (auto i = 0; i < tempo_changes.size(); i += 1)
     {
-        RhythmGameUtilities::Tempo tempo_change_internal;
-
         if (tempo_changes[i].get_type() == Variant::DICTIONARY)
         {
             Dictionary variant = tempo_changes[i];
 
-            tempo_change_internal.Position = variant["position"];
-            tempo_change_internal.BPM = variant["bpm"];
+            tempo_changes_internal.emplace_back(variant["position"],
+                                                variant["bpm"]);
         }
-
-        tempo_changes_internal.push_back(tempo_change_internal);
     }
 
     auto beat_bars_internal = RhythmGameUtilities::CalculateBeatBars(
@@ -436,17 +432,13 @@ auto rhythm_game_utilities::convert_seconds_to_ticks(float seconds,
 
     for (auto i = 0; i < tempo_changes.size(); i += 1)
     {
-        RhythmGameUtilities::Tempo tempo_change_internal;
-
         if (tempo_changes[i].get_type() == Variant::DICTIONARY)
         {
             Dictionary variant = tempo_changes[i];
 
-            tempo_change_internal.Position = variant["position"];
-            tempo_change_internal.BPM = variant["bpm"];
+            tempo_changes_internal.emplace_back(variant["position"],
+                                                variant["bpm"]);
         }
-
-        tempo_changes_internal.push_back(tempo_change_internal);
     }
 
     return RhythmGameUtilities::ConvertSecondsToTicks(seconds, resolution,
@@ -467,19 +459,14 @@ auto rhythm_game_utilities::find_notes_near_given_tick(Array notes, int tick,
 
     for (auto i = 0; i < notes.size(); i += 1)
     {
-        RhythmGameUtilities::Note note_internal;
-
         if (notes[i].get_type() == Variant::DICTIONARY)
         {
             Dictionary variant = notes[i];
 
-            note_internal.ID = variant["id"];
-            note_internal.Position = variant["position"];
-            note_internal.HandPosition = variant["hand_position"];
-            note_internal.Length = variant["length"];
+            notes_internal.emplace_back(variant["id"], variant["position"],
+                                        variant["hand_position"],
+                                        variant["length"]);
         }
-
-        notes_internal.push_back(note_internal);
     }
 
     auto matched_notes_internal = RhythmGameUtilities::FindNotesNearGivenTick(

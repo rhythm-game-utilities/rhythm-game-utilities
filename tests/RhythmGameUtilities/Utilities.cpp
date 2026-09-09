@@ -15,7 +15,7 @@ void testCalculateAccuracy()
 {
     const int positionDelta = 50;
 
-    auto *note = new Note{1, 750};
+    auto *note = new Note{1, 750, 0, 0};
 
     assert(CalculateAccuracy(note->Position, 695, positionDelta) ==
            Accuracy::Invalid);
@@ -61,7 +61,7 @@ void testCalculateAccuracyRatio()
 
     std::vector<Tempo> tempoChanges = {{0, 120000}};
 
-    auto *note = new Note{1, 750};
+    auto *note = new Note{1, 750, 0, 0};
     auto currentPosition =
         ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 
@@ -77,7 +77,7 @@ void testCalculateTiming()
 {
     const int positionDelta = 50;
 
-    auto *note = new Note{1, 750};
+    auto *note = new Note{1, 750, 0, 0};
 
     assert(CalculateTiming(note->Position, 725, positionDelta) ==
            Timing::Early);
@@ -144,9 +144,10 @@ void testCalculateTicksPerSecond()
 
 void testFindNotesNearGivenTick()
 {
-    std::vector<Note> notes = {{1, 110}, {2, 120}, {3, 130}, {4, 140},
-                               {5, 150}, {6, 160}, {7, 170}, {8, 180},
-                               {9, 190}, {10, 200}};
+    std::vector<Note> notes = {{1, 110, 0, 0}, {2, 120, 0, 0}, {3, 130, 0, 0},
+                               {4, 140, 0, 0}, {5, 150, 0, 0}, {6, 160, 0, 0},
+                               {7, 170, 0, 0}, {8, 180, 0, 0}, {9, 190, 0, 0},
+                               {10, 200, 0, 0}};
 
     auto foundNotes = FindNotesNearGivenTick(notes, 160, 20);
 
@@ -163,9 +164,10 @@ void testFindNotesNearGivenTick()
 
 void testFindNotesNearGivenTickContinued()
 {
-    std::vector<Note> notes = {{1, 110}, {2, 120}, {3, 130}, {4, 140},
-                               {5, 150}, {6, 160}, {7, 170}, {8, 180},
-                               {9, 190}, {10, 200}};
+    std::vector<Note> notes = {{1, 110, 0, 0}, {2, 120, 0, 0}, {3, 130, 0, 0},
+                               {4, 140, 0, 0}, {5, 150, 0, 0}, {6, 160, 0, 0},
+                               {7, 170, 0, 0}, {8, 180, 0, 0}, {9, 190, 0, 0},
+                               {10, 200, 0, 0}};
 
     assert(0 == size(FindNotesNearGivenTick(notes, 50, 20)));
     assert(110 == FindNotesNearGivenTick(notes, 130, 20)[0].Position);

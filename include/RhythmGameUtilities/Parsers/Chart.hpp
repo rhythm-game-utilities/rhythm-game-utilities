@@ -150,7 +150,7 @@ inline auto ReadTempoChangesFromChartData(const std::string &contents)
             auto position = std::stoi(line.first);
             auto bpm = std::stoi(line.second.at(1));
 
-            tempoChanges.push_back({position, bpm});
+            tempoChanges.emplace_back(position, bpm);
         }
     }
 
@@ -179,7 +179,7 @@ inline auto ReadTimeSignatureChangesFromChartData(const std::string &contents)
             auto denominator =
                 line.second.size() > 2 ? std::stoi(line.second.at(2)) : 2;
 
-            timeSignatureChanges.push_back({position, numerator, denominator});
+            timeSignatureChanges.emplace_back(position, numerator, denominator);
         }
     }
 
@@ -205,9 +205,9 @@ inline auto ReadNotesFromChartData(const std::string &contents,
     {
         if (line.second.front() == ToString(TypeCode::NoteMarker))
         {
-            notes.push_back({++id, std::stoi(line.first),
-                             std::stoi(line.second.at(1)),
-                             std::stoi(line.second.at(2))});
+            notes.emplace_back(++id, std::stoi(line.first),
+                               std::stoi(line.second.at(1)),
+                               std::stoi(line.second.at(2)));
         }
     }
 
