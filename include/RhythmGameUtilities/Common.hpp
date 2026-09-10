@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <regex>
 
 #ifdef _WIN32
