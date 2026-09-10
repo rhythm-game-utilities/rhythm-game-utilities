@@ -58,6 +58,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/FindNotesNearGivenTick.gd
 extends Node
 
 func _ready() -> void:

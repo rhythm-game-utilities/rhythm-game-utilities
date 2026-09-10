@@ -43,6 +43,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadResolutionFromChartData.gd
 extends Node
 
 func _ready() -> void:

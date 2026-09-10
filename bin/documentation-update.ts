@@ -18,7 +18,11 @@ const sourceFiles = (
   await Promise.all(
     (
       await Array.fromAsync(
-        glob(["Documentation/**/*.cpp", "Documentation/**/*.cs"]),
+        glob([
+          "Documentation/**/*.cpp",
+          "Documentation/**/*.cs",
+          "Documentation/**/*.gd",
+        ]),
       )
     ).map(async (path) => {
       return [path, await readFile(path, "utf8")];
@@ -30,7 +34,7 @@ const sourceFiles = (
 
 for (let [markdownPath, markdownContents] of Object.entries(markdownFiles)) {
   for (const [path, contents] of Object.entries(sourceFiles)) {
-    const pattern = new RegExp(`// ${path}.+?([\`]{3})`, "ms");
+    const pattern = new RegExp(`(#|//) ${path}.+?([\`]{3})`, "ms");
 
     const matches = markdownContents.match(pattern);
 
@@ -39,7 +43,7 @@ for (let [markdownPath, markdownContents] of Object.entries(markdownFiles)) {
 
       markdownContents = markdownContents.replace(
         pattern,
-        `// ${path}\n${contents.trim()}\n\`\`\``,
+        `${matches[1]} ${path}\n${contents.trim()}\n\`\`\``,
       );
 
       await writeFile(markdownPath, markdownContents);

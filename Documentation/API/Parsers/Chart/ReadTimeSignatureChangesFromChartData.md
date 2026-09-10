@@ -44,6 +44,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.gd
 extends Node
 
 func _ready() -> void:

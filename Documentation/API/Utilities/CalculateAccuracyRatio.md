@@ -59,6 +59,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/CalculateAccuracyRatio.gd
 extends Node
 
 func _ready() -> void:

@@ -53,6 +53,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/CalculateBeatBars.gd
 extends Node
 
 func _ready() -> void:

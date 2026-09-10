@@ -236,6 +236,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Common/InverseLerp.gd
 extends Node
 
 func _ready() -> void:
@@ -283,6 +284,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Common/InverseLerpUnclamped.gd
 extends Node
 
 func _ready() -> void:
@@ -330,6 +332,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Common/Lerp.gd
 extends Node
 
 func _ready() -> void:
@@ -395,6 +398,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadNotesFromChartData.gd
 extends Node
 
 func _ready() -> void:
@@ -451,6 +455,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadResolutionFromChartData.gd
 extends Node
 
 func _ready() -> void:
@@ -507,6 +512,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.gd
 extends Node
 
 func _ready() -> void:
@@ -564,6 +570,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.gd
 extends Node
 
 func _ready() -> void:
@@ -628,6 +635,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Midi/ReadNotesFromMidiData.gd
 extends Node
 
 func _ready() -> void:
@@ -684,6 +692,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.gd
 extends Node
 
 func _ready() -> void:
@@ -740,6 +749,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.gd
 extends Node
 
 func _ready() -> void:
@@ -796,6 +806,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Midi/ReadTimeSignatureChangesFromMidiData.gd
 extends Node
 
 func _ready() -> void:
@@ -869,6 +880,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/CalculateAccuracy.gd
 extends Node
 
 func _ready() -> void:
@@ -958,6 +970,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/CalculateAccuracyRatio.gd
 extends Node
 
 func _ready() -> void:
@@ -1031,6 +1044,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/CalculateBeatBars.gd
 extends Node
 
 func _ready() -> void:
@@ -1111,6 +1125,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/CalculateTiming.gd
 extends Node
 
 func _ready() -> void:
@@ -1194,6 +1209,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/ConvertSecondsToTicks.cpp
 extends Node
 
 func _ready() -> void:
@@ -1260,6 +1276,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/ConvertTickToPosition.gd
 extends Node
 
 func _ready() -> void:
@@ -1331,6 +1348,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/FindNotesNearGivenTick.gd
 extends Node
 
 func _ready() -> void:
@@ -1396,6 +1414,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/IsOnTheBeat.gd
 extends Node
 
 func _ready() -> void:
@@ -1450,6 +1469,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/RoundUpToTheNearestMultiplier.gd
 extends Node
 
 func _ready() -> void:

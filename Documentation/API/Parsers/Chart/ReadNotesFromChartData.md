@@ -51,6 +51,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Chart/ReadNotesFromChartData.gd
 extends Node
 
 func _ready() -> void:

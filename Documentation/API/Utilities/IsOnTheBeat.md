@@ -46,6 +46,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/IsOnTheBeat.gd
 extends Node
 
 func _ready() -> void:

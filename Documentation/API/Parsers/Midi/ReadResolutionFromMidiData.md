@@ -43,6 +43,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.gd
 extends Node
 
 func _ready() -> void:

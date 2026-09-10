@@ -55,6 +55,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Utilities/ConvertSecondsToTicks.cpp
 extends Node
 
 func _ready() -> void:

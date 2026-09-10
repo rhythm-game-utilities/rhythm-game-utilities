@@ -37,6 +37,7 @@ auto main() -> int
 ##### GDScript
 
 ```gdscript
+# Documentation/API/Common/InverseLerp.gd
 extends Node
 
 func _ready() -> void:
