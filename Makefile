@@ -25,5 +25,6 @@ clean: ## Clean project
 
 tidy:
 	clang-tidy include/**/*.hpp -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus*
+	clang-tidy Documentation/API/**/*.cpp -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus*
 
 .PHONY: build
