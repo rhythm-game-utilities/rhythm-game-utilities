@@ -1,7 +1,13 @@
 {
   "type": "module",
+  "dependencies": {
+    "@rhythm-game-utilities/core": "file:./JavaScript/"
+  },
   "devDependencies": {
     "@types/node": "25.5.0"
+  },
+  "scripts": {
+    "postinstall": "(cd JavaScript && npm run build)"
   },
   "private": true
 }

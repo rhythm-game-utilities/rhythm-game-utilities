@@ -6,9 +6,10 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "tests/**/*"
+      - "JavaScript/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
+      - "tests/**/*"
       - "!**/*.md"
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
@@ -16,9 +17,10 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "tests/**/*"
+      - "JavaScript/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
+      - "tests/**/*"
       - "!**/*.md"
   workflow_dispatch:
 
@@ -34,9 +36,10 @@ jobs:
           fetch-depth: 0
 
       - name: Run tests
-        run: |
-          ./bin/test.sh
-          ./bin/documentation-test-cpp.sh
+        run: ./bin/test.sh
+
+      - name: Run documentation tests
+        run: ./bin/documentation-test-cpp.sh
   test-csharp:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
@@ -66,9 +69,34 @@ jobs:
         run: dotnet restore
 
       - name: Test
-        run: |
-          dotnet test RhythmGameUtilities.Tests/*.csproj
-          ./bin/documentation-test-csharp.sh
+        run: dotnet test RhythmGameUtilities.Tests/*.csproj
+
+      - name: Run Documentation Tests
+        run: ./bin/documentation-test-csharp.sh
+  test-javascript:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Emscripten
+        uses: HandcrankEngine/install-emscripten-package@d578b50f8f7f76ea25c14b13b7df943b31e37891 # v0.3.1
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Build Library
+        working-directory: JavaScript/
+        run: npm run build
+
+      - name: Run Tests
+        working-directory: JavaScript/
+        run: npm test
+
+      - name: Run Documentation Tests
+        run: ./bin/documentation-test-javascript.sh
   test-copy:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false

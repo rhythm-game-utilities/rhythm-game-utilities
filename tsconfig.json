@@ -2,5 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
+    "noEmit": true,
   },
+  "include": ["**/*.ts"],
 }

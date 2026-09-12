@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "declaration": true,
+    "rootDir": "./src",
+    "outDir": "dist/"
+  },
+  "include": ["./src"]
+}

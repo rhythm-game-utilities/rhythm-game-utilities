@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 

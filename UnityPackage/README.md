@@ -197,6 +197,10 @@ _texture2D.Apply();
 
 ### Common
 
+- [InverseLerpUnclamped](InverseLerpUnclamped.md)
+- [Lerp](Lerp.md)
+- [InverseLerp](InverseLerp.md)
+
 #### `Common.InverseLerp`
 
 > Languages: `C#` `C++` `GDScript`
@@ -243,6 +247,17 @@ func _ready() -> void:
 	var value: float = rhythm_game_utilities.inverse_lerp(0, 10, 5)
 
 	print(value) # 0.5
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Common/InverseLerp.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const value = RhythmGameUtilities.InverseLerp(0, 10, 5);
+
+console.log(value); // 0.5
 ```
 
 #### `Common.InverseLerpUnclamped`
@@ -293,6 +308,17 @@ func _ready() -> void:
 	print(value) # 1.1
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Common/InverseLerpUnclamped.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const value = RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11);
+
+console.log(value); // 1.1
+```
+
 #### `Common.Lerp`
 
 > Languages: `C#` `C++` `GDScript`
@@ -341,6 +367,17 @@ func _ready() -> void:
 	print(value) # 5
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Common/Lerp.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
+
+console.log(value); // 5
+```
+
 ### Parsers
 
 Read more about `.chart` files: <https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Core%20Infrastructure.md>
@@ -357,7 +394,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var notes = Chart.ReadNotesFromChartData(contents, Difficulty.Expert);
 
@@ -377,7 +414,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto notes = ReadNotesFromChartData(contents.c_str(), Difficulty::Expert);
 
@@ -410,6 +447,21 @@ func _ready() -> void:
 	print(notes)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadNotesFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
+
+console.log(notes.length); // 8
+```
+
 #### `Chart.ReadResolutionFromChartData`
 
 > Languages: `C#` `C++` `GDScript`
@@ -422,7 +474,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var resolution = Chart.ReadResolutionFromChartData(contents);
 
@@ -442,7 +494,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto resolution = ReadResolutionFromChartData(contents.c_str());
 
@@ -467,6 +519,21 @@ func _ready() -> void:
 	print(resolution)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadResolutionFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
+
+console.log(resolution); // 192
+```
+
 #### `Chart.ReadTempoChangesFromChartData`
 
 > Languages: `C#` `C++` `GDScript`
@@ -479,7 +546,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var tempoChanges = Chart.ReadTempoChangesFromChartData(contents);
 
@@ -499,7 +566,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
 
@@ -524,6 +591,21 @@ func _ready() -> void:
 	print(tempo_changes)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents);
+
+console.log(tempoChanges.length); // 7
+```
+
 #### `Chart.ReadTimeSignatureChangesFromChartData`
 
 > Languages: `C#` `C++` `GDScript`
@@ -536,7 +618,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var timeSignatureChanges = Chart.ReadTimeSignatureChangesFromChartData(contents);
 
@@ -556,7 +638,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto timeSignatureChanges =
         ReadTimeSignatureChangesFromChartData(contents.c_str());
@@ -582,6 +664,21 @@ func _ready() -> void:
 	print(time_signature_changes)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(contents);
+
+console.log(timeSignatureChanges.length); // 4
+```
+
 #### `Midi.ReadNotesFromMidiData`
 
 > Languages: `C#` `C++` `GDScript`
@@ -594,7 +691,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 
@@ -614,7 +711,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto notes = ReadNotesFromMidiData(bytes);
 
@@ -659,7 +756,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var resolution = Midi.ReadResolutionFromMidiData(bytes);
 
@@ -679,7 +776,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto resolution = ReadResolutionFromMidiData(bytes);
 
@@ -716,7 +813,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var tempoChanges = Midi.ReadTempoChangesFromMidiData(bytes);
 
@@ -736,7 +833,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto tempoChanges = ReadTempoChangesFromMidiData(bytes);
 
@@ -773,7 +870,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var timeSignatureChanges = Midi.ReadTimeSignatureChangesFromMidiData(bytes);
 
@@ -793,7 +890,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto timeSignatureChanges = ReadTimeSignatureChangesFromMidiData(bytes);
 
@@ -819,6 +916,16 @@ func _ready() -> void:
 ```
 
 ### Utilities
+
+- [IsOnTheBeat](IsOnTheBeat.md)
+- [ConvertSecondsToTicks](ConvertSecondsToTicks.md)
+- [FindNotesNearGivenTick](FindNotesNearGivenTick.md)
+- [CalculateBeatBars](CalculateBeatBars.md)
+- [CalculateAccuracyRatio](CalculateAccuracyRatio.md)
+- [CalculateAccuracy](CalculateAccuracy.md)
+- [RoundUpToTheNearestMultiplier](RoundUpToTheNearestMultiplier.md)
+- [CalculateTiming](CalculateTiming.md)
+- [ConvertTickToPosition](ConvertTickToPosition.md)
 
 #### `Utilities.CalculateAccuracy`
 
@@ -909,6 +1016,25 @@ func _ready() -> void:
 			print("Perfect")
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/CalculateAccuracy.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const seconds = 2;
+const resolution = 192;
+const positionDelta = 50;
+
+const tempoChanges = [{ position: 0, bpm: 120000 }];
+
+const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+
+const accuracy = RhythmGameUtilities.CalculateAccuracy(750, currentPosition, positionDelta);
+
+console.log(accuracy); // Good
+```
+
 #### `Utilities.CalculateAccuracyRatio`
 
 > Languages: `C#` `C++` `GDScript`
@@ -989,6 +1115,25 @@ func _ready() -> void:
 	print(round(value * 100) / 100.0) # -0.36
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/CalculateAccuracyRatio.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const seconds = 2;
+const resolution = 192;
+const positionDelta = 50;
+
+const tempoChanges = [{ position: 0, bpm: 120000 }];
+
+const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+
+const accuracyRatio = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPosition, positionDelta);
+
+console.log(accuracyRatio); // -0.36
+```
+
 #### `Utilities.CalculateBeatBars`
 
 > Languages: `C#` `C++` `GDScript`
@@ -1063,6 +1208,29 @@ func _ready() -> void:
 	var beat_bars: Array = rhythm_game_utilities.calculate_beat_bars(tempo_changes, resolution, true)
 
 	print(beat_bars)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/CalculateBeatBars.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const tempoChanges = [
+  { position: 0, bpm: 88000 },
+  { position: 3840, bpm: 112000 },
+  { position: 9984, bpm: 89600 },
+  { position: 22272, bpm: 112000 },
+  { position: 33792, bpm: 111500 },
+  { position: 34560, bpm: 112000 },
+  { position: 42240, bpm: 111980 }
+];
+
+const resolution = 192;
+
+const beatBars = RhythmGameUtilities.CalculateBeatBars(tempoChanges, resolution, true);
+
+console.log(beatBars.length); // 440
 ```
 
 #### `Utilities.CalculateTiming`
@@ -1152,6 +1320,25 @@ func _ready() -> void:
 			print("Late")
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/CalculateTiming.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const seconds = 2;
+const resolution = 192;
+const positionDelta = 50;
+
+const tempoChanges = [{ position: 0, bpm: 120000 }];
+
+const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+
+const timing = RhythmGameUtilities.CalculateTiming(750, currentPosition, positionDelta);
+
+console.log(timing); // Hit
+```
+
 #### `Utilities.ConvertSecondsToTicks`
 
 > Languages: `C#` `C++` `GDScript`
@@ -1231,6 +1418,30 @@ func _ready() -> void:
 	print(current_position) # 1408
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/ConvertSecondsToTicks.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const seconds = 5;
+const resolution = 192;
+
+var tempoChanges = [
+  { position: 0, bpm: 88000 },
+  { position: 3840, bpm: 112000 },
+  { position: 9984, bpm: 89600 },
+  { position: 22272, bpm: 112000 },
+  { position: 33792, bpm: 111500 },
+  { position: 34560, bpm: 112000 },
+  { position: 42240, bpm: 111980 }
+];
+
+var ticks = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+
+console.log(ticks); // 1408
+```
+
 #### `Utilities.ConvertTickToPosition`
 
 > Languages: `C#` `C++` `GDScript`
@@ -1286,6 +1497,20 @@ func _ready() -> void:
 	var position: float = rhythm_game_utilities.convert_tick_to_position(tick, resolution)
 
 	print(position) # 5.5
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/ConvertTickToPosition.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const tick = 1056;
+const resolution = 192;
+
+const position = RhythmGameUtilities.ConvertTickToPosition(tick, resolution);
+
+console.log(position); // 5.5
 ```
 
 #### `Utilities.FindNotesNearGivenTick`
@@ -1366,6 +1591,32 @@ func _ready() -> void:
 	print(found_notes[0]["position"]) # 768
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/FindNotesNearGivenTick.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const delta = 50;
+
+const notes = [
+  { id: 1, position: 110 },
+  { id: 2, position: 120 },
+  { id: 3, position: 130 },
+  { id: 4, position: 140 },
+  { id: 5, position: 150 },
+  { id: 6, position: 160 },
+  { id: 7, position: 170 },
+  { id: 8, position: 180 },
+  { id: 9, position: 190 },
+  { id: 10, position: 200 }
+];
+
+const foundNotes = RhythmGameUtilities.FindNotesNearGivenTick(notes, 160, delta);
+
+console.log(foundNotes.length); // 5
+```
+
 #### `Utilities.IsOnTheBeat`
 
 > Languages: `C#` `C++` `GDScript`
@@ -1430,6 +1681,21 @@ func _ready() -> void:
 		print("Is not on the beat!")
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/IsOnTheBeat.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const bpm = 120;
+const currentTime = 10;
+const delta = 0.05;
+
+const isOnTheBeat = RhythmGameUtilities.IsOnTheBeat(bpm, currentTime, delta);
+
+console.log(isOnTheBeat); // true
+```
+
 #### `Utilities.RoundUpToTheNearestMultiplier`
 
 > Languages: `C#` `C++` `GDScript`
@@ -1476,6 +1742,17 @@ func _ready() -> void:
 	var value: int = rhythm_game_utilities.round_up_to_the_nearest_multiplier(12, 10)
 
 	print(value) # 20
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Utilities/RoundUpToTheNearestMultiplier.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const value = RhythmGameUtilities.RoundUpToTheNearestMultiplier(12, 10);
+
+console.log(value); // 20
 ```
 
 ## Architecture

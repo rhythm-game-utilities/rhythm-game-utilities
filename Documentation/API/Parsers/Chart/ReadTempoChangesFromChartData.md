@@ -10,7 +10,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var tempoChanges = Chart.ReadTempoChangesFromChartData(contents);
 
@@ -30,7 +30,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
 
@@ -53,4 +53,19 @@ func _ready() -> void:
 	var tempo_changes: Array = rhythm_game_utilities.read_tempo_changes_from_chart_data(contents)
 
 	print(tempo_changes)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents);
+
+console.log(tempoChanges.length); // 7
 ```

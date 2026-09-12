@@ -10,7 +10,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var resolution = Chart.ReadResolutionFromChartData(contents);
 
@@ -30,7 +30,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto resolution = ReadResolutionFromChartData(contents.c_str());
 
@@ -53,4 +53,19 @@ func _ready() -> void:
 	var resolution: int = rhythm_game_utilities.read_resolution_from_chart_data(contents)
 
 	print(resolution)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadResolutionFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
+
+console.log(resolution); // 192
 ```

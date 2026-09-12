@@ -10,7 +10,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var notes = Chart.ReadNotesFromChartData(contents, Difficulty.Expert);
 
@@ -30,7 +30,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto notes = ReadNotesFromChartData(contents.c_str(), Difficulty::Expert);
 
@@ -61,4 +61,19 @@ func _ready() -> void:
 	var notes: Array = rhythm_game_utilities.read_notes_from_chart_data(contents, rhythm_game_utilities.Expert)
 
 	print(notes)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Chart/ReadNotesFromChartData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
+
+const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
+
+console.log(notes.length); // 8
 ```

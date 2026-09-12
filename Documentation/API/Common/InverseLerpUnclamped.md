@@ -45,3 +45,14 @@ func _ready() -> void:
 
 	print(value) # 1.1
 ```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Common/InverseLerpUnclamped.js
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const value = RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11);
+
+console.log(value); // 1.1
+```

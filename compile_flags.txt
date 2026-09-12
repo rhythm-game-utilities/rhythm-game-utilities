@@ -1,1 +1,3 @@
+-std=c++17
 -Iinclude/
+-I/opt/homebrew/Cellar/emscripten/6.0.9/libexec/system/include
