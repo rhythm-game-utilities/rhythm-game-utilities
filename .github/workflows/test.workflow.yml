@@ -84,6 +84,9 @@ jobs:
       - name: Install Emscripten
         uses: HandcrankEngine/install-emscripten-package@d578b50f8f7f76ea25c14b13b7df943b31e37891 # v0.3.1
 
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
       - name: Build Library
         working-directory: JavaScript/
         run: npm run build
