@@ -23,6 +23,14 @@ COLOROFF=$(tput sgr0)
             exit 1
         fi
 
+        if ! OUTPUT=$(./test 2>&1); then
+            printf "%sFAILED%s\n" "${REDON}" "${COLOROFF}"
+
+            echo "${OUTPUT}"
+
+            exit 1
+        fi
+
         printf "%sOK%s\n" "${GREENON}" "${COLOROFF}"
 
         rm test

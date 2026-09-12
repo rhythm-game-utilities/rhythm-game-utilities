@@ -2,12 +2,34 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net10.0</TargetFramework>
-        <IsPackable>false</IsPackable>
-        <RootNamespace>Documentation</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+        <None Include="../RhythmGameUtilities/Libs/Windows/libRhythmGameUtilities.dll">
+            <Link>libRhythmGameUtilities.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>true</Visible>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+        <None Include="../RhythmGameUtilities/Libs/macOS/libRhythmGameUtilities.dylib">
+            <Link>libRhythmGameUtilities.dylib</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>true</Visible>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+        <None Include="../RhythmGameUtilities/Libs/Linux/libRhythmGameUtilities.so">
+            <Link>libRhythmGameUtilities.so</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>true</Visible>
+        </None>
+    </ItemGroup>
+
     <ItemGroup>
-        <ProjectReference Include="../RhythmGameUtilities/RhythmGameUtilities.csproj"/>
+        <ProjectReference Include="../RhythmGameUtilities/RhythmGameUtilities.csproj" />
     </ItemGroup>
 </Project>
