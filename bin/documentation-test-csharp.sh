@@ -22,12 +22,30 @@ COLOROFF=$(tput sgr0)
 
         cp "${FILE}" Documentation.Tests/
 
+        EXPECTED_FILE="${FILE%.cs}.txt"
+
         if ! OUTPUT=$(dotnet run "Documentation.Tests/$(basename "${FILE}")" --project Documentation.Tests/ 2>&1); then
             printf "%sFAILED%s\n" "${REDON}" "${COLOROFF}"
 
             echo "${OUTPUT}"
 
             exit 1
+        fi
+
+        if [ -s "${EXPECTED_FILE}" ]; then
+
+            if ! DIFF_OUTPUT=$(diff -u "${EXPECTED_FILE}" <(echo "${OUTPUT}")); then
+                printf "%sFAILED%s\n" "${REDON}" "${COLOROFF}"
+
+                echo "${DIFF_OUTPUT}"
+
+                exit 1
+            fi
+
+        else
+
+            echo "${OUTPUT}" >> "${EXPECTED_FILE}"
+
         fi
 
         printf "%sOK%s\n" "${GREENON}" "${COLOROFF}"
