@@ -6,4 +6,4 @@ var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var resolution = Midi.ReadResolutionFromMidiData(bytes);
 
-Console.WriteLine(resolution); // 192
+Console.WriteLine(resolution); // 480

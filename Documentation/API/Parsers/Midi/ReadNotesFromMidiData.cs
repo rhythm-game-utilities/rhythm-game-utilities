@@ -6,4 +6,4 @@ var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 
-Console.WriteLine(notes.Length); // 8
+Console.WriteLine(notes.Length); // 10
