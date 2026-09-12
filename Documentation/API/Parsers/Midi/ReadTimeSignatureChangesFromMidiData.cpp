@@ -7,7 +7,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto timeSignatureChanges = ReadTimeSignatureChangesFromMidiData(bytes);
 

@@ -10,23 +10,23 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 describe('Parsers', () => {
   describe('Chart', () => {
     test('ReadResolutionFromChartData', () => {
-      assert.equal(RhythmGameUtilities.ReadResolutionFromChartData(readFileSync('./tests/mocks/song.chart', 'utf-8')), 192);
+      assert.equal(RhythmGameUtilities.ReadResolutionFromChartData(readFileSync('./tests/Mocks/song.chart', 'utf-8')), 192);
     });
 
     test('ReadTempoChangesFromChartData', () => {
-      const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(readFileSync('./tests/mocks/song.chart', 'utf-8'));
+      const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(readFileSync('./tests/Mocks/song.chart', 'utf-8'));
 
       assert.equal(tempoChanges.length, 7);
     });
 
     test('ReadTimeSignatureChangesFromChartData', () => {
-      const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(readFileSync('./tests/mocks/song.chart', 'utf-8'));
+      const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(readFileSync('./tests/Mocks/song.chart', 'utf-8'));
 
       assert.equal(timeSignatureChanges.length, 4);
     });
 
     test('ReadNotesFromChartData', () => {
-      const notes = RhythmGameUtilities.ReadNotesFromChartData(readFileSync('./tests/mocks/song.chart', 'utf-8'), 'Expert');
+      const notes = RhythmGameUtilities.ReadNotesFromChartData(readFileSync('./tests/Mocks/song.chart', 'utf-8'), 'Expert');
 
       assert.equal(notes.length, 8);
     });

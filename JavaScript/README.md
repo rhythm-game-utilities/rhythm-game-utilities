@@ -18,7 +18,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
 
@@ -33,7 +33,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(contents);
 
@@ -48,7 +48,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
 
@@ -63,7 +63,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents);
 

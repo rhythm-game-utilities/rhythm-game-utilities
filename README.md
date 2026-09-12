@@ -394,7 +394,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var notes = Chart.ReadNotesFromChartData(contents, Difficulty.Expert);
 
@@ -414,7 +414,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto notes = ReadNotesFromChartData(contents.c_str(), Difficulty::Expert);
 
@@ -455,7 +455,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
 
@@ -474,7 +474,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var resolution = Chart.ReadResolutionFromChartData(contents);
 
@@ -494,7 +494,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto resolution = ReadResolutionFromChartData(contents.c_str());
 
@@ -527,7 +527,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
 
@@ -546,7 +546,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var tempoChanges = Chart.ReadTempoChangesFromChartData(contents);
 
@@ -566,7 +566,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
 
@@ -599,7 +599,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents);
 
@@ -618,7 +618,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./Tests/mocks/song.chart");
+var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var timeSignatureChanges = Chart.ReadTimeSignatureChangesFromChartData(contents);
 
@@ -638,7 +638,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto timeSignatureChanges =
         ReadTimeSignatureChangesFromChartData(contents.c_str());
@@ -672,7 +672,7 @@ import { readFileSync } from 'node:fs';
 
 import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
-const contents = readFileSync('./tests/mocks/song.chart', 'utf-8');
+const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(contents);
 
@@ -691,7 +691,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 
@@ -711,7 +711,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto notes = ReadNotesFromMidiData(bytes);
 
@@ -756,7 +756,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var resolution = Midi.ReadResolutionFromMidiData(bytes);
 
@@ -776,7 +776,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto resolution = ReadResolutionFromMidiData(bytes);
 
@@ -813,7 +813,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var tempoChanges = Midi.ReadTempoChangesFromMidiData(bytes);
 
@@ -833,7 +833,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto tempoChanges = ReadTempoChangesFromMidiData(bytes);
 
@@ -870,7 +870,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
+var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var timeSignatureChanges = Midi.ReadTimeSignatureChangesFromMidiData(bytes);
 
@@ -890,7 +890,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
+    auto bytes = ReadBytesFromFile("./tests/Mocks/song.mid");
 
     auto timeSignatureChanges = ReadTimeSignatureChangesFromMidiData(bytes);
 

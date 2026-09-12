@@ -7,7 +7,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
+    auto contents = ReadStringFromFile("./tests/Mocks/song.chart");
 
     auto timeSignatureChanges =
         ReadTimeSignatureChangesFromChartData(contents.c_str());
