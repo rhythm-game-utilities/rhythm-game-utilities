@@ -13,6 +13,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
     {
         (cat "./Documentation/README.md" && printf '\n')
         (cat "./Documentation/Platforms.md" && printf '\n')
+        (cat "./Documentation/Languages.md" && printf '\n')
         (cat "./Documentation/Examples.md" && printf '\n')
         (cat "./Documentation/Install.md" && printf '\n')
     } > README.md
