@@ -22,8 +22,11 @@ COLOROFF=$(tput sgr0)
 
         cp "${FILE}" Documentation.Tests/
 
-        if ! dotnet build Documentation.Tests/Documentation.Tests.csproj &> /dev/null; then
+        if ! OUTPUT=$(dotnet run "Documentation.Tests/$(basename "${FILE}")" --project Documentation.Tests/ 2>&1); then
             printf "%sFAILED%s\n" "${REDON}" "${COLOROFF}"
+
+            echo "${OUTPUT}"
+
             exit 1
         fi
 

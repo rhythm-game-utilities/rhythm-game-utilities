@@ -2,8 +2,8 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./song.mid");
+var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var timeSignatureChanges = Midi.ReadTimeSignatureChangesFromMidiData(bytes);
 
-Console.WriteLine(timeSignatureChanges.Length); // 4
+Console.WriteLine(timeSignatureChanges.Length); // 1

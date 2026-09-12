@@ -19,7 +19,7 @@ auto main() -> int
     auto value =
         CalculateAccuracyRatio(note->Position, currentPosition, positionDelta);
 
-    std::cout << value << std::endl; // 0.64
+    std::cout << value << std::endl; // -0.36
 
     return 0;
 }
