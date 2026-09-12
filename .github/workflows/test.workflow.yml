@@ -6,9 +6,10 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "tests/**/*"
+      - "JavaScript/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
+      - "tests/**/*"
       - "!**/*.md"
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
@@ -16,9 +17,10 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "tests/**/*"
+      - "JavaScript/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
+      - "tests/**/*"
       - "!**/*.md"
   workflow_dispatch:
 
