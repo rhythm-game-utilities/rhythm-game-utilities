@@ -74,5 +74,5 @@ const delta = 0.05;
 
 const isOnTheBeat = RhythmGameUtilities.IsOnTheBeat(bpm, currentTime, delta);
 
-console.log(isOnTheBeat); // true
+console.log(isOnTheBeat ? 'Is on the beat!' : 'Is not on the beat!'); // Is on the beat!
 ```

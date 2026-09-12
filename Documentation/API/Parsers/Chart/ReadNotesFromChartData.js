@@ -6,4 +6,6 @@ const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
 
-console.log(notes.length); // 8
+for (let note of notes) {
+  console.log(`${note.position} ${note.handPosition}`);
+}

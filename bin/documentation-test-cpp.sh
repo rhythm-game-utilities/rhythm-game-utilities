@@ -18,6 +18,8 @@ COLOROFF=$(tput sgr0)
 
         printf " - Running %s ... " "${FILE}"
 
+        EXPECTED_FILE="${FILE%.cpp}.txt"
+
         if ! g++ -std=c++17 -o test "${FILE}" -Iinclude; then
             printf "%sFAILED%s\n" "${REDON}" "${COLOROFF}"
             exit 1
@@ -29,6 +31,22 @@ COLOROFF=$(tput sgr0)
             echo "${OUTPUT}"
 
             exit 1
+        fi
+
+        if [ -s "${EXPECTED_FILE}" ]; then
+
+            if ! DIFF_OUTPUT=$(diff -u "${EXPECTED_FILE}" <(echo "${OUTPUT}")); then
+                printf "%sFAILED%s\n" "${REDON}" "${COLOROFF}"
+
+                echo "${DIFF_OUTPUT}"
+
+                exit 1
+            fi
+
+        else
+
+            echo "${OUTPUT}" >> "${EXPECTED_FILE}"
+
         fi
 
         printf "%sOK%s\n" "${GREENON}" "${COLOROFF}"

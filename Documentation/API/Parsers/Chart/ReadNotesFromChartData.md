@@ -14,7 +14,12 @@ var contents = File.ReadAllText("./tests/Mocks/song.chart");
 
 var notes = Chart.ReadNotesFromChartData(contents, Difficulty.Expert);
 
-Console.WriteLine(notes.Length); // 8
+foreach (var note in notes)
+{
+
+    Console.WriteLine(note.Position + " " + note.HandPosition);
+
+}
 ```
 
 ##### C++
@@ -36,11 +41,6 @@ auto main() -> int
 
     for (const auto &note : notes)
     {
-        if (note.HandPosition > 5)
-        {
-            continue;
-        }
-
         std::cout << note.Position << " " << note.HandPosition << std::endl;
     }
 
@@ -75,5 +75,7 @@ const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
 
-console.log(notes.length); // 8
+for (let note of notes) {
+  console.log(`${note.position} ${note.handPosition}`);
+}
 ```

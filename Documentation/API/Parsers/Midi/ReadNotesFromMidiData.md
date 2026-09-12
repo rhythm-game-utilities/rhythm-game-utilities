@@ -14,7 +14,12 @@ var bytes = File.ReadAllBytes("./tests/Mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 
-Console.WriteLine(notes.Length); // 10
+foreach (var note in notes)
+{
+
+    Console.WriteLine(note.Position + " " + note.HandPosition);
+
+}
 ```
 
 ##### C++
@@ -36,11 +41,6 @@ auto main() -> int
 
     for (const auto &note : notes)
     {
-        if (note.HandPosition > 5)
-        {
-            continue;
-        }
-
         std::cout << note.Position << " " << note.HandPosition << std::endl;
     }
 

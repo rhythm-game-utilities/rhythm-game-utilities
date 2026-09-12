@@ -94,5 +94,5 @@ const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resol
 
 const accuracyRatio = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPosition, positionDelta);
 
-console.log(accuracyRatio); // -0.36
+console.log(accuracyRatio.toFixed(2)); // -0.36
 ```

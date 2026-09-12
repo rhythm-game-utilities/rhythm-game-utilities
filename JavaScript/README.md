@@ -22,7 +22,9 @@ const contents = readFileSync('./tests/Mocks/song.chart', 'utf-8');
 
 const notes = RhythmGameUtilities.ReadNotesFromChartData(contents, 'Expert');
 
-console.log(notes.length); // 8
+for (let note of notes) {
+  console.log(`${note.position} ${note.handPosition}`);
+}
 ```
 
 ### ReadTimeSignatureChangesFromChartData
@@ -82,7 +84,7 @@ const delta = 0.05;
 
 const isOnTheBeat = RhythmGameUtilities.IsOnTheBeat(bpm, currentTime, delta);
 
-console.log(isOnTheBeat); // true
+console.log(isOnTheBeat ? 'Is on the beat!' : 'Is not on the beat!'); // Is on the beat!
 ```
 
 ### ConvertSecondsToTicks
@@ -118,21 +120,24 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 const delta = 50;
 
 const notes = [
-  { id: 1, position: 110 },
-  { id: 2, position: 120 },
-  { id: 3, position: 130 },
-  { id: 4, position: 140 },
-  { id: 5, position: 150 },
-  { id: 6, position: 160 },
-  { id: 7, position: 170 },
-  { id: 8, position: 180 },
-  { id: 9, position: 190 },
-  { id: 10, position: 200 }
+  { id: 1, position: 768 },
+  { id: 2, position: 960 },
+  { id: 3, position: 1152 },
+  { id: 4, position: 1536 },
+  { id: 5, position: 1728 },
+  { id: 6, position: 1920 },
+  { id: 7, position: 2304 },
+  { id: 8, position: 2496 },
+  { id: 9, position: 2688 },
+  { id: 10, position: 3072 },
+  { id: 11, position: 3264 }
 ];
 
-const foundNotes = RhythmGameUtilities.FindNotesNearGivenTick(notes, 160, delta);
+const foundNotes = RhythmGameUtilities.FindNotesNearGivenTick(notes, 750, delta);
 
-console.log(foundNotes.length); // 5
+if (foundNotes?.length > 0) {
+  console.log(foundNotes[0].position); // 768
+}
 ```
 
 ### CalculateBeatBars
@@ -174,7 +179,7 @@ const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resol
 
 const accuracyRatio = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPosition, positionDelta);
 
-console.log(accuracyRatio); // -0.36
+console.log(accuracyRatio.toFixed(2)); // -0.36
 ```
 
 ### CalculateAccuracy
@@ -248,7 +253,7 @@ import RhythmGameUtilities from '@rhythm-game-utilities/core';
 
 const value = RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11);
 
-console.log(value); // 1.1
+console.log(value.toFixed(1)); // 1.1
 ```
 
 ### Lerp

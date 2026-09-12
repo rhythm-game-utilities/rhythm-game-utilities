@@ -13,11 +13,6 @@ auto main() -> int
 
     for (const auto &note : notes)
     {
-        if (note.HandPosition > 5)
-        {
-            continue;
-        }
-
         std::cout << note.Position << " " << note.HandPosition << std::endl;
     }
 
