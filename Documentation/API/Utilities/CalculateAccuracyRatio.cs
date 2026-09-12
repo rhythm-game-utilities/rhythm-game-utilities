@@ -14,4 +14,4 @@ var currentPosition =
 
 var value = Utilities.CalculateAccuracyRatio(note.Position, currentPosition, positionDelta);
 
-Console.WriteLine(value); // 0.64
+Console.WriteLine(value); // -0.36
