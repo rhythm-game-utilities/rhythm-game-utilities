@@ -357,7 +357,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./song.chart");
+var contents = File.ReadAllText("./Tests/mocks/song.chart");
 
 var notes = Chart.ReadNotesFromChartData(contents, Difficulty.Expert);
 
@@ -377,7 +377,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./song.chart");
+    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
 
     auto notes = ReadNotesFromChartData(contents.c_str(), Difficulty::Expert);
 
@@ -422,7 +422,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./song.chart");
+var contents = File.ReadAllText("./Tests/mocks/song.chart");
 
 var resolution = Chart.ReadResolutionFromChartData(contents);
 
@@ -442,7 +442,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./song.chart");
+    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
 
     auto resolution = ReadResolutionFromChartData(contents.c_str());
 
@@ -479,7 +479,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./song.chart");
+var contents = File.ReadAllText("./Tests/mocks/song.chart");
 
 var tempoChanges = Chart.ReadTempoChangesFromChartData(contents);
 
@@ -499,7 +499,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./song.chart");
+    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
 
     auto tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
 
@@ -536,7 +536,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./song.chart");
+var contents = File.ReadAllText("./Tests/mocks/song.chart");
 
 var timeSignatureChanges = Chart.ReadTimeSignatureChangesFromChartData(contents);
 
@@ -556,7 +556,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./song.chart");
+    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
 
     auto timeSignatureChanges =
         ReadTimeSignatureChangesFromChartData(contents.c_str());
@@ -594,11 +594,11 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./song.mid");
+var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 
-Console.WriteLine(notes.Length); // 8
+Console.WriteLine(notes.Length); // 10
 ```
 
 ##### C++
@@ -614,7 +614,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./song.mid");
+    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
 
     auto notes = ReadNotesFromMidiData(bytes);
 
@@ -659,11 +659,11 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./song.mid");
+var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var resolution = Midi.ReadResolutionFromMidiData(bytes);
 
-Console.WriteLine(resolution); // 192
+Console.WriteLine(resolution); // 480
 ```
 
 ##### C++
@@ -679,7 +679,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./song.mid");
+    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
 
     auto resolution = ReadResolutionFromMidiData(bytes);
 
@@ -716,11 +716,11 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./song.mid");
+var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var tempoChanges = Midi.ReadTempoChangesFromMidiData(bytes);
 
-Console.WriteLine(tempoChanges.Length); // 7
+Console.WriteLine(tempoChanges.Length); // 1
 ```
 
 ##### C++
@@ -736,7 +736,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./song.mid");
+    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
 
     auto tempoChanges = ReadTempoChangesFromMidiData(bytes);
 
@@ -773,11 +773,11 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./song.mid");
+var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var timeSignatureChanges = Midi.ReadTimeSignatureChangesFromMidiData(bytes);
 
-Console.WriteLine(timeSignatureChanges.Length); // 4
+Console.WriteLine(timeSignatureChanges.Length); // 1
 ```
 
 ##### C++
@@ -793,7 +793,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./song.mid");
+    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
 
     auto timeSignatureChanges = ReadTimeSignatureChangesFromMidiData(bytes);
 
@@ -933,7 +933,7 @@ var currentPosition =
 
 var value = Utilities.CalculateAccuracyRatio(note.Position, currentPosition, positionDelta);
 
-Console.WriteLine(value); // 0.64
+Console.WriteLine(value); // -0.36
 ```
 
 ##### C++
@@ -961,7 +961,7 @@ auto main() -> int
     auto value =
         CalculateAccuracyRatio(note->Position, currentPosition, positionDelta);
 
-    std::cout << value << std::endl; // 0.64
+    std::cout << value << std::endl; // -0.36
 
     return 0;
 }
@@ -979,14 +979,14 @@ func _ready() -> void:
 	var position_delta: int = 50
 
 	var tempo_changes: Array = [
-		{"position": 0, "bpm": 120000 }
+		{"position": 0, "bpm": 120000}
 	]
 
 	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	var value: float = rhythm_game_utilities.calculate_accuracy_ratio(750, current_position, position_delta)
 
-	print(round(value * 100) / 100.0) # 0.64
+	print(round(value * 100) / 100.0) # -0.36
 ```
 
 #### `Utilities.CalculateBeatBars`

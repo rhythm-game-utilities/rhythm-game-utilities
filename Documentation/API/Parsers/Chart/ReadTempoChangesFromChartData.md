@@ -10,7 +10,7 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var contents = File.ReadAllText("./song.chart");
+var contents = File.ReadAllText("./Tests/mocks/song.chart");
 
 var tempoChanges = Chart.ReadTempoChangesFromChartData(contents);
 
@@ -30,7 +30,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto contents = ReadStringFromFile("./song.chart");
+    auto contents = ReadStringFromFile("./Tests/mocks/song.chart");
 
     auto tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
 

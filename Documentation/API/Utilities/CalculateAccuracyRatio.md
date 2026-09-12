@@ -22,7 +22,7 @@ var currentPosition =
 
 var value = Utilities.CalculateAccuracyRatio(note.Position, currentPosition, positionDelta);
 
-Console.WriteLine(value); // 0.64
+Console.WriteLine(value); // -0.36
 ```
 
 ##### C++
@@ -50,7 +50,7 @@ auto main() -> int
     auto value =
         CalculateAccuracyRatio(note->Position, currentPosition, positionDelta);
 
-    std::cout << value << std::endl; // 0.64
+    std::cout << value << std::endl; // -0.36
 
     return 0;
 }
@@ -68,12 +68,12 @@ func _ready() -> void:
 	var position_delta: int = 50
 
 	var tempo_changes: Array = [
-		{"position": 0, "bpm": 120000 }
+		{"position": 0, "bpm": 120000}
 	]
 
 	var current_position: int = rhythm_game_utilities.convert_seconds_to_ticks(seconds, resolution, tempo_changes)
 
 	var value: float = rhythm_game_utilities.calculate_accuracy_ratio(750, current_position, position_delta)
 
-	print(round(value * 100) / 100.0) # 0.64
+	print(round(value * 100) / 100.0) # -0.36
 ```

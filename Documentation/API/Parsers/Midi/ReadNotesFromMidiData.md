@@ -10,11 +10,11 @@ using System;
 using System.IO;
 using RhythmGameUtilities;
 
-var bytes = File.ReadAllBytes("./song.mid");
+var bytes = File.ReadAllBytes("./Tests/mocks/song.mid");
 
 var notes = Midi.ReadNotesFromMidiData(bytes);
 
-Console.WriteLine(notes.Length); // 8
+Console.WriteLine(notes.Length); // 10
 ```
 
 ##### C++
@@ -30,7 +30,7 @@ using namespace RhythmGameUtilities;
 
 auto main() -> int
 {
-    auto bytes = ReadBytesFromFile("./song.mid");
+    auto bytes = ReadBytesFromFile("./Tests/mocks/song.mid");
 
     auto notes = ReadNotesFromMidiData(bytes);
 
