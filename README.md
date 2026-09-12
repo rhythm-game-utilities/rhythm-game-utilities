@@ -203,7 +203,7 @@ _texture2D.Apply();
 
 #### `Common.InverseLerp`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -262,7 +262,7 @@ console.log(value); // 0.5
 
 #### `Common.InverseLerpUnclamped`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -321,7 +321,7 @@ console.log(value); // 1.1
 
 #### `Common.Lerp`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -384,7 +384,7 @@ Read more about `.chart` files: <https://github.com/TheNathannator/GuitarGame_Ch
 
 #### `Chart.ReadNotesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -464,7 +464,7 @@ console.log(notes.length); // 8
 
 #### `Chart.ReadResolutionFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -536,7 +536,7 @@ console.log(resolution); // 192
 
 #### `Chart.ReadTempoChangesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -608,7 +608,7 @@ console.log(tempoChanges.length); // 7
 
 #### `Chart.ReadTimeSignatureChangesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -929,7 +929,7 @@ func _ready() -> void:
 
 #### `Utilities.CalculateAccuracy`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1037,7 +1037,7 @@ console.log(accuracy); // Good
 
 #### `Utilities.CalculateAccuracyRatio`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1136,7 +1136,7 @@ console.log(accuracyRatio); // -0.36
 
 #### `Utilities.CalculateBeatBars`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1235,7 +1235,7 @@ console.log(beatBars.length); // 440
 
 #### `Utilities.CalculateTiming`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1341,7 +1341,7 @@ console.log(timing); // Hit
 
 #### `Utilities.ConvertSecondsToTicks`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1444,7 +1444,7 @@ console.log(ticks); // 1408
 
 #### `Utilities.ConvertTickToPosition`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1515,7 +1515,7 @@ console.log(position); // 5.5
 
 #### `Utilities.FindNotesNearGivenTick`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1619,7 +1619,7 @@ console.log(foundNotes.length); // 5
 
 #### `Utilities.IsOnTheBeat`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1698,7 +1698,7 @@ console.log(isOnTheBeat); // true
 
 #### `Utilities.RoundUpToTheNearestMultiplier`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 

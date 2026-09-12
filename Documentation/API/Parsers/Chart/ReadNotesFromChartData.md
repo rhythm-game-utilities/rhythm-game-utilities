@@ -1,6 +1,6 @@
 #### `Chart.ReadNotesFromChartData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
