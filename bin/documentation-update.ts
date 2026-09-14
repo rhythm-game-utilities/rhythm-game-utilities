@@ -1,16 +1,16 @@
 #!/usr/bin/env npx tsx
 
-import { glob, readFile, writeFile } from "node:fs/promises";
+import { glob, readFile, writeFile } from 'node:fs/promises';
 
 const markdownFiles = (
   await Promise.all(
     (
       await Array.fromAsync(
-        glob(["README.md", "Documentation/**/*.md", "JavaScript/README.md"]),
+        glob(['README.md', 'Documentation/**/*.md', 'JavaScript/README.md'])
       )
-    ).map(async (path) => {
-      return [path, await readFile(path, "utf8")];
-    }),
+    ).map(async path => {
+      return [path, await readFile(path, 'utf8')];
+    })
   )
 ).reduce((prev, [key, value]) => ({ ...prev, [key]: value }), {}) as {
   [key: string]: string;
@@ -21,15 +21,15 @@ const sourceFiles = (
     (
       await Array.fromAsync(
         glob([
-          "Documentation/**/*.cpp",
-          "Documentation/**/*.cs",
-          "Documentation/**/*.gd",
-          "Documentation/**/*.js",
-        ]),
+          'Documentation/**/*.cpp',
+          'Documentation/**/*.cs',
+          'Documentation/**/*.gd',
+          'Documentation/**/*.js'
+        ])
       )
-    ).map(async (path) => {
-      return [path, await readFile(path, "utf8")];
-    }),
+    ).map(async path => {
+      return [path, await readFile(path, 'utf8')];
+    })
   )
 ).reduce((prev, [key, value]) => ({ ...prev, [key]: value }), {}) as {
   [key: string]: string;
@@ -37,7 +37,7 @@ const sourceFiles = (
 
 for (let [markdownPath, markdownContents] of Object.entries(markdownFiles)) {
   for (const [path, contents] of Object.entries(sourceFiles)) {
-    const pattern = new RegExp(`(#|//) ${path}.+?([\`]{3})`, "ms");
+    const pattern = new RegExp(`(#|//) ${path}.+?([\`]{3})`, 'ms');
 
     const matches = markdownContents.match(pattern);
 
@@ -46,7 +46,7 @@ for (let [markdownPath, markdownContents] of Object.entries(markdownFiles)) {
 
       markdownContents = markdownContents.replace(
         pattern,
-        `${matches[1]} ${path}\n${contents.trim()}\n\`\`\``,
+        `${matches[1]} ${path}\n${contents.trim()}\n\`\`\``
       );
 
       await writeFile(markdownPath, markdownContents);
