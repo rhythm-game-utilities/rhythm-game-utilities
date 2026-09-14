@@ -3,5 +3,13 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "none",
-  "printWidth": 10000
+  "printWidth": 10000,
+  "overrides": [
+    {
+      "files": "*.yml",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }
