@@ -12,6 +12,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
     cat > "compile_flags.txt" << EOF
 -std=c++17
+-Iinclude/
 -I${EMSCRIPTEN_INCLUDE_PATH}
 EOF
 
