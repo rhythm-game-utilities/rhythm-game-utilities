@@ -3,7 +3,7 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "none",
-  "printWidth": 10000,
+  "printWidth": 80,
   "overrides": [
     {
       "files": "*.yml",
