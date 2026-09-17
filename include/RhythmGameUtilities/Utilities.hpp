@@ -36,6 +36,8 @@ namespace RhythmGameUtilities
 const float SECONDS_PER_MINUTE = 60.0F;
 const float MILLISECONDS = 1000.0F;
 
+const int DEFAULT_TICK_DELTA = 50;
+
 extern "C"
 {
     /**
@@ -300,7 +302,8 @@ extern "C"
      */
 
     PACKAGE_API auto CalculateAccuracyRatio(int position, int currentPosition,
-                                            int delta = 50) -> float
+                                            int delta = DEFAULT_TICK_DELTA)
+        -> float
     {
         auto diff = position - currentPosition;
 
@@ -313,28 +316,29 @@ extern "C"
 extern "C"
 {
     PACKAGE_API auto CalculateAccuracy(int position, int currentPosition,
-                                       int delta = 50) -> Accuracy
+                                       int delta = DEFAULT_TICK_DELTA)
+        -> Accuracy
     {
         auto ratio = CalculateAccuracyRatio(position, currentPosition, delta);
 
         auto absoluteRatio = std::abs(ratio);
 
-        if (absoluteRatio <= 0.2f)
+        if (absoluteRatio <= 0.2F)
         {
             return Accuracy::Perfect;
         }
 
-        if (absoluteRatio <= 0.35f)
+        if (absoluteRatio <= 0.35F)
         {
             return Accuracy::Great;
         }
 
-        if (absoluteRatio <= 0.75f)
+        if (absoluteRatio <= 0.75F)
         {
             return Accuracy::Good;
         }
 
-        if (absoluteRatio <= 0.85f)
+        if (absoluteRatio <= 0.85F)
         {
             return Accuracy::Fair;
         }
@@ -351,7 +355,7 @@ extern "C"
 extern "C"
 {
     PACKAGE_API auto CalculateTiming(int position, int currentPosition,
-                                     int delta = 50) -> Timing
+                                     int delta = DEFAULT_TICK_DELTA) -> Timing
     {
         auto ratio = CalculateAccuracyRatio(position, currentPosition, delta);
 
@@ -360,12 +364,12 @@ extern "C"
             return Timing::Miss;
         }
 
-        if (ratio >= 0.5f)
+        if (ratio >= 0.5F)
         {
             return Timing::Early;
         }
 
-        if (ratio <= -0.5f)
+        if (ratio <= -0.5F)
         {
             return Timing::Late;
         }

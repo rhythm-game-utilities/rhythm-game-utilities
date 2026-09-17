@@ -59,10 +59,10 @@ class Song
         Song song;
 
         song.resolution = ReadResolutionFromChartData(contents.c_str());
-        song.tempoChanges = ReadTempoChangesFromChartData(contents.c_str());
+        song.tempoChanges = ReadTempoChangesFromChartData(contents);
         song.timeSignatureChanges =
-            ReadTimeSignatureChangesFromChartData(contents.c_str());
-        song.notes = ReadNotesFromChartData(contents.c_str(), difficulty);
+            ReadTimeSignatureChangesFromChartData(contents);
+        song.notes = ReadNotesFromChartData(contents, difficulty);
         song.beatBars =
             CalculateBeatBars(song.tempoChanges, song.resolution, true);
 
