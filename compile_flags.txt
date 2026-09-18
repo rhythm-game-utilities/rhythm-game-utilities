@@ -1,3 +1,5 @@
 -std=c++17
 -Iinclude/
--I/opt/homebrew/Cellar/emscripten/6.0.9/libexec/system/include
+-I/opt/homebrew/Cellar/emscripten/6.0.9_1/libexec/system/include
+-I/opt/homebrew/Cellar/lua/5.5.1/include
+-I/opt/homebrew/Cellar/luajit/2.1.1788856981/include

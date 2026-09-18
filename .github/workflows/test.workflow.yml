@@ -7,6 +7,7 @@ on:
     paths:
       - "include/**/*"
       - "JavaScript/**/*"
+      - "LuaPlugin/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
       - "tests/**/*"
@@ -18,6 +19,7 @@ on:
     paths:
       - "include/**/*"
       - "JavaScript/**/*"
+      - "LuaPlugin/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
       - "tests/**/*"
@@ -97,6 +99,28 @@ jobs:
 
       - name: Run Documentation Tests
         run: ./bin/documentation-test-javascript.sh
+  test-lua:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Lua
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y luajit libluajit-5.1-dev
+          luajit -v
+
+      - name: Run tests
+        working-directory: LuaPlugin/
+        run: |
+          g++ -std=c++17 -shared -fPIC -o rhythmgameutilities.so lua_bindings.cpp -I../include -I/usr/include/luajit-2.1
+          luajit test.lua
+
+      - name: Run Documentation Tests
+        run: ./bin/documentation-test-lua.sh
   test-copy:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
