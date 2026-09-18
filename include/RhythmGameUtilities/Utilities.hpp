@@ -178,7 +178,8 @@ inline auto CalculateBeatBars(const std::vector<Tempo> &tempoChanges,
 }
 
 inline auto FindNotesNearGivenTick(const std::vector<Note> &notes, int tick,
-                                   int delta = 50) -> std::vector<Note>
+                                   int delta = DEFAULT_TICK_DELTA)
+    -> std::vector<Note>
 {
     std::vector<Note> foundNotes;
 
