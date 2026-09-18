@@ -19,3 +19,5 @@ This library aims to offer support for multiple platforms through a single codeb
 | [SDL](https://www.libsdl.org/)          | C++      | Windows  |                  2.30.8                   |   -    |   -    |
 | [MonoGame](https://monogame.net/)       | C#       | macOS    |                   3.8.2                   |   ✅   |   ❌   |
 | [MonoGame](https://monogame.net/)       | C#       | Windows  |                   3.8.2                   |   ✅   |   ❌   |
+| [Love2D](https://www.love2d.org/)       | Lua      | Windows  |                   11.5                    |   -    |   -    |
+| [Love2D](https://www.love2d.org/)       | Lua      | macOS    |                   11.5                    |   ✅   |   ❌   |
