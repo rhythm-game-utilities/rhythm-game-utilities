@@ -8,7 +8,7 @@
 [![Nuget](https://img.shields.io/nuget/v/com.neogeek.rhythm-game-utilities)](https://www.nuget.org/packages/com.neogeek.rhythm-game-utilities/)
 [![Join the chat at https://discord.gg/nNtFsfd](https://img.shields.io/badge/discord-join%20chat-7289DA.svg)](https://discord.gg/nNtFsfd)
 
-This library is a collection of utilities for creating rhythm games like Tap Tap Revenge, Guitar Hero, and Rock Band. It is meant to be used within any game engine that supports loading C++ libraries, such as Unity, Unreal, Godot, SDL and MonoGame.
+This library is a collection of utilities for creating rhythm games like Tap Tap Revenge, Guitar Hero, and Rock Band. It is meant to be used within any game engine that supports loading C++ libraries, such as Unity, Unreal, Godot, MonoGame, Love2D, and more.
 
 ![Prototype game built using these utilities.](https://github.com/rhythm-game-utilities/rhythm-game-utilities/blob/main/screenshot.png?raw=true)
 _Prototype game built using these utilities._
@@ -99,15 +99,19 @@ This library aims to offer support for multiple platforms through a single codeb
 | C#         | NuGet - [com.neogeek.rhythm-game-utilities](https://nuget.org/packages/com.neogeek.rhythm-game-utilities/) |   ✅   |   ❌   |
 | C++        | GitHub Releases                                                                                            |   ✅   |   ❌   |
 | JavaScript | NPM                                                                                                        |   ✅   |   ❌   |
-| Lua        | GitHub Releases                                                                                            |   X    |   ❌   |
+| Lua        | GitHub Releases                                                                                            |   ✅   |   ❌   |
 
 ## Examples
 
-| Engine                              | Repo                                                     |
-| ----------------------------------- | -------------------------------------------------------- |
-| [Unity](https://unity.com/)         | <https://github.com/rhythm-game-utilities/unity-example> |
-| [Godot 4](https://godotengine.org/) | <https://github.com/rhythm-game-utilities/godot-example> |
-| [SDL](https://www.libsdl.org/)      | <https://github.com/rhythm-game-utilities/sdl-example>   |
+| Engine                                  | Repo                                                     |
+| --------------------------------------- | -------------------------------------------------------- |
+| [Unity](https://unity.com/)             | <https://github.com/rhythm-game-utilities/unity-example> |
+| [Unreal](https://www.unrealengine.com/) | -                                                        |
+| [Godot](https://godotengine.org/)       | <https://github.com/rhythm-game-utilities/godot-example> |
+| [SDL](https://www.libsdl.org/)          | <https://github.com/rhythm-game-utilities/sdl-example>   |
+| [MonoGame](https://monogame.net/)       | -                                                        |
+| JavaScript                              | -                                                        |
+| [Love2D](https://www.love2d.org/)       | -                                                        |
 
 ## Install
 
@@ -173,6 +177,14 @@ Install the nuget package [com.neogeek.rhythm-game-utilities](https://www.nuget.
 ```bash
 dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.7
 ```
+
+### Javascript
+
+Coming Soon
+
+### Love2D
+
+Coming Soon
 
 ## API
 
