@@ -28,8 +28,7 @@ namespace RhythmGameUtilities
 extern "C"
 {
     PACKAGE_API auto ReadResolutionFromMidiDataInternal(const uint8_t *data,
-                                                        int dataSize,
-                                                        int *outSize)
+                                                        int dataSize)
         -> uint16_t
     {
         std::vector<uint8_t> byteVector(data, data + dataSize);
