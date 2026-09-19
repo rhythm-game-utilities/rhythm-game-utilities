@@ -153,7 +153,7 @@ inline auto FindMatchGroups(const std::string &contents,
 
     const auto &match = *iterator;
 
-    for (auto i = 0; i < match.size(); i += 1)
+    for (std::size_t i = 0; i < match.size(); i += 1)
     {
         matches.emplace_back(match.str(i));
     }
