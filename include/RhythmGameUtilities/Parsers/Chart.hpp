@@ -67,7 +67,7 @@ inline auto ParseSectionsFromChart(const std::string &contents)
              std::vector<std::pair<std::string, std::vector<std::string>>>>
         sections;
 
-    for (auto i = 0; i < matches.size(); i += 1)
+    for (std::size_t i = 0; i < matches.size(); i += 1)
     {
         auto parts = FindMatchGroups(matches[i], CHART_SECTION_PATTERN);
 
@@ -80,7 +80,7 @@ inline auto ParseSectionsFromChart(const std::string &contents)
 
         std::vector<std::pair<std::string, std::vector<std::string>>> items;
 
-        for (auto j = 0; j < lines.size(); j += 1)
+        for (std::size_t j = 0; j < lines.size(); j += 1)
         {
             auto parts = Split(lines[j], '=');
 
@@ -89,7 +89,7 @@ inline auto ParseSectionsFromChart(const std::string &contents)
 
             auto values = FindAllMatches(value, JSON_VALUE_PATTERN);
 
-            for (auto k = 0; k < values.size(); k += 1)
+            for (std::size_t k = 0; k < values.size(); k += 1)
             {
                 values[k] =
                     std::regex_replace(values[k], std::regex("^\"|\"$"), "");

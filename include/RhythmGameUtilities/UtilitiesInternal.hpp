@@ -59,7 +59,7 @@ extern "C"
         auto *beatBars =
             (BeatBar *)std::malloc(internalBeatBars.size() * sizeof(BeatBar));
 
-        for (auto i = 0; i < internalBeatBars.size(); i += 1)
+        for (std::size_t i = 0; i < internalBeatBars.size(); i += 1)
         {
             beatBars[i] = internalBeatBars[i];
         }
@@ -86,7 +86,7 @@ extern "C"
         auto *foundNotes =
             (Note *)std::malloc(internalFoundNotes.size() * sizeof(Note));
 
-        for (auto i = 0; i < internalFoundNotes.size(); i += 1)
+        for (std::size_t i = 0; i < internalFoundNotes.size(); i += 1)
         {
             foundNotes[i] = internalFoundNotes[i];
         }
