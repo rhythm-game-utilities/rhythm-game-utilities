@@ -28,7 +28,7 @@ Download and install the latest release from <https://github.com/rhythm-game-uti
 Install the nuget package [com.neogeek.rhythm-game-utilities](https://nuget.org/packages/com.neogeek.rhythm-game-utilities/) via the CLI or from within your IDE.
 
 ```bash
-dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.7
+dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.8
 ```
 
 ### SDL
@@ -47,8 +47,8 @@ dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.7
      ```bash
      g++ -std=c++17 -o build/output src/*.cpp -Isrc \
          -I"${HOME}/git/github/rhythm-game-utilities/include/" \
-         -I/opt/homebrew/Cellar/sdl2/2.30.8/include/SDL2 -L/opt/homebrew/Cellar/sdl2/2.30.8/lib \
-         -lSDL2
+         -I/opt/homebrew/Cellar/sdl3/3.4.16/include -L/opt/homebrew/Cellar/sdl3/3.4.16/lib \
+         -lSDL3
      ```
 1. Add the include path to your CMAKE `CMakeLists.txt` file.
    ```cmake
@@ -60,12 +60,26 @@ dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.7
 Install the nuget package [com.neogeek.rhythm-game-utilities](https://www.nuget.org/packages/com.neogeek.rhythm-game-utilities/) via the CLI or from within your IDE.
 
 ```bash
-dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.7
+dotnet add package com.neogeek.rhythm-game-utilities --version 1.0.0-alpha.8
 ```
 
 ### Javascript
 
-Coming Soon
+#### Node
+
+```bash
+$ npm install @rhythm-game-utilities/core
+```
+
+#### JavaScript Module
+
+```javascript
+import RhythmGameUtilities from 'https://unpkg.com/@rhythm-game-utsilities/core@1.0.0-alpha.3/dist/index.js';
+
+const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
+
+document.querySelector('#lerp .output').innerHTML = value;
+```
 
 ### Love2D
 

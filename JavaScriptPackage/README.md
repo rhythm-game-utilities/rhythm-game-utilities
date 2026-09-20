@@ -6,8 +6,20 @@ Read more: <https://github.com/rhythm-game-utilities/rhythm-game-utilities>
 
 ## Install
 
+### Node
+
 ```bash
 $ npm install @rhythm-game-utilities/core
+```
+
+### JavaScript Module
+
+```javascript
+import RhythmGameUtilities from 'https://unpkg.com/@rhythm-game-utsilities/core@1.0.0-alpha.3/dist/index.js';
+
+const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
+
+document.querySelector('#lerp .output').innerHTML = value;
 ```
 
 ## Usage
