@@ -32,10 +32,13 @@ jobs:
           npm -v
 
       - name: Install dependencies
+        working-directory: JavaScriptPackage/
         run: npm ci --ignore-scripts
 
       - name: Build package
+        working-directory: JavaScriptPackage/
         run: npm run build
 
       - name: Publish package
+        working-directory: JavaScriptPackage/
         run: npm publish --tag=alpha --provenance --access public
