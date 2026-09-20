@@ -6,8 +6,5 @@
   "devDependencies": {
     "@types/node": "25.5.0"
   },
-  "scripts": {
-    "postinstall": "(cd JavaScriptPackage/ && npm run build)"
-  },
   "private": true
 }
