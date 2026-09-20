@@ -8,9 +8,6 @@ permissions:
   id-token: write
 
 jobs:
-  publish-dotnet:
-    runs-on: ubuntu-latest
-
   publish-javascript:
     runs-on: ubuntu-latest
 
