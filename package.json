@@ -1,7 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "@rhythm-game-utilities/core": "file:./JavaScript/"
+    "@rhythm-game-utilities/core": "file:./JavaScriptPackage/"
   },
   "devDependencies": {
     "@types/node": "25.5.0"
