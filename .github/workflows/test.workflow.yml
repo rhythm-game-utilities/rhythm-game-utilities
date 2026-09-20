@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "JavaScript/**/*"
+      - "JavaScriptPackage/**/*"
       - "LuaPlugin/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
@@ -18,7 +18,7 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "JavaScript/**/*"
+      - "JavaScriptPackage/**/*"
       - "LuaPlugin/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
@@ -92,11 +92,11 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: Build Library
-        working-directory: JavaScript/
+        working-directory: JavaScriptPackage/
         run: npm run build
 
       - name: Run Tests
-        working-directory: JavaScript/
+        working-directory: JavaScriptPackage/
         run: npm test
 
       - name: Run Documentation Tests

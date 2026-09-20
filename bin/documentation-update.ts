@@ -6,7 +6,11 @@ const markdownFiles = (
   await Promise.all(
     (
       await Array.fromAsync(
-        glob(['README.md', 'Documentation/**/*.md', 'JavaScript/README.md'])
+        glob([
+          'README.md',
+          'Documentation/**/*.md',
+          'JavaScriptPackage/README.md'
+        ])
       )
     ).map(async path => {
       return [path, await readFile(path, 'utf8')];
