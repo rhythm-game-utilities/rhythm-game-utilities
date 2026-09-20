@@ -43,6 +43,7 @@ jobs:
       - name: Run documentation tests
         run: ./bin/documentation-test-cpp.sh
   test-csharp:
+    needs: [test-cpp]
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
 
@@ -76,6 +77,7 @@ jobs:
       - name: Run Documentation Tests
         run: ./bin/documentation-test-csharp.sh
   test-javascript:
+    needs: [test-cpp]
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
 
@@ -100,6 +102,7 @@ jobs:
       - name: Run Documentation Tests
         run: ./bin/documentation-test-javascript.sh
   test-lua:
+    needs: [test-cpp]
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
 
@@ -122,6 +125,7 @@ jobs:
       - name: Run Documentation Tests
         run: ./bin/documentation-test-lua.sh
   test-copy:
+    needs: [test-csharp, test-javascript, test-lua]
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
 
