@@ -1,12 +1,10 @@
-name: Publish
+name: Publish Nuget Package
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
 
 jobs:
-  publish:
+  publish-nuget:
     runs-on: ubuntu-latest
 
     steps:
