@@ -29,7 +29,7 @@ export type TimeSignature = {
 
 const instance = await RhythmGameUtilitiesModule();
 
-// Commong
+// Common
 
 export const Lerp = (a: number, b: number, t: number) => instance.Lerp(a, b, t);
 export const InverseLerp = (a: number, b: number, v: number) => instance.InverseLerp(a, b, v);
