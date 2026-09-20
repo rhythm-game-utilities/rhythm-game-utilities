@@ -1,6 +1,8 @@
-# rhythm-game-utilities
+# @rhythm-game-utilities/core
 
 > A collection of utilities for creating rhythm games in Unity, Unreal, Godot, SDL and MonoGame.
+
+Read more: <https://github.com/rhythm-game-utilities/rhythm-game-utilities>
 
 ## Install
 
