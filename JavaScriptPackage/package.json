@@ -28,6 +28,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhythm-game-utilities/rhythm-game-utilities.git"
-  },
-  "private": true
+  }
 }
