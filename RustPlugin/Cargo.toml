@@ -1,0 +1,10 @@
+[package]
+name = "rhythm-game-utilities"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.73.2"
+cc = "1.4.7"

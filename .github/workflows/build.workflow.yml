@@ -163,12 +163,16 @@ jobs:
           mkdir -p RhythmGameUtilities/Libs/Windows
           mkdir -p UnityPackage/Libs/WebGL
           mkdir -p RhythmGameUtilities/Libs/WebGL
+          mkdir -p RustPlugin/libs/
           cp artifacts/build-linux-files/libRhythmGameUtilities.so UnityPackage/Libs/Linux/
           cp artifacts/build-linux-files/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Linux/
+          cp artifacts/build-linux-files/libRhythmGameUtilities.so RustPlugin/libs/
           cp artifacts/build-macos-files/libRhythmGameUtilities.dylib UnityPackage/Libs/macOS/
           cp artifacts/build-macos-files/libRhythmGameUtilities.dylib RhythmGameUtilities/Libs/macOS/
+          cp artifacts/build-macos-files/libRhythmGameUtilities.dylib RustPlugin/libs/
           cp artifacts/build-windows-files/libRhythmGameUtilities.dll UnityPackage/Libs/Windows/
           cp artifacts/build-windows-files/libRhythmGameUtilities.dll RhythmGameUtilities/Libs/Windows/
+          cp artifacts/build-windows-files/libRhythmGameUtilities.dll RustPlugin/libs/
           cp artifacts/build-webgl-files/libRhythmGameUtilities.a UnityPackage/Libs/WebGL/
           cp artifacts/build-webgl-files/libRhythmGameUtilities.a RhythmGameUtilities/Libs/WebGL/
 
