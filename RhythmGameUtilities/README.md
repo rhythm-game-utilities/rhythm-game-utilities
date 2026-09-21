@@ -855,7 +855,7 @@ end
 
 #### `Midi.ReadNotesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -918,9 +918,26 @@ func _ready() -> void:
 	print(notes)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadNotesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const notes = RhythmGameUtilities.ReadNotesFromMidiData(data);
+
+for (let note of notes) {
+  console.log(`${note.position} ${note.handPosition}`);
+}
+```
+
 #### `Midi.ReadResolutionFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -975,9 +992,24 @@ func _ready() -> void:
 	print(resolution)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const resolution = RhythmGameUtilities.ReadResolutionFromMidiData(data);
+
+console.log(resolution); // 480
+```
+
 #### `Midi.ReadTempoChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1032,9 +1064,24 @@ func _ready() -> void:
 	print(tempo_changes)
 ```
 
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromMidiData(data);
+
+console.log(tempoChanges.length); // 1
+```
+
 #### `Midi.ReadTimeSignatureChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -1087,6 +1134,22 @@ func _ready() -> void:
 	var time_signature_changes: Array = rhythm_game_utilities.read_time_signature_changes_from_midi_data(bytes)
 
 	print(time_signature_changes)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadTimeSignatureChangesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const timeSignatureChanges =
+  RhythmGameUtilities.ReadTimeSignatureChangesFromMidiData(data);
+
+console.log(timeSignatureChanges.length); // 1
 ```
 
 ### Utilities

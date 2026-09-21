@@ -1,6 +1,6 @@
 #### `Midi.ReadResolutionFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -53,4 +53,19 @@ func _ready() -> void:
 	var resolution: int = rhythm_game_utilities.read_resolution_from_midi_data(bytes)
 
 	print(resolution)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const resolution = RhythmGameUtilities.ReadResolutionFromMidiData(data);
+
+console.log(resolution); // 480
 ```
