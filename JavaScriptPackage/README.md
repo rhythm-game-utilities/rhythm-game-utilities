@@ -24,7 +24,9 @@ document.querySelector('#lerp .output').innerHTML = value;
 
 ## Usage
 
-### ReadNotesFromChartData
+### Parsers (Chart)
+
+#### ReadNotesFromChartData
 
 ```javascript
 // Documentation/API/Parsers/Chart/ReadNotesFromChartData.js
@@ -41,7 +43,7 @@ for (let note of notes) {
 }
 ```
 
-### ReadTimeSignatureChangesFromChartData
+#### ReadTimeSignatureChangesFromChartData
 
 ```javascript
 // Documentation/API/Parsers/Chart/ReadTimeSignatureChangesFromChartData.js
@@ -56,7 +58,7 @@ const timeSignatureChanges = RhythmGameUtilities.ReadTimeSignatureChangesFromCha
 console.log(timeSignatureChanges.length); // 4
 ```
 
-### ReadResolutionFromChartData
+#### ReadResolutionFromChartData
 
 ```javascript
 // Documentation/API/Parsers/Chart/ReadResolutionFromChartData.js
@@ -71,7 +73,7 @@ const resolution = RhythmGameUtilities.ReadResolutionFromChartData(contents);
 console.log(resolution); // 192
 ```
 
-### ReadTempoChangesFromChartData
+#### ReadTempoChangesFromChartData
 
 ```javascript
 // Documentation/API/Parsers/Chart/ReadTempoChangesFromChartData.js
@@ -86,7 +88,74 @@ const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromChartData(contents)
 console.log(tempoChanges.length); // 7
 ```
 
-### IsOnTheBeat
+### Parsers (Midi)
+
+#### ReadNotesFromMidiData
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadNotesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const notes = RhythmGameUtilities.ReadNotesFromMidiData(data);
+
+for (let note of notes) {
+  console.log(`${note.position} ${note.handPosition}`);
+}
+```
+
+#### ReadTimeSignatureChangesFromMidiData
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadTimeSignatureChangesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const timeSignatureChanges =
+  RhythmGameUtilities.ReadTimeSignatureChangesFromMidiData(data);
+
+console.log(timeSignatureChanges.length); // 1
+```
+
+#### ReadResolutionFromMidiData
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const resolution = RhythmGameUtilities.ReadResolutionFromMidiData(data);
+
+console.log(resolution); // 480
+```
+
+#### ReadTempoChangesFromMidiData
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromMidiData(data);
+
+console.log(tempoChanges.length); // 1
+```
+
+### Utilities
+
+#### IsOnTheBeat
 
 ```javascript
 // Documentation/API/Utilities/IsOnTheBeat.js
@@ -101,7 +170,7 @@ const isOnTheBeat = RhythmGameUtilities.IsOnTheBeat(bpm, currentTime, delta);
 console.log(isOnTheBeat ? 'Is on the beat!' : 'Is not on the beat!'); // Is on the beat!
 ```
 
-### ConvertSecondsToTicks
+#### ConvertSecondsToTicks
 
 ```javascript
 // Documentation/API/Utilities/ConvertSecondsToTicks.js
@@ -125,7 +194,7 @@ var ticks = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempo
 console.log(ticks); // 1408
 ```
 
-### FindNotesNearGivenTick
+#### FindNotesNearGivenTick
 
 ```javascript
 // Documentation/API/Utilities/FindNotesNearGivenTick.js
@@ -154,7 +223,7 @@ if (foundNotes?.length > 0) {
 }
 ```
 
-### CalculateBeatBars
+#### CalculateBeatBars
 
 ```javascript
 // Documentation/API/Utilities/CalculateBeatBars.js
@@ -177,7 +246,7 @@ const beatBars = RhythmGameUtilities.CalculateBeatBars(tempoChanges, resolution,
 console.log(beatBars.length); // 440
 ```
 
-### CalculateAccuracyRatio
+#### CalculateAccuracyRatio
 
 ```javascript
 // Documentation/API/Utilities/CalculateAccuracyRatio.js
@@ -196,7 +265,7 @@ const accuracyRatio = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPos
 console.log(accuracyRatio.toFixed(2)); // -0.36
 ```
 
-### CalculateAccuracy
+#### CalculateAccuracy
 
 ```javascript
 // Documentation/API/Utilities/CalculateAccuracy.js
@@ -215,7 +284,7 @@ const accuracy = RhythmGameUtilities.CalculateAccuracy(750, currentPosition, pos
 console.log(accuracy); // Good
 ```
 
-### RoundUpToTheNearestMultiplier
+#### RoundUpToTheNearestMultiplier
 
 ```javascript
 // Documentation/API/Utilities/RoundUpToTheNearestMultiplier.js
@@ -226,7 +295,7 @@ const value = RhythmGameUtilities.RoundUpToTheNearestMultiplier(12, 10);
 console.log(value); // 20
 ```
 
-### CalculateTiming
+#### CalculateTiming
 
 ```javascript
 // Documentation/API/Utilities/CalculateTiming.js
@@ -245,7 +314,7 @@ const timing = RhythmGameUtilities.CalculateTiming(750, currentPosition, positio
 console.log(timing); // Hit
 ```
 
-### ConvertTickToPosition
+#### ConvertTickToPosition
 
 ```javascript
 // Documentation/API/Utilities/ConvertTickToPosition.js
@@ -259,7 +328,9 @@ const position = RhythmGameUtilities.ConvertTickToPosition(tick, resolution);
 console.log(position); // 5.5
 ```
 
-### InverseLerpUnclamped
+### Common
+
+#### InverseLerpUnclamped
 
 ```javascript
 // Documentation/API/Common/InverseLerpUnclamped.js
@@ -270,7 +341,7 @@ const value = RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11);
 console.log(value.toFixed(1)); // 1.1
 ```
 
-### Lerp
+#### Lerp
 
 ```javascript
 // Documentation/API/Common/Lerp.js
@@ -281,7 +352,7 @@ const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
 console.log(value); // 5
 ```
 
-### InverseLerp
+#### InverseLerp
 
 ```javascript
 // Documentation/API/Common/InverseLerp.js

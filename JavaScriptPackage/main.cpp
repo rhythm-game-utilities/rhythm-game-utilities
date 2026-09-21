@@ -4,6 +4,7 @@
 #include "./RhythmGameUtilities/Utilities.hpp"
 
 #include "./RhythmGameUtilities/Parsers/Chart.hpp"
+#include "RhythmGameUtilities/Parsers/Midi.hpp"
 
 using namespace RhythmGameUtilities;
 
@@ -239,4 +240,80 @@ EMSCRIPTEN_BINDINGS(my_module)
 
                 return result;
             }));
+
+    // Parsers/Midi
+
+    emscripten::function("ReadResolutionFromMidiData",
+                         emscripten::optional_override(
+                             [](const emscripten::val &data) -> uint16_t
+                             {
+                                 return ReadResolutionFromMidiData(
+                                     emscripten::vecFromJSArray<uint8_t>(data));
+                             }));
+
+    emscripten::function(
+        "ReadTempoChangesFromMidiData",
+        emscripten::optional_override(
+            [](const emscripten::val &data) -> emscripten::val
+            {
+                auto tempoChanges = ReadTempoChangesFromMidiData(
+                    emscripten::vecFromJSArray<uint8_t>(data));
+
+                auto result = emscripten::val::array();
+
+                for (const auto &tempoChange : tempoChanges)
+                {
+                    auto obj = emscripten::val::object();
+                    obj.set("position", tempoChange.Position);
+                    obj.set("bpm", tempoChange.BPM);
+                    result.call<void>("push", obj);
+                }
+
+                return result;
+            }));
+
+    emscripten::function(
+        "ReadTimeSignatureChangesFromMidiData",
+        emscripten::optional_override(
+            [](const emscripten::val &data) -> emscripten::val
+            {
+                auto timeSignatureChanges =
+                    ReadTimeSignatureChangesFromMidiData(
+                        emscripten::vecFromJSArray<uint8_t>(data));
+
+                auto result = emscripten::val::array();
+
+                for (const auto &timeSignatureChange : timeSignatureChanges)
+                {
+                    auto obj = emscripten::val::object();
+                    obj.set("position", timeSignatureChange.Position);
+                    obj.set("numerator", timeSignatureChange.Numerator);
+                    obj.set("denominator", timeSignatureChange.Denominator);
+                    result.call<void>("push", obj);
+                }
+
+                return result;
+            }));
+
+    emscripten::function("ReadNotesFromMidiData",
+                         emscripten::optional_override(
+                             [](const emscripten::val &data) -> emscripten::val
+                             {
+                                 auto notes = ReadNotesFromMidiData(
+                                     emscripten::vecFromJSArray<uint8_t>(data));
+
+                                 auto result = emscripten::val::array();
+
+                                 for (const auto &note : notes)
+                                 {
+                                     auto obj = emscripten::val::object();
+                                     obj.set("id", note.ID);
+                                     obj.set("position", note.Position);
+                                     obj.set("handPosition", note.HandPosition);
+                                     obj.set("length", note.Length);
+                                     result.call<void>("push", obj);
+                                 }
+
+                                 return result;
+                             }));
 }

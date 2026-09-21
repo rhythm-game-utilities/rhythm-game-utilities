@@ -1,6 +1,6 @@
 #### `Midi.ReadNotesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -61,4 +61,21 @@ func _ready() -> void:
 	var notes: Array = rhythm_game_utilities.read_notes_from_midi_data(bytes)
 
 	print(notes)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadNotesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const notes = RhythmGameUtilities.ReadNotesFromMidiData(data);
+
+for (let note of notes) {
+  console.log(`${note.position} ${note.handPosition}`);
+}
 ```

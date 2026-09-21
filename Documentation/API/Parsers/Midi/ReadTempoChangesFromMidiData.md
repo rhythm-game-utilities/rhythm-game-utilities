@@ -1,6 +1,6 @@
 #### `Midi.ReadTempoChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript`
 
 ##### C#
 
@@ -53,4 +53,19 @@ func _ready() -> void:
 	var tempo_changes: Array = rhythm_game_utilities.read_tempo_changes_from_midi_data(bytes)
 
 	print(tempo_changes)
+```
+
+##### JavaScript
+
+```javascript
+// Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.js
+import { readFileSync } from 'node:fs';
+
+import RhythmGameUtilities from '@rhythm-game-utilities/core';
+
+const data = readFileSync('./tests/Mocks/song.mid');
+
+const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromMidiData(data);
+
+console.log(tempoChanges.length); // 1
 ```

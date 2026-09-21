@@ -54,6 +54,13 @@ export const ReadTempoChangesFromChartData = (contents: string): Tempo[] => inst
 export const ReadTimeSignatureChangesFromChartData = (contents: string): TimeSignature[] => instance.ReadTimeSignatureChangesFromChartData(contents);
 export const ReadNotesFromChartData = (contents: string, difficulty: Difficulty): Note[] => instance.ReadNotesFromChartData(contents, difficulty);
 
+// Parsers (Midi)
+
+export const ReadResolutionFromMidiData = (data: Uint8Array) => instance.ReadResolutionFromMidiData(data);
+export const ReadTempoChangesFromMidiData = (data: Uint8Array): Tempo[] => instance.ReadTempoChangesFromMidiData(data);
+export const ReadTimeSignatureChangesFromMidiData = (data: Uint8Array): TimeSignature[] => instance.ReadTimeSignatureChangesFromMidiData(data);
+export const ReadNotesFromMidiData = (data: Uint8Array): Note[] => instance.ReadNotesFromMidiData(data);
+
 export default {
   Lerp,
   InverseLerp,
@@ -72,5 +79,10 @@ export default {
   ReadResolutionFromChartData,
   ReadTempoChangesFromChartData,
   ReadTimeSignatureChangesFromChartData,
-  ReadNotesFromChartData
+  ReadNotesFromChartData,
+
+  ReadResolutionFromMidiData,
+  ReadTempoChangesFromMidiData,
+  ReadTimeSignatureChangesFromMidiData,
+  ReadNotesFromMidiData
 };
