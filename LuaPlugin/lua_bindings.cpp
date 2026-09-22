@@ -3,6 +3,7 @@
 #include "RhythmGameUtilities/Enums/Difficulty.hpp"
 #include "RhythmGameUtilities/Enums/Timing.hpp"
 #include "RhythmGameUtilities/Parsers/Chart.hpp"
+#include "RhythmGameUtilities/Parsers/Midi.hpp"
 #include "RhythmGameUtilities/Structs/BeatBar.hpp"
 #include "RhythmGameUtilities/Structs/Tempo.hpp"
 #include "RhythmGameUtilities/Structs/TimeSignature.hpp"
@@ -292,7 +293,7 @@ static auto lua_lerp(lua_State *L) -> int
     return 1;
 }
 
-// Chart
+// Parsers/Chart
 
 static auto lua_read_resolution_from_chart_data(lua_State *L) -> int
 {
@@ -338,6 +339,77 @@ static auto lua_read_notes_from_chart_data(lua_State *L) -> int
 
     auto result =
         RhythmGameUtilities::ReadNotesFromChartData(contents, difficulty);
+
+    lua_return_notes_table(L, result);
+
+    return 1;
+}
+
+// Parsers/Midi
+
+static auto lua_read_resolution_from_midi_data(lua_State *L) -> int
+{
+    size_t length = 0;
+
+    const char *bytes = luaL_checklstring(L, 1, &length);
+
+    const std::vector<uint8_t> data(
+        reinterpret_cast<const uint8_t *>(bytes),
+        reinterpret_cast<const uint8_t *>(bytes + length));
+
+    auto result = RhythmGameUtilities::ReadResolutionFromMidiData(data);
+
+    lua_pushinteger(L, result);
+
+    return 1;
+}
+
+static auto lua_read_tempo_changes_from_midi_data(lua_State *L) -> int
+{
+    size_t length = 0;
+
+    const char *bytes = luaL_checklstring(L, 1, &length);
+
+    const std::vector<uint8_t> data(
+        reinterpret_cast<const uint8_t *>(bytes),
+        reinterpret_cast<const uint8_t *>(bytes + length));
+
+    auto result = RhythmGameUtilities::ReadTempoChangesFromMidiData(data);
+
+    lua_return_tempo_changes_table(L, result);
+
+    return 1;
+}
+
+static auto lua_read_time_signature_changes_from_midi_data(lua_State *L) -> int
+{
+    size_t length = 0;
+
+    const char *bytes = luaL_checklstring(L, 1, &length);
+
+    const std::vector<uint8_t> data(
+        reinterpret_cast<const uint8_t *>(bytes),
+        reinterpret_cast<const uint8_t *>(bytes + length));
+
+    auto result =
+        RhythmGameUtilities::ReadTimeSignatureChangesFromMidiData(data);
+
+    lua_return_time_signature_table(L, result);
+
+    return 1;
+}
+
+static auto lua_read_notes_from_midi_data(lua_State *L) -> int
+{
+    size_t length = 0;
+
+    const char *bytes = luaL_checklstring(L, 1, &length);
+
+    const std::vector<uint8_t> data(
+        reinterpret_cast<const uint8_t *>(bytes),
+        reinterpret_cast<const uint8_t *>(bytes + length));
+
+    auto result = RhythmGameUtilities::ReadNotesFromMidiData(data);
 
     lua_return_notes_table(L, result);
 
@@ -482,6 +554,13 @@ static const luaL_Reg rhythmgameutilities_functions[] = {
     {"read_time_signature_changes_from_chart_data",
      lua_read_time_signature_changes_from_chart_data},
     {"read_notes_from_chart_data", lua_read_notes_from_chart_data},
+
+    {"read_resolution_from_midi_data", lua_read_resolution_from_midi_data},
+    {"read_tempo_changes_from_midi_data",
+     lua_read_tempo_changes_from_midi_data},
+    {"read_time_signature_changes_from_midi_data",
+     lua_read_time_signature_changes_from_midi_data},
+    {"read_notes_from_midi_data", lua_read_notes_from_midi_data},
 
     {"convert_seconds_to_ticks", lua_convert_seconds_to_ticks},
     {"calculate_beat_bars", lua_calculate_beat_bars},

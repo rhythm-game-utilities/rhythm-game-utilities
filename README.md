@@ -855,7 +855,7 @@ end
 
 #### `Midi.ReadNotesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -935,9 +935,29 @@ for (let note of notes) {
 }
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Midi/ReadNotesFromMidiData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local file = io.open("./tests/Mocks/song.mid", "rb")
+
+if file then
+    local data = file:read("*a")
+
+    local notes = rhythmgameutilities.read_notes_from_midi_data(data);
+
+    for _, note in pairs(notes) do
+        print(note["position"] .. " " .. note["hand_position"])
+    end
+end
+```
+
 #### `Midi.ReadResolutionFromMidiData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1007,9 +1027,27 @@ const resolution = RhythmGameUtilities.ReadResolutionFromMidiData(data);
 console.log(resolution); // 480
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local file = io.open("./tests/Mocks/song.mid", "rb")
+
+if file then
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_resolution_from_midi_data(data);
+
+    print(value) -- 480
+end
+```
+
 #### `Midi.ReadTempoChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1079,9 +1117,35 @@ const tempoChanges = RhythmGameUtilities.ReadTempoChangesFromMidiData(data);
 console.log(tempoChanges.length); // 1
 ```
 
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Midi/ReadTempoChangesFromMidiData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local function get_table_length(table)
+    local count = 0
+    for _ in pairs(table) do
+        count = count + 1
+    end
+    return count
+end
+
+local file = io.open("./tests/Mocks/song.mid", "rb")
+
+if file then
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_tempo_changes_from_midi_data(data);
+
+    print(get_table_length(value)) -- 1
+end
+```
+
 #### `Midi.ReadTimeSignatureChangesFromMidiData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -1150,6 +1214,32 @@ const timeSignatureChanges =
   RhythmGameUtilities.ReadTimeSignatureChangesFromMidiData(data);
 
 console.log(timeSignatureChanges.length); // 1
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Midi/ReadTimeSignatureChangesFromMidiData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local function get_table_length(table)
+    local count = 0
+    for _ in pairs(table) do
+        count = count + 1
+    end
+    return count
+end
+
+local file = io.open("./tests/Mocks/song.mid", "rb")
+
+if file then
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_time_signature_changes_from_midi_data(data);
+
+    print(get_table_length(value)) -- 1
+end
 ```
 
 ### Utilities

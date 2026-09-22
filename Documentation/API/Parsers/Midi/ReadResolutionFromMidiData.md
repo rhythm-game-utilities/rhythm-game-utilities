@@ -1,6 +1,6 @@
 #### `Midi.ReadResolutionFromMidiData`
 
-> Languages: `C#` `C++` `GDScript` `JavaScript`
+> Languages: `C#` `C++` `GDScript` `JavaScript` `Lua`
 
 ##### C#
 
@@ -68,4 +68,22 @@ const data = readFileSync('./tests/Mocks/song.mid');
 const resolution = RhythmGameUtilities.ReadResolutionFromMidiData(data);
 
 console.log(resolution); // 480
+```
+
+##### Lua
+
+```lua
+-- Documentation/API/Parsers/Midi/ReadResolutionFromMidiData.lua
+---@type RhythmGameUtilities
+local rhythmgameutilities = require("rhythmgameutilities")
+
+local file = io.open("./tests/Mocks/song.mid", "rb")
+
+if file then
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_resolution_from_midi_data(data);
+
+    print(value) -- 480
+end
 ```
