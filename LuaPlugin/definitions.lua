@@ -65,6 +65,22 @@ function rhythmgameutilities.read_time_signature_changes_from_chart_data(content
 ---@return Note[]
 function rhythmgameutilities.read_notes_from_chart_data(contents, difficulty) end
 
+---@param data string
+---@return integer
+function rhythmgameutilities.read_resolution_from_midi_data(data) end
+
+---@param data string
+---@return TempoChange[]
+function rhythmgameutilities.read_tempo_changes_from_midi_data(data) end
+
+---@param data string
+---@return TimeSignatureChange[]
+function rhythmgameutilities.read_time_signature_changes_from_midi_data(data) end
+
+---@param data string
+---@return Note[]
+function rhythmgameutilities.read_notes_from_midi_data(data) end
+
 ---@param seconds number
 ---@param resolution integer
 ---@param tempo_changes TempoChange[]

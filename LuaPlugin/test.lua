@@ -91,6 +91,62 @@ local function read_notes_from_chart_data_test()
     assert(get_table_length(value) == 8)
 end
 
+local function read_resolution_from_midi_data_test()
+    local file = io.open("../tests/Mocks/song.mid", "rb")
+
+    assert(file)
+
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_resolution_from_midi_data(data);
+
+    print(value) -- 480
+
+    assert(value == 480)
+end
+
+local function read_tempo_changes_from_midi_data_test()
+    local file = io.open("../tests/Mocks/song.mid", "rb")
+
+    assert(file)
+
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_tempo_changes_from_midi_data(data);
+
+    print(get_table_length(value)) -- 1
+
+    assert(get_table_length(value) == 1)
+end
+
+local function read_time_signature_changes_from_midi_data_test()
+    local file = io.open("../tests/Mocks/song.mid", "rb")
+
+    assert(file)
+
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_time_signature_changes_from_midi_data(data);
+
+    print(get_table_length(value)) -- 1
+
+    assert(get_table_length(value) == 1)
+end
+
+local function read_notes_from_midi_data_test()
+    local file = io.open("../tests/Mocks/song.mid", "rb")
+
+    assert(file)
+
+    local data = file:read("*a")
+
+    local value = rhythmgameutilities.read_notes_from_midi_data(data);
+
+    print(get_table_length(value)) -- 10
+
+    assert(get_table_length(value) == 10)
+end
+
 local function convert_seconds_to_ticks_test()
     local seconds = 5;
     local resolution = 192;
@@ -242,6 +298,11 @@ read_resolution_from_chart_data_test();
 read_tempo_changes_from_chart_data_test();
 read_time_signature_changes_from_chart_data_test();
 read_notes_from_chart_data_test();
+
+read_resolution_from_midi_data_test();
+read_tempo_changes_from_midi_data_test();
+read_time_signature_changes_from_midi_data_test();
+read_notes_from_midi_data_test();
 
 convert_seconds_to_ticks_test();
 calculate_beat_bars_test();
