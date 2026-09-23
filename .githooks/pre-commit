@@ -6,7 +6,7 @@ FOLDERS=("RhythmGameUtilities/Libs/" "UnityPackage/Libs/")
 
 for FOLDER in "${FOLDERS[@]}"; do
     if [[ $(
-        git diff HEAD --exit-code --quiet --binary "${FOLDER}"
+        git diff HEAD --exit-code --quiet --binary "${FOLDER}" ":(exclude)*.meta"
         echo $?
     ) -ne 0 ]]; then
         echo "Do not commit build files."
