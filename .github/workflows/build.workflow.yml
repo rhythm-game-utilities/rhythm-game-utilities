@@ -14,6 +14,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Build Release
+        run: |
+          mkdir -p build/arm64-v8a
+          "${ANDROID_NDK_LATEST_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang++" \
+            -std=c++17 -shared -fPIC -o build/arm64-v8a/libRhythmGameUtilities.so include/RhythmGameUtilities/RhythmGameUtilities.cpp
+
+          mkdir -p build/x86_64
+          "${ANDROID_NDK_LATEST_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android21-clang++" \
+            -std=c++17 -shared -fPIC -o build/x86_64/libRhythmGameUtilities.so include/RhythmGameUtilities/RhythmGameUtilities.cpp
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: build-android-files
+          path: build/
+          retention-days: 1
+
   build-linux:
     runs-on: ubuntu-latest
 
@@ -131,7 +157,7 @@ jobs:
           retention-days: 1
 
   commit-changes:
-    needs: [build-linux, build-macos, build-windows, build-webgl]
+    needs: [build-linux, build-macos, build-windows, build-webgl, build-android]
     runs-on: ubuntu-latest
 
     permissions:
@@ -150,6 +176,8 @@ jobs:
 
       - name: Move artifacts to build directory
         run: |
+          mkdir -p UnityPackage/Libs/Android/arm64-v8a/ UnityPackage/Libs/Android/x86_64/
+          mkdir -p RhythmGameUtilities/Libs/Android/arm64-v8a/ RhythmGameUtilities/Libs/Android/x86_64/
           mkdir -p UnityPackage/Libs/Linux
           mkdir -p RhythmGameUtilities/Libs/Linux
           mkdir -p UnityPackage/Libs/macOS
@@ -158,6 +186,10 @@ jobs:
           mkdir -p RhythmGameUtilities/Libs/Windows
           mkdir -p UnityPackage/Libs/WebGL
           mkdir -p RhythmGameUtilities/Libs/WebGL
+          cp artifacts/build-android-files/arm64-v8a/libRhythmGameUtilities.so UnityPackage/Libs/Android/arm64-v8a/
+          cp artifacts/build-android-files/arm64-v8a/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Android/arm64-v8a/
+          cp artifacts/build-android-files/x86_64/libRhythmGameUtilities.so UnityPackage/Libs/Android/x86_64/
+          cp artifacts/build-android-files/x86_64/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Android/x86_64/
           cp artifacts/build-linux-files/libRhythmGameUtilities.so UnityPackage/Libs/Linux/
           cp artifacts/build-linux-files/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Linux/
           cp artifacts/build-macos-files/libRhythmGameUtilities.dylib UnityPackage/Libs/macOS/
