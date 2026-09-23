@@ -40,6 +40,39 @@ jobs:
           path: build/
           retention-days: 1
 
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Build Release
+        run: |
+          mkdir -p build/device build/simulator
+
+          clang++ -std=c++17 -O3 -isysroot "$(xcrun --sdk iphoneos --show-sdk-path)" -arch arm64 -miphoneos-version-min=12.0 \
+            -c include/RhythmGameUtilities/RhythmGameUtilities.cpp -o build/device/RhythmGameUtilities.o
+          ar rcs build/device/libRhythmGameUtilities.a build/device/RhythmGameUtilities.o
+
+          clang++ -std=c++17 -O3 -isysroot "$(xcrun --sdk iphonesimulator --show-sdk-path)" -arch arm64 -arch x86_64 -mios-simulator-version-min=12.0 \
+            -c include/RhythmGameUtilities/RhythmGameUtilities.cpp -o build/simulator/RhythmGameUtilities.o
+          ar rcs build/simulator/libRhythmGameUtilities.a build/simulator/RhythmGameUtilities.o
+
+          xcodebuild -create-xcframework \
+            -library build/device/libRhythmGameUtilities.a \
+            -library build/simulator/libRhythmGameUtilities.a \
+            -output build/RhythmGameUtilities.xcframework
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: build-ios-files
+          path: build/
+          retention-days: 1
+
   build-linux:
     runs-on: ubuntu-latest
 
@@ -157,7 +190,15 @@ jobs:
           retention-days: 1
 
   commit-changes:
-    needs: [build-linux, build-macos, build-windows, build-webgl, build-android]
+    needs:
+      [
+        build-linux,
+        build-macos,
+        build-windows,
+        build-webgl,
+        build-android,
+        build-ios
+      ]
     runs-on: ubuntu-latest
 
     permissions:
@@ -178,6 +219,8 @@ jobs:
         run: |
           mkdir -p UnityPackage/Libs/Android/arm64-v8a/ UnityPackage/Libs/Android/x86_64/
           mkdir -p RhythmGameUtilities/Libs/Android/arm64-v8a/ RhythmGameUtilities/Libs/Android/x86_64/
+          mkdir -p UnityPackage/Libs/iOS
+          mkdir -p RhythmGameUtilities/Libs/iOS
           mkdir -p UnityPackage/Libs/Linux
           mkdir -p RhythmGameUtilities/Libs/Linux
           mkdir -p UnityPackage/Libs/macOS
@@ -190,6 +233,8 @@ jobs:
           cp artifacts/build-android-files/arm64-v8a/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Android/arm64-v8a/
           cp artifacts/build-android-files/x86_64/libRhythmGameUtilities.so UnityPackage/Libs/Android/x86_64/
           cp artifacts/build-android-files/x86_64/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Android/x86_64/
+          cp -r artifacts/build-ios-files/RhythmGameUtilities.xcframework UnityPackage/Libs/iOS/
+          cp -r artifacts/build-ios-files/RhythmGameUtilities.xcframework RhythmGameUtilities/Libs/iOS/
           cp artifacts/build-linux-files/libRhythmGameUtilities.so UnityPackage/Libs/Linux/
           cp artifacts/build-linux-files/libRhythmGameUtilities.so RhythmGameUtilities/Libs/Linux/
           cp artifacts/build-macos-files/libRhythmGameUtilities.dylib UnityPackage/Libs/macOS/
