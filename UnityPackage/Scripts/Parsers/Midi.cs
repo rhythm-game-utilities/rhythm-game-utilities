@@ -7,21 +7,21 @@ namespace RhythmGameUtilities
     internal static class MidiInternal
     {
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern int ReadResolutionFromMidiDataInternal(byte[] bytes, int dataSize, out int size);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern IntPtr ReadTempoChangesFromMidiDataInternal(byte[] bytes, int dataSize, out int size);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
@@ -29,7 +29,7 @@ namespace RhythmGameUtilities
         public static extern IntPtr ReadTimeSignatureChangesFromMidiDataInternal(byte[] bytes, int dataSize,
             out int size);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]

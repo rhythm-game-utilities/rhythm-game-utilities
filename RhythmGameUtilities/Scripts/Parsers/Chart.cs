@@ -7,28 +7,28 @@ namespace RhythmGameUtilities
     internal static class ChartInternal
     {
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern int ReadResolutionFromChartData(string contents, out int _);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern IntPtr ReadTempoChangesFromChartDataInternal(string contents, out int _);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
         public static extern IntPtr ReadTimeSignatureChangesFromChartDataInternal(string contents, out int _);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         [DllImport("__Internal")]
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
