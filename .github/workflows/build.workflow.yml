@@ -192,12 +192,12 @@ jobs:
   commit-changes:
     needs:
       [
+        build-android,
+        build-ios,
         build-linux,
         build-macos,
-        build-windows,
         build-webgl,
-        build-android,
-        build-ios
+        build-windows
       ]
     runs-on: ubuntu-latest
 
