@@ -73,6 +73,8 @@ _Prototype game built using these utilities._
 
 ## Platforms
 
+![Logo](https://github.com/rhythm-game-utilities/rhythm-game-utilities/blob/main/logos.svg?raw=true)
+
 This library aims to offer support for multiple platforms through a single codebase. This is highly ambitious, so if you run into an issue with your platform of choice during development, please leave a detailed bug report with as much information as possible. Also, as this library is relatively new, mobile platforms will be fully supported after all other platforms are complete.
 
 | Engine                                  | Language | Platform |                  Version                  | Tested | Stable |
