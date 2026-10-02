@@ -1,6 +1,6 @@
 {
   "name": "@rhythm-game-utilities/core",
-  "description": "A collection of utilities for creating rhythm games in Unity, Unreal, Godot, SDL and MonoGame.",
+  "description": "A collection of utilities for creating rhythm games.",
   "version": "1.0.0-alpha.4",
   "type": "module",
   "main": "dist/index.mjs",
