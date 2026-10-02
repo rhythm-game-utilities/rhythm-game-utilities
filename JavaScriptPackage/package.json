@@ -15,6 +15,7 @@
       "default": "./dist/module.mjs"
     }
   },
+  "license": "MIT",
   "devDependencies": {
     "typescript": "7.0.2"
   },
@@ -24,6 +25,17 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "keywords": [
+    "rhythm"
+  ],
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "homepage": "https://github.com/rhythm-game-utilities/rhythm-game-utilities",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhythm-game-utilities/rhythm-game-utilities.git"
