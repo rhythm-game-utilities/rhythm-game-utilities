@@ -31,35 +31,75 @@ const instance = await RhythmGameUtilitiesModule();
 
 // Common
 
-export const Lerp = (a: number, b: number, t: number) => instance.Lerp(a, b, t);
-export const InverseLerp = (a: number, b: number, v: number) => instance.InverseLerp(a, b, v);
-export const InverseLerpUnclamped = (a: number, b: number, v: number) => instance.InverseLerpUnclamped(a, b, v);
+export function Lerp(a: number, b: number, t: number) {
+  return instance.Lerp(a, b, t);
+}
+export function InverseLerp(a: number, b: number, v: number) {
+  return instance.InverseLerp(a, b, v);
+}
+export function InverseLerpUnclamped(a: number, b: number, v: number) {
+  return instance.InverseLerpUnclamped(a, b, v);
+}
 
 // Utilities
 
-export const ConvertTickToPosition = (tick: number, resolution: number) => instance.ConvertTickToPosition(tick, resolution);
-export const IsOnTheBeat = (bpm: number, currentTime: number, delta: number) => instance.IsOnTheBeat(bpm, currentTime, delta);
-export const RoundUpToTheNearestMultiplier = (value: number, multiplier: number) => instance.RoundUpToTheNearestMultiplier(value, multiplier);
-export const CalculateAccuracyRatio = (position: number, currentPosition: number, delta: number) => instance.CalculateAccuracyRatio(position, currentPosition, delta);
-export const CalculateAccuracy = (position: number, currentPosition: number, delta: number) => instance.CalculateAccuracy(position, currentPosition, delta);
-export const CalculateTiming = (position: number, currentPosition: number, delta: number) => instance.CalculateTiming(position, currentPosition, delta);
-export const ConvertSecondsToTicks = (seconds: number, resolution: number, tempoChanges: Tempo[]) => instance.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
-export const CalculateBeatBars = (tempoChanges: Tempo[], resolution: number, includeHalfNotes: boolean): BeatBar[] => instance.CalculateBeatBars(tempoChanges, resolution, includeHalfNotes);
-export const FindNotesNearGivenTick = (notes: Note[], tick: number, delta: number): Note[] => instance.FindNotesNearGivenTick(notes, tick, delta);
+export function ConvertTickToPosition(tick: number, resolution: number) {
+  return instance.ConvertTickToPosition(tick, resolution);
+}
+export function IsOnTheBeat(bpm: number, currentTime: number, delta: number) {
+  return instance.IsOnTheBeat(bpm, currentTime, delta);
+}
+export function RoundUpToTheNearestMultiplier(value: number, multiplier: number) {
+  return instance.RoundUpToTheNearestMultiplier(value, multiplier);
+}
+export function CalculateAccuracyRatio(position: number, currentPosition: number, delta: number) {
+  return instance.CalculateAccuracyRatio(position, currentPosition, delta);
+}
+export function CalculateAccuracy(position: number, currentPosition: number, delta: number) {
+  return instance.CalculateAccuracy(position, currentPosition, delta);
+}
+export function CalculateTiming(position: number, currentPosition: number, delta: number) {
+  return instance.CalculateTiming(position, currentPosition, delta);
+}
+export function ConvertSecondsToTicks(seconds: number, resolution: number, tempoChanges: Tempo[]) {
+  return instance.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+}
+export function CalculateBeatBars(tempoChanges: Tempo[], resolution: number, includeHalfNotes: boolean): BeatBar[] {
+  return instance.CalculateBeatBars(tempoChanges, resolution, includeHalfNotes);
+}
+export function FindNotesNearGivenTick(notes: Note[], tick: number, delta: number): Note[] {
+  return instance.FindNotesNearGivenTick(notes, tick, delta);
+}
 
 // Parsers (Chart)
 
-export const ReadResolutionFromChartData = (contents: string) => instance.ReadResolutionFromChartData(contents);
-export const ReadTempoChangesFromChartData = (contents: string): Tempo[] => instance.ReadTempoChangesFromChartData(contents);
-export const ReadTimeSignatureChangesFromChartData = (contents: string): TimeSignature[] => instance.ReadTimeSignatureChangesFromChartData(contents);
-export const ReadNotesFromChartData = (contents: string, difficulty: Difficulty): Note[] => instance.ReadNotesFromChartData(contents, difficulty);
+export function ReadResolutionFromChartData(contents: string) {
+  return instance.ReadResolutionFromChartData(contents);
+}
+export function ReadTempoChangesFromChartData(contents: string): Tempo[] {
+  return instance.ReadTempoChangesFromChartData(contents);
+}
+export function ReadTimeSignatureChangesFromChartData(contents: string): TimeSignature[] {
+  return instance.ReadTimeSignatureChangesFromChartData(contents);
+}
+export function ReadNotesFromChartData(contents: string, difficulty: Difficulty): Note[] {
+  return instance.ReadNotesFromChartData(contents, difficulty);
+}
 
 // Parsers (Midi)
 
-export const ReadResolutionFromMidiData = (data: Uint8Array) => instance.ReadResolutionFromMidiData(data);
-export const ReadTempoChangesFromMidiData = (data: Uint8Array): Tempo[] => instance.ReadTempoChangesFromMidiData(data);
-export const ReadTimeSignatureChangesFromMidiData = (data: Uint8Array): TimeSignature[] => instance.ReadTimeSignatureChangesFromMidiData(data);
-export const ReadNotesFromMidiData = (data: Uint8Array): Note[] => instance.ReadNotesFromMidiData(data);
+export function ReadResolutionFromMidiData(data: Uint8Array) {
+  return instance.ReadResolutionFromMidiData(data);
+}
+export function ReadTempoChangesFromMidiData(data: Uint8Array): Tempo[] {
+  return instance.ReadTempoChangesFromMidiData(data);
+}
+export function ReadTimeSignatureChangesFromMidiData(data: Uint8Array): TimeSignature[] {
+  return instance.ReadTimeSignatureChangesFromMidiData(data);
+}
+export function ReadNotesFromMidiData(data: Uint8Array): Note[] {
+  return instance.ReadNotesFromMidiData(data);
+}
 
 export default {
   Lerp,
