@@ -4,7 +4,7 @@
 #include "./RhythmGameUtilities/Utilities.hpp"
 
 #include "./RhythmGameUtilities/Parsers/Chart.hpp"
-#include "RhythmGameUtilities/Parsers/Midi.hpp"
+#include "./RhythmGameUtilities/Parsers/Midi.hpp"
 
 using namespace RhythmGameUtilities;
 
