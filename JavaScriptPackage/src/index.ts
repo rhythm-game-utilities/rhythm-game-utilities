@@ -49,25 +49,52 @@ export function ConvertTickToPosition(tick: number, resolution: number) {
 export function IsOnTheBeat(bpm: number, currentTime: number, delta: number) {
   return instance.IsOnTheBeat(bpm, currentTime, delta);
 }
-export function RoundUpToTheNearestMultiplier(value: number, multiplier: number) {
+export function RoundUpToTheNearestMultiplier(
+  value: number,
+  multiplier: number
+) {
   return instance.RoundUpToTheNearestMultiplier(value, multiplier);
 }
-export function CalculateAccuracyRatio(position: number, currentPosition: number, delta: number) {
+export function CalculateAccuracyRatio(
+  position: number,
+  currentPosition: number,
+  delta: number
+) {
   return instance.CalculateAccuracyRatio(position, currentPosition, delta);
 }
-export function CalculateAccuracy(position: number, currentPosition: number, delta: number) {
+export function CalculateAccuracy(
+  position: number,
+  currentPosition: number,
+  delta: number
+) {
   return instance.CalculateAccuracy(position, currentPosition, delta);
 }
-export function CalculateTiming(position: number, currentPosition: number, delta: number) {
+export function CalculateTiming(
+  position: number,
+  currentPosition: number,
+  delta: number
+) {
   return instance.CalculateTiming(position, currentPosition, delta);
 }
-export function ConvertSecondsToTicks(seconds: number, resolution: number, tempoChanges: Tempo[]) {
+export function ConvertSecondsToTicks(
+  seconds: number,
+  resolution: number,
+  tempoChanges: Tempo[]
+) {
   return instance.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
 }
-export function CalculateBeatBars(tempoChanges: Tempo[], resolution: number, includeHalfNotes: boolean): BeatBar[] {
+export function CalculateBeatBars(
+  tempoChanges: Tempo[],
+  resolution: number,
+  includeHalfNotes: boolean
+): BeatBar[] {
   return instance.CalculateBeatBars(tempoChanges, resolution, includeHalfNotes);
 }
-export function FindNotesNearGivenTick(notes: Note[], tick: number, delta: number): Note[] {
+export function FindNotesNearGivenTick(
+  notes: Note[],
+  tick: number,
+  delta: number
+): Note[] {
   return instance.FindNotesNearGivenTick(notes, tick, delta);
 }
 
@@ -79,10 +106,15 @@ export function ReadResolutionFromChartData(contents: string) {
 export function ReadTempoChangesFromChartData(contents: string): Tempo[] {
   return instance.ReadTempoChangesFromChartData(contents);
 }
-export function ReadTimeSignatureChangesFromChartData(contents: string): TimeSignature[] {
+export function ReadTimeSignatureChangesFromChartData(
+  contents: string
+): TimeSignature[] {
   return instance.ReadTimeSignatureChangesFromChartData(contents);
 }
-export function ReadNotesFromChartData(contents: string, difficulty: Difficulty): Note[] {
+export function ReadNotesFromChartData(
+  contents: string,
+  difficulty: Difficulty
+): Note[] {
   return instance.ReadNotesFromChartData(contents, difficulty);
 }
 
@@ -94,7 +126,9 @@ export function ReadResolutionFromMidiData(data: Uint8Array) {
 export function ReadTempoChangesFromMidiData(data: Uint8Array): Tempo[] {
   return instance.ReadTempoChangesFromMidiData(data);
 }
-export function ReadTimeSignatureChangesFromMidiData(data: Uint8Array): TimeSignature[] {
+export function ReadTimeSignatureChangesFromMidiData(
+  data: Uint8Array
+): TimeSignature[] {
   return instance.ReadTimeSignatureChangesFromMidiData(data);
 }
 export function ReadNotesFromMidiData(data: Uint8Array): Note[] {

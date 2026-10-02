@@ -13,6 +13,8 @@ describe('Common', () => {
     assert.ok(Math.abs(0.5 - RhythmGameUtilities.InverseLerp(0, 10, 5)) < 0.01);
   });
   test('InverseLerpUnclamped', () => {
-    assert.ok(Math.abs(1.1 - RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11)) < 0.01);
+    assert.ok(
+      Math.abs(1.1 - RhythmGameUtilities.InverseLerpUnclamped(0, 10, 11)) < 0.01
+    );
   });
 });

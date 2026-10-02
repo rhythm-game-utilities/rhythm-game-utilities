@@ -61,7 +61,10 @@ describe('Utilities', () => {
     assert.equal(foundNotes[0].position, 768);
   });
   test('ConvertTickToPosition', () => {
-    assert.ok(Math.abs(5.5 - RhythmGameUtilities.ConvertTickToPosition(1056, 192)) < 0.01);
+    assert.ok(
+      Math.abs(5.5 - RhythmGameUtilities.ConvertTickToPosition(1056, 192)) <
+        0.01
+    );
   });
   test('IsOnTheBeat', () => {
     assert.ok(RhythmGameUtilities.IsOnTheBeat(120, 10, 0.5));
@@ -78,9 +81,17 @@ describe('Utilities', () => {
 
     const tempoChanges = [{ position: 0, bpm: 120000 }];
 
-    const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+    const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(
+      seconds,
+      resolution,
+      tempoChanges
+    );
 
-    const value = RhythmGameUtilities.CalculateAccuracyRatio(750, currentPosition, positionDelta);
+    const value = RhythmGameUtilities.CalculateAccuracyRatio(
+      750,
+      currentPosition,
+      positionDelta
+    );
 
     assert.ok(Math.abs(0.36 - Math.abs(value)) < 0.01);
   });
@@ -91,9 +102,20 @@ describe('Utilities', () => {
 
     const tempoChanges = [{ position: 0, bpm: 120000 }];
 
-    const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+    const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(
+      seconds,
+      resolution,
+      tempoChanges
+    );
 
-    assert.equal(RhythmGameUtilities.CalculateAccuracy(750, currentPosition, positionDelta), 'Good');
+    assert.equal(
+      RhythmGameUtilities.CalculateAccuracy(
+        750,
+        currentPosition,
+        positionDelta
+      ),
+      'Good'
+    );
   });
   test('CalculateTiming', () => {
     const seconds = 2;
@@ -102,8 +124,15 @@ describe('Utilities', () => {
 
     const tempoChanges = [{ position: 0, bpm: 120000 }];
 
-    const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(seconds, resolution, tempoChanges);
+    const currentPosition = RhythmGameUtilities.ConvertSecondsToTicks(
+      seconds,
+      resolution,
+      tempoChanges
+    );
 
-    assert.equal(RhythmGameUtilities.CalculateTiming(750, currentPosition, positionDelta), 'Hit');
+    assert.equal(
+      RhythmGameUtilities.CalculateTiming(750, currentPosition, positionDelta),
+      'Hit'
+    );
   });
 });
