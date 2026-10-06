@@ -1,0 +1,340 @@
+{
+  "general": {
+    "actions": [],
+    "conditions": [],
+    "expressions": [
+      {
+        "id": "Lerp",
+        "expressionName": "Lerp",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "a",
+            "type": "number"
+          },
+          {
+            "id": "b",
+            "type": "number"
+          },
+          {
+            "id": "t",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "InverseLerp",
+        "expressionName": "InverseLerp",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "a",
+            "type": "number"
+          },
+          {
+            "id": "b",
+            "type": "number"
+          },
+          {
+            "id": "v",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "InverseLerpUnclamped",
+        "expressionName": "InverseLerpUnclamped",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "a",
+            "type": "number"
+          },
+          {
+            "id": "b",
+            "type": "number"
+          },
+          {
+            "id": "v",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "ConvertTickToPosition",
+        "expressionName": "ConvertTickToPosition",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "tick",
+            "type": "number"
+          },
+          {
+            "id": "resolution",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "IsOnTheBeat",
+        "expressionName": "IsOnTheBeat",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "bpm",
+            "type": "number"
+          },
+          {
+            "id": "currentTime",
+            "type": "number"
+          },
+          {
+            "id": "delta",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "RoundUpToTheNearestMultiplier",
+        "expressionName": "RoundUpToTheNearestMultiplier",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "value",
+            "type": "number"
+          },
+          {
+            "id": "multiplier",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "CalculateAccuracyRatio",
+        "expressionName": "CalculateAccuracyRatio",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "position",
+            "type": "number"
+          },
+          {
+            "id": "currentPosition",
+            "type": "number"
+          },
+          {
+            "id": "delta",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "CalculateAccuracy",
+        "expressionName": "CalculateAccuracy",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "position",
+            "type": "number"
+          },
+          {
+            "id": "currentPosition",
+            "type": "number"
+          },
+          {
+            "id": "delta",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "CalculateTiming",
+        "expressionName": "CalculateTiming",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "position",
+            "type": "number"
+          },
+          {
+            "id": "currentPosition",
+            "type": "number"
+          },
+          {
+            "id": "delta",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "ConvertSecondsToTicks",
+        "expressionName": "ConvertSecondsToTicks",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "seconds",
+            "type": "number"
+          },
+          {
+            "id": "resolution",
+            "type": "number"
+          },
+          {
+            "id": "tempoChanges",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "CalculateBeatBars",
+        "expressionName": "CalculateBeatBars",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "tempoChanges",
+            "type": "string"
+          },
+          {
+            "id": "resolution",
+            "type": "number"
+          },
+          {
+            "id": "includeHalfNotes",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "FindNotesNearGivenTick",
+        "expressionName": "FindNotesNearGivenTick",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "notes",
+            "type": "string"
+          },
+          {
+            "id": "tick",
+            "type": "number"
+          },
+          {
+            "id": "delta",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "ReadResolutionFromChartData",
+        "expressionName": "ReadResolutionFromChartData",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "contents",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadTempoChangesFromChartData",
+        "expressionName": "ReadTempoChangesFromChartData",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "contents",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadTimeSignatureChangesFromChartData",
+        "expressionName": "ReadTimeSignatureChangesFromChartData",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "contents",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadNotesFromChartData",
+        "expressionName": "ReadNotesFromChartData",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "contents",
+            "type": "string"
+          },
+          {
+            "id": "difficulty",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadResolutionFromMidiData",
+        "expressionName": "ReadResolutionFromMidiData",
+        "highlight": false,
+        "returnType": "number",
+        "params": [
+          {
+            "id": "data",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadTempoChangesFromMidiData",
+        "expressionName": "ReadTempoChangesFromMidiData",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "data",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadTimeSignatureChangesFromMidiData",
+        "expressionName": "ReadTimeSignatureChangesFromMidiData",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "data",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "id": "ReadNotesFromMidiData",
+        "expressionName": "ReadNotesFromMidiData",
+        "highlight": false,
+        "returnType": "string",
+        "params": [
+          {
+            "id": "data",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

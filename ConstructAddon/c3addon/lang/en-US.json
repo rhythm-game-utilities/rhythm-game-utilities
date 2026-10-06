@@ -1,0 +1,313 @@
+{
+  "languageTag": "en-US",
+  "fileDescription": "Strings for Rhythm Game Utilities",
+  "text": {
+    "plugins": {
+      "rhythmgameutilities": {
+        "name": "RhythmGameUtilities",
+        "description": "A collection of utilities for creating rhythm games.",
+        "help-url": "https://rhythmgameutilities.com/",
+        "properties": {},
+        "aceCategories": {
+          "general": "General"
+        },
+        "actions": {},
+        "conditions": {},
+        "expressions": {
+          "Lerp": {
+            "translated-name": "Lerp",
+            "description": "Lerp",
+            "params": {
+              "a": {
+                "name": "a",
+                "desc": "a"
+              },
+              "b": {
+                "name": "b",
+                "desc": "b"
+              },
+              "t": {
+                "name": "t",
+                "desc": "t"
+              }
+            }
+          },
+          "InverseLerp": {
+            "translated-name": "InverseLerp",
+            "description": "InverseLerp",
+            "params": {
+              "a": {
+                "name": "a",
+                "desc": "a"
+              },
+              "b": {
+                "name": "b",
+                "desc": "b"
+              },
+              "v": {
+                "name": "v",
+                "desc": "v"
+              }
+            }
+          },
+          "InverseLerpUnclamped": {
+            "translated-name": "InverseLerpUnclamped",
+            "description": "InverseLerpUnclamped",
+            "params": {
+              "a": {
+                "name": "a",
+                "desc": "a"
+              },
+              "b": {
+                "name": "b",
+                "desc": "b"
+              },
+              "v": {
+                "name": "v",
+                "desc": "v"
+              }
+            }
+          },
+          "ConvertTickToPosition": {
+            "translated-name": "ConvertTickToPosition",
+            "description": "ConvertTickToPosition",
+            "params": {
+              "tick": {
+                "name": "tick",
+                "desc": "tick"
+              },
+              "resolution": {
+                "name": "resolution",
+                "desc": "resolution"
+              }
+            }
+          },
+          "IsOnTheBeat": {
+            "translated-name": "IsOnTheBeat",
+            "description": "IsOnTheBeat",
+            "params": {
+              "bpm": {
+                "name": "bpm",
+                "desc": "bpm"
+              },
+              "currentTime": {
+                "name": "currentTime",
+                "desc": "currentTime"
+              },
+              "delta": {
+                "name": "delta",
+                "desc": "delta"
+              }
+            }
+          },
+          "RoundUpToTheNearestMultiplier": {
+            "translated-name": "RoundUpToTheNearestMultiplier",
+            "description": "RoundUpToTheNearestMultiplier",
+            "params": {
+              "value": {
+                "name": "value",
+                "desc": "value"
+              },
+              "multiplier": {
+                "name": "multiplier",
+                "desc": "multiplier"
+              }
+            }
+          },
+          "CalculateAccuracyRatio": {
+            "translated-name": "CalculateAccuracyRatio",
+            "description": "CalculateAccuracyRatio",
+            "params": {
+              "position": {
+                "name": "position",
+                "desc": "position"
+              },
+              "currentPosition": {
+                "name": "currentPosition",
+                "desc": "currentPosition"
+              },
+              "delta": {
+                "name": "delta",
+                "desc": "delta"
+              }
+            }
+          },
+          "CalculateAccuracy": {
+            "translated-name": "CalculateAccuracy",
+            "description": "CalculateAccuracy",
+            "params": {
+              "position": {
+                "name": "position",
+                "desc": "position"
+              },
+              "currentPosition": {
+                "name": "currentPosition",
+                "desc": "currentPosition"
+              },
+              "delta": {
+                "name": "delta",
+                "desc": "delta"
+              }
+            }
+          },
+          "CalculateTiming": {
+            "translated-name": "CalculateTiming",
+            "description": "CalculateTiming",
+            "params": {
+              "position": {
+                "name": "position",
+                "desc": "position"
+              },
+              "currentPosition": {
+                "name": "currentPosition",
+                "desc": "currentPosition"
+              },
+              "delta": {
+                "name": "delta",
+                "desc": "delta"
+              }
+            }
+          },
+          "ConvertSecondsToTicks": {
+            "translated-name": "ConvertSecondsToTicks",
+            "description": "ConvertSecondsToTicks",
+            "params": {
+              "seconds": {
+                "name": "seconds",
+                "desc": "seconds"
+              },
+              "resolution": {
+                "name": "resolution",
+                "desc": "resolution"
+              },
+              "tempoChanges": {
+                "name": "tempoChanges",
+                "desc": "tempoChanges"
+              }
+            }
+          },
+          "CalculateBeatBars": {
+            "translated-name": "CalculateBeatBars",
+            "description": "CalculateBeatBars",
+            "params": {
+              "tempoChanges": {
+                "name": "tempoChanges",
+                "desc": "tempoChanges"
+              },
+              "resolution": {
+                "name": "resolution",
+                "desc": "resolution"
+              },
+              "includeHalfNotes": {
+                "name": "includeHalfNotes",
+                "desc": "includeHalfNotes"
+              }
+            }
+          },
+          "FindNotesNearGivenTick": {
+            "translated-name": "FindNotesNearGivenTick",
+            "description": "FindNotesNearGivenTick",
+            "params": {
+              "notes": {
+                "name": "notes",
+                "desc": "notes"
+              },
+              "tick": {
+                "name": "tick",
+                "desc": "tick"
+              },
+              "delta": {
+                "name": "delta",
+                "desc": "delta"
+              }
+            }
+          },
+          "ReadResolutionFromChartData": {
+            "translated-name": "ReadResolutionFromChartData",
+            "description": "ReadResolutionFromChartData",
+            "params": {
+              "contents": {
+                "name": "contents",
+                "desc": "contents"
+              }
+            }
+          },
+          "ReadTempoChangesFromChartData": {
+            "translated-name": "ReadTempoChangesFromChartData",
+            "description": "ReadTempoChangesFromChartData",
+            "params": {
+              "contents": {
+                "name": "contents",
+                "desc": "contents"
+              }
+            }
+          },
+          "ReadTimeSignatureChangesFromChartData": {
+            "translated-name": "ReadTimeSignatureChangesFromChartData",
+            "description": "ReadTimeSignatureChangesFromChartData",
+            "params": {
+              "contents": {
+                "name": "contents",
+                "desc": "contents"
+              }
+            }
+          },
+          "ReadNotesFromChartData": {
+            "translated-name": "ReadNotesFromChartData",
+            "description": "ReadNotesFromChartData",
+            "params": {
+              "contents": {
+                "name": "contents",
+                "desc": "contents"
+              },
+              "difficulty": {
+                "name": "difficulty",
+                "desc": "difficulty"
+              }
+            }
+          },
+          "ReadResolutionFromMidiData": {
+            "translated-name": "ReadResolutionFromMidiData",
+            "description": "ReadResolutionFromMidiData",
+            "params": {
+              "data": {
+                "name": "data",
+                "desc": "data"
+              }
+            }
+          },
+          "ReadTempoChangesFromMidiData": {
+            "translated-name": "ReadTempoChangesFromMidiData",
+            "description": "ReadTempoChangesFromMidiData",
+            "params": {
+              "data": {
+                "name": "data",
+                "desc": "data"
+              }
+            }
+          },
+          "ReadTimeSignatureChangesFromMidiData": {
+            "translated-name": "ReadTimeSignatureChangesFromMidiData",
+            "description": "ReadTimeSignatureChangesFromMidiData",
+            "params": {
+              "data": {
+                "name": "data",
+                "desc": "data"
+              }
+            }
+          },
+          "ReadNotesFromMidiData": {
+            "translated-name": "ReadNotesFromMidiData",
+            "description": "ReadNotesFromMidiData",
+            "params": {
+              "data": {
+                "name": "data",
+                "desc": "data"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
