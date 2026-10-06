@@ -42,10 +42,10 @@ inline auto ToString(Accuracy accuracy) -> std::string
     {
     case Invalid:
         return "Invalid";
-    case Fair:
-        return "Fair";
     case Poor:
         return "Poor";
+    case Fair:
+        return "Fair";
     case Good:
         return "Good";
     case Great:
