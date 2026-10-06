@@ -5,12 +5,14 @@ CWD=$(pwd)
 FOLDERS=("RhythmGameUtilities/Libs/" "UnityPackage/Libs/")
 
 for FOLDER in "${FOLDERS[@]}"; do
-    if [[ $(
-        git diff HEAD --exit-code --quiet --binary "${FOLDER}" ":(exclude)*.meta"
-        echo $?
-    ) -ne 0 ]]; then
-        echo "Do not commit build files."
-        exit 1
+    if [ -d "${FOLDER}" ]; then
+        if [[ $(
+            git diff HEAD --exit-code --quiet --binary "${FOLDER}"
+            echo $?
+        ) -ne 0 ]]; then
+            echo "Do not commit build files."
+            exit 1
+        fi
     fi
 done
 
