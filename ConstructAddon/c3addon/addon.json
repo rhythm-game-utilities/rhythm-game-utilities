@@ -19,14 +19,11 @@
     "c3runtime/actions.js",
     "c3runtime/expressions.js",
     "lang/en-US.json",
-    "lib/module.mjs",
-    "lib/module.wasm",
     "aces.json",
     "addon.json",
     "icon.svg",
     "instance.js",
     "plugin.js",
     "type.js"
-  ],
-  "dependency-files": ["lib/module.wasm"]
+  ]
 }

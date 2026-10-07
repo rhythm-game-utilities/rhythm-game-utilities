@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "node build.ts",
-    "build:test": "MODULE_PATH=http://localhost:65432/lib/module.mjs node build.ts",
+    "build:test": "node build.ts",
     "test": "npx http-server ./c3addon -p 65432 --cors -c-1"
   },
   "private": true

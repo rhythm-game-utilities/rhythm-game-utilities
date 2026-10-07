@@ -1,28 +1,15 @@
-import { copyFile, mkdir, rename, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 
 import { Project, SourceFile, Type } from 'ts-morph';
 
 import AdmZip from 'adm-zip';
 
-const JAVASCRIPT_PACKAGE_DIR = '../JavaScriptPackage';
+const JAVASCRIPT_PACKAGE_DIR = '../JavaScriptPackages/core';
 
 const project = new Project();
 const sourceFile = project.addSourceFileAtPath(
   `${JAVASCRIPT_PACKAGE_DIR}/dist/index.d.ts`
 );
-
-async function copyFilesFromJavaScriptPackage() {
-  await mkdir('c3addon/lib/', { recursive: true });
-
-  await Promise.all(
-    ['module.mjs', 'module.wasm'].map(async file => {
-      await copyFile(
-        `${JAVASCRIPT_PACKAGE_DIR}/dist/${file}`,
-        `c3addon/lib/${file}`
-      );
-    })
-  );
-}
 
 function getParamType(type: Type): string {
   if (type.isString() || type.isStringLiteral()) return 'string';
@@ -65,10 +52,17 @@ ${sourceFile
   );
 }
 
-async function generateInstanceFile(modulePath: string = '../lib/module.js') {
+async function generateInstanceFile() {
+  const moduleContents = await readFile(
+    `${JAVASCRIPT_PACKAGE_DIR}/dist/module.mjs`,
+    'utf8'
+  );
+
   await writeFile(
     'c3addon/c3runtime/instance.js',
-    `export let RhythmGameUtilities;
+    `${moduleContents.replace('export default Module;', '')}
+
+export let RhythmGameUtilities;
 
 export default class RhythmGameUtilitiesInstance
   extends globalThis.ISDKInstanceBase
@@ -76,15 +70,11 @@ export default class RhythmGameUtilitiesInstance
   constructor(opts) {
     super(opts);
 
-    this._wasmInstance = null;
-
     this._loadModule();
   }
 
   async _loadModule() {
-    const moduleScript = await import('${modulePath}');
-
-    RhythmGameUtilities = await moduleScript.default();
+    RhythmGameUtilities = await Module();
   }
 }
 `
@@ -183,8 +173,6 @@ async function createAddonDist(filename: string, version: string = 'v1') {
 
   console.log(`Created ${fileOutputFilePath} successfully`);
 }
-
-await copyFilesFromJavaScriptPackage();
 
 await generateExpressionsFile(sourceFile);
 await generateInstanceFile(process.env.MODULE_PATH);
