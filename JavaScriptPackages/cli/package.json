@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@rhythm-game-utilities/core": "1.0.0-alpha.4",
+    "@rhythm-game-utilities/core": "1.0.0-alpha.5",
     "parse-cmd-args": "5.0.2",
     "update-notifier": "7.3.1"
   },
