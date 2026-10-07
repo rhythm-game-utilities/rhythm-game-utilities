@@ -10,7 +10,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
     mkdir -p dist/
 
-    em++ -O3 --bind -s MODULARIZE=1 -s EXPORT_ES6=1 main.cpp -I../include/ -o dist/module.mjs --emit-tsd module.d.ts
+    em++ -O3 --bind -s MODULARIZE=1 -s EXPORT_ES6=1 main.cpp -I../../include/ -o dist/module.mjs --emit-tsd module.d.ts
 
     ./node_modules/.bin/tsc
 
