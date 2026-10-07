@@ -20,6 +20,7 @@
     "typescript": "7.0.2"
   },
   "scripts": {
+    "build": "./bin/build.sh && tsc",
     "test": "node --test './tests/**/*.test.mjs'"
   },
   "publishConfig": {

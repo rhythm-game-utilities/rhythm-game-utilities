@@ -94,7 +94,7 @@ jobs:
 
       - name: Build Library
         working-directory: JavaScriptPackages/core/
-        run: ./bin/build.sh
+        run: npm run build
 
       - name: Run Tests
         working-directory: JavaScriptPackages/core/
