@@ -1,0 +1,41 @@
+{
+  "name": "@rhythm-game-utilities/cli",
+  "description": "A collection of utilities for creating rhythm games.",
+  "version": "1.0.0-alpha.1",
+  "type": "module",
+  "bin": {
+    "rhythm-game-utilities": "dist/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@rhythm-game-utilities/core": "1.0.0-alpha.4",
+    "parse-cmd-args": "5.0.2",
+    "update-notifier": "7.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.4",
+    "@types/update-notifier": "6.0.8",
+    "typescript": "7.0.2"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x ./dist/index.js"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "rhythm"
+  ],
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "homepage": "https://github.com/rhythm-game-utilities/rhythm-game-utilities",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhythm-game-utilities/rhythm-game-utilities.git"
+  }
+}
