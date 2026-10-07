@@ -40,7 +40,7 @@ jobs:
 
       - name: Build package
         working-directory: JavaScriptPackages/core/
-        run: ./bin/build.sh
+        run: npm run build
 
       - name: Publish package
         working-directory: JavaScriptPackages/core/
