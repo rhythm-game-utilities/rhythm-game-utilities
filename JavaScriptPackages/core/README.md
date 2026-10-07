@@ -15,7 +15,7 @@ $ npm install @rhythm-game-utilities/core
 ### JavaScript Module
 
 ```javascript
-import RhythmGameUtilities from 'https://unpkg.com/@rhythm-game-utsilities/core@1.0.0-alpha.3/dist/index.js';
+import RhythmGameUtilities from 'https://unpkg.com/@rhythm-game-utilities/core@1.0.0-alpha.4/dist/index.js';
 
 const value = RhythmGameUtilities.Lerp(0, 10, 0.5);
 
