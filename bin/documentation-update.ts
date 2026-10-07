@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env node
 
 import { glob, readFile, writeFile } from 'node:fs/promises';
 
