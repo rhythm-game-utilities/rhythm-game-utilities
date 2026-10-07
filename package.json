@@ -4,7 +4,7 @@
     "@rhythm-game-utilities/core": "file:./JavaScriptPackages/core/"
   },
   "devDependencies": {
-    "@types/node": "25.5.0"
+    "@types/node": "26.6.3"
   },
   "private": true
 }
