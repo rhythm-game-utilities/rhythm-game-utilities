@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "JavaScriptPackage/**/*"
+      - "JavaScriptPackages/**/*"
       - "LuaPlugin/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
@@ -18,7 +18,7 @@ on:
       - main
     paths:
       - "include/**/*"
-      - "JavaScriptPackage/**/*"
+      - "JavaScriptPackages/**/*"
       - "LuaPlugin/**/*"
       - "RhythmGameUtilities/**/*"
       - "RhythmGameUtilities.Tests/**/*"
@@ -89,15 +89,15 @@ jobs:
         uses: HandcrankEngine/install-emscripten-package@d578b50f8f7f76ea25c14b13b7df943b31e37891 # v0.3.1
 
       - name: Install dependencies
-        working-directory: JavaScriptPackage/
+        working-directory: JavaScriptPackages/core/
         run: npm install --ignore-scripts
 
       - name: Build Library
-        working-directory: JavaScriptPackage/
+        working-directory: JavaScriptPackages/core/
         run: ./bin/build.sh
 
       - name: Run Tests
-        working-directory: JavaScriptPackage/
+        working-directory: JavaScriptPackages/core/
         run: npm test
 
       - name: Run Documentation Tests

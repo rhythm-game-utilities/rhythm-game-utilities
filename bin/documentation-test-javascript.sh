@@ -15,7 +15,7 @@ COLOROFF=$(tput sgr0)
 
     npm install
 
-    ./JavaScriptPackage/bin/build.sh
+    ./JavaScriptPackages/core/bin/build.sh
 
     printf "Running Documentation Tests\n"
 

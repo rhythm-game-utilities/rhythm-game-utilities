@@ -35,13 +35,13 @@ jobs:
           npm -v
 
       - name: Install dependencies
-        working-directory: JavaScriptPackage/
+        working-directory: JavaScriptPackages/core/
         run: npm ci --ignore-scripts
 
       - name: Build package
-        working-directory: JavaScriptPackage/
+        working-directory: JavaScriptPackages/core/
         run: ./bin/build.sh
 
       - name: Publish package
-        working-directory: JavaScriptPackage/
+        working-directory: JavaScriptPackages/core/
         run: npm publish --tag=alpha --provenance --access public

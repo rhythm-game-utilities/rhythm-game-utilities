@@ -9,7 +9,7 @@ const markdownFiles = (
         glob([
           'README.md',
           'Documentation/**/*.md',
-          'JavaScriptPackage/README.md'
+          'JavaScriptPackages/**/README.md'
         ])
       )
     ).map(async path => {
