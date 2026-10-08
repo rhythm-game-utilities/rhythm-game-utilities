@@ -1,0 +1,5 @@
+dist/
+
+c3addon/lib/
+
+node_modules/

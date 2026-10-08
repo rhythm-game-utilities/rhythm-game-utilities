@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "adm-zip": "0.6.1",
+    "ts-morph": "28.0.0"
+  },
+  "scripts": {
+    "build": "node build.ts",
+    "build:test": "node build.ts",
+    "test": "npx http-server ./c3addon -p 65432 --cors -c-1"
+  },
+  "private": true
+}
