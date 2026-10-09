@@ -37,6 +37,14 @@ namespace RhythmGameUtilities.Tests
         }
 
         [Test]
+        public void TestLerpUnclamped()
+        {
+            var value = Common.LerpUnclamped(0, 10, 1.1f);
+
+            Assert.That(value, Is.EqualTo(11));
+        }
+
+        [Test]
         public void TestLerp()
         {
             var value = Common.Lerp(0, 10, 0.5f);
