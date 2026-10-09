@@ -51,7 +51,7 @@ extern "C"
 
     PACKAGE_API auto Lerp(float a, float b, float t) -> float
     {
-        return ((1 - t) * a) + (b * t);
+        return std::clamp(LerpUnclamped(a, b, t), a, b);
     }
 
     /**
