@@ -54,6 +54,8 @@ class rhythm_game_utilities : public Object
 
     static auto inverse_lerp(float a, float b, float v) -> float;
 
+    static auto lerp_unclamped(float a, float b, float t) -> float;
+
     static auto lerp(float a, float b, float t) -> float;
 
     // Parsers (Chart)
