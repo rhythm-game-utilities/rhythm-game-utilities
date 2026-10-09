@@ -2,7 +2,7 @@
 
 CWD=$(pwd)
 
-FOLDERS=("RhythmGameUtilities/Libs/" "UnityPackage/Libs/")
+FOLDERS=("RhythmGameUtilities/Libs/" "UnityPackage/Libs/" "RustPlugin/libs/")
 
 for FOLDER in "${FOLDERS[@]}"; do
     if [ -d "${FOLDER}" ]; then
