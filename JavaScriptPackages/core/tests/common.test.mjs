@@ -9,6 +9,9 @@ describe('Common', () => {
   test('Lerp', () => {
     assert.equal(RhythmGameUtilities.Lerp(0, 10, 0.5), 5);
   });
+  test('LerpUnclamped', () => {
+    assert.equal(RhythmGameUtilities.LerpUnclamped(0, 10, 1.1), 11);
+  });
   test('InverseLerp', () => {
     assert.ok(Math.abs(0.5 - RhythmGameUtilities.InverseLerp(0, 10, 5)) < 0.01);
   });

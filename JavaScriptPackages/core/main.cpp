@@ -38,6 +38,7 @@ EMSCRIPTEN_BINDINGS(my_module)
     // Common
 
     emscripten::function("Lerp", &Lerp);
+    emscripten::function("LerpUnclamped", &LerpUnclamped);
     emscripten::function("InverseLerp", &InverseLerp);
     emscripten::function("InverseLerpUnclamped", &InverseLerpUnclamped);
 
