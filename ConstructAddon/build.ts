@@ -175,7 +175,7 @@ async function createAddonDist(filename: string, version: string = 'v1') {
 }
 
 await generateExpressionsFile(sourceFile);
-await generateInstanceFile(process.env.MODULE_PATH);
+await generateInstanceFile();
 await generateLocaleFile(sourceFile);
 await generateAcesFile(sourceFile);
 await createAddonDist('ConstructAddonTemplate');
