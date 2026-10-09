@@ -146,13 +146,19 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
             break;
         }
 
-        stream.seek(4);
+        auto trackSize = ByteSwap(ReadChunk<uint32_t>(stream));
+        auto trackEnd = stream.pos + trackSize;
 
         uint32_t tick = 0;
 
-        while (stream.good())
+        while (stream.good() && stream.pos < trackEnd)
         {
             tick += ReadVarLen(stream);
+
+            if (!stream.good())
+            {
+                break;
+            }
 
             auto status = ReadChunk<uint8_t>(stream);
 
@@ -188,6 +194,8 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
                 stream.seek(2);
             }
         }
+
+        stream.pos = trackEnd;
     }
 
     return true;
