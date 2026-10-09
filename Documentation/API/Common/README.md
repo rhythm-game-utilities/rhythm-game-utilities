@@ -1,5 +1,6 @@
 ### Common
 
 - [InverseLerpUnclamped](InverseLerpUnclamped.md)
-- [Lerp](Lerp.md)
 - [InverseLerp](InverseLerp.md)
+- [LerpUnclamped](LerpUnclamped.md)
+- [Lerp](Lerp.md)

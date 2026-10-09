@@ -42,6 +42,7 @@ _Prototype game built using these utilities._
   1. [Common](#common)
      1. [InverseLerpUnclamped](#commoninverselerpunclamped)
      1. [InverseLerp](#commoninverselerp)
+     1. [LerpUnclamped](#commonlerpunclamped)
      1. [Lerp](#commonlerp)
   1. [Parsers](#parsers)
      1. [ReadNotesFromChartData](#chartreadnotesfromchartdata)
