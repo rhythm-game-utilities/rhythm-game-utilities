@@ -95,27 +95,27 @@ if (extension.endsWith('chart')) {
       : DIFFICULTIES[0]
   ) as Difficulty;
 
-  if (outputNotes) {
-    output = RhythmGameUtilities.ReadNotesFromChartData(contents, difficulty);
-  } else if (outputResolutions) {
+  if (outputResolutions) {
     output = RhythmGameUtilities.ReadResolutionFromChartData(contents);
   } else if (outputTempoChanges) {
     output = RhythmGameUtilities.ReadTempoChangesFromChartData(contents);
   } else if (outputTimeSignatureChanges) {
     output =
       RhythmGameUtilities.ReadTimeSignatureChangesFromChartData(contents);
+  } else {
+    output = RhythmGameUtilities.ReadNotesFromChartData(contents, difficulty);
   }
 } else if (extension.endsWith('mid')) {
   const contents = await readFile(input);
 
-  if (outputNotes) {
-    output = RhythmGameUtilities.ReadNotesFromMidiData(contents);
-  } else if (outputResolutions) {
+  if (outputResolutions) {
     output = RhythmGameUtilities.ReadResolutionFromMidiData(contents);
   } else if (outputTempoChanges) {
     output = RhythmGameUtilities.ReadTempoChangesFromMidiData(contents);
   } else if (outputTimeSignatureChanges) {
     output = RhythmGameUtilities.ReadTimeSignatureChangesFromMidiData(contents);
+  } else {
+    output = RhythmGameUtilities.ReadNotesFromMidiData(contents);
   }
 }
 
