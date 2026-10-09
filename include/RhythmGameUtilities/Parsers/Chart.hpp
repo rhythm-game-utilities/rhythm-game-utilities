@@ -113,7 +113,14 @@ extern "C"
     {
         auto sections = ParseSectionsFromChart(contents);
 
-        auto section = sections.at(ToString(NamedSection::Song));
+        auto sectionIter = sections.find(ToString(NamedSection::Song));
+
+        if (sectionIter == sections.end())
+        {
+            return 0;
+        }
+
+        const auto &section = sectionIter->second;
 
         auto data = std::map<std::string, std::string>();
 
@@ -137,11 +144,18 @@ extern "C"
 inline auto ReadTempoChangesFromChartData(const std::string &contents)
     -> std::vector<Tempo>
 {
+    auto tempoChanges = std::vector<Tempo>();
+
     auto sections = ParseSectionsFromChart(contents);
 
-    auto section = sections.at(ToString(NamedSection::SyncTrack));
+    auto sectionIter = sections.find(ToString(NamedSection::SyncTrack));
 
-    auto tempoChanges = std::vector<Tempo>();
+    if (sectionIter == sections.end())
+    {
+        return tempoChanges;
+    }
+
+    const auto &section = sectionIter->second;
 
     for (const auto &line : section)
     {
@@ -164,11 +178,18 @@ inline auto ReadTempoChangesFromChartData(const std::string &contents)
 inline auto ReadTimeSignatureChangesFromChartData(const std::string &contents)
     -> std::vector<TimeSignature>
 {
+    auto timeSignatureChanges = std::vector<TimeSignature>();
+
     auto sections = ParseSectionsFromChart(contents);
 
-    auto section = sections.at(ToString(NamedSection::SyncTrack));
+    auto sectionIter = sections.find(ToString(NamedSection::SyncTrack));
 
-    auto timeSignatureChanges = std::vector<TimeSignature>();
+    if (sectionIter == sections.end())
+    {
+        return timeSignatureChanges;
+    }
+
+    const auto &section = sectionIter->second;
 
     for (const auto &line : section)
     {
