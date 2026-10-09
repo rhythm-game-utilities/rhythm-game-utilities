@@ -113,7 +113,14 @@ extern "C"
     {
         auto sections = ParseSectionsFromChart(contents);
 
-        auto section = sections.at(ToString(NamedSection::Song));
+        auto sectionIter = sections.find(ToString(NamedSection::Song));
+
+        if (sectionIter == sections.end())
+        {
+            return 0;
+        }
+
+        const auto &section = sectionIter->second;
 
         auto data = std::map<std::string, std::string>();
 
@@ -137,20 +144,26 @@ extern "C"
 inline auto ReadTempoChangesFromChartData(const std::string &contents)
     -> std::vector<Tempo>
 {
+    auto tempoChanges = std::vector<Tempo>();
+
     auto sections = ParseSectionsFromChart(contents);
 
-    auto section = sections.at(ToString(NamedSection::SyncTrack));
+    auto sectionIter = sections.find(ToString(NamedSection::SyncTrack));
 
-    auto tempoChanges = std::vector<Tempo>();
+    if (sectionIter == sections.end())
+    {
+        return tempoChanges;
+    }
+
+    const auto &section = sectionIter->second;
 
     for (const auto &line : section)
     {
-        if (line.second.front() == ToString(TypeCode::BPM_Marker))
+        if (line.second.size() >= 1 &&
+            line.second.front() == ToString(TypeCode::BPM_Marker))
         {
-            auto position = std::stoi(line.first);
-            auto bpm = std::stoi(line.second.at(1));
-
-            tempoChanges.emplace_back(position, bpm);
+            tempoChanges.emplace_back(std::stoi(line.first),
+                                      std::stoi(line.second.at(1)));
         }
     }
 
@@ -164,22 +177,27 @@ inline auto ReadTempoChangesFromChartData(const std::string &contents)
 inline auto ReadTimeSignatureChangesFromChartData(const std::string &contents)
     -> std::vector<TimeSignature>
 {
+    auto timeSignatureChanges = std::vector<TimeSignature>();
+
     auto sections = ParseSectionsFromChart(contents);
 
-    auto section = sections.at(ToString(NamedSection::SyncTrack));
+    auto sectionIter = sections.find(ToString(NamedSection::SyncTrack));
 
-    auto timeSignatureChanges = std::vector<TimeSignature>();
+    if (sectionIter == sections.end())
+    {
+        return timeSignatureChanges;
+    }
+
+    const auto &section = sectionIter->second;
 
     for (const auto &line : section)
     {
-        if (line.second.front() == ToString(TypeCode::TimeSignatureMarker))
+        if (line.second.size() >= 2 &&
+            line.second.front() == ToString(TypeCode::TimeSignatureMarker))
         {
-            auto position = std::stoi(line.first);
-            auto numerator = std::stoi(line.second.at(1));
-            auto denominator =
-                line.second.size() > 2 ? std::stoi(line.second.at(2)) : 2;
-
-            timeSignatureChanges.emplace_back(position, numerator, denominator);
+            timeSignatureChanges.emplace_back(
+                std::stoi(line.first), std::stoi(line.second.at(1)),
+                line.second.size() > 2 ? std::stoi(line.second.at(2)) : 2);
         }
     }
 
@@ -203,7 +221,8 @@ inline auto ReadNotesFromChartData(const std::string &contents,
 
     for (const auto &line : section)
     {
-        if (line.second.front() == ToString(TypeCode::NoteMarker))
+        if (line.second.size() >= 2 &&
+            line.second.front() == ToString(TypeCode::NoteMarker))
         {
             notes.emplace_back(++id, std::stoi(line.first),
                                std::stoi(line.second.at(1)),
