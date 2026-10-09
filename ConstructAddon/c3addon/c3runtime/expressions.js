@@ -7,6 +7,12 @@ export default {
     }
     return RhythmGameUtilities.Lerp(a, b, t);
   },
+  LerpUnclamped(a, b, t) {
+    if (!RhythmGameUtilities) {
+      return -1;
+    }
+    return RhythmGameUtilities.LerpUnclamped(a, b, t);
+  },
   InverseLerp(a, b, v) {
     if (!RhythmGameUtilities) {
       return -1;
