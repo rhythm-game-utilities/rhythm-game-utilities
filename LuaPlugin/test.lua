@@ -27,6 +27,14 @@ local function inverse_lerp_unclamped_test()
     assert(math.abs(value - 1.1) < 0.0001)
 end
 
+local function lerp_unclamped_test()
+    local value = rhythmgameutilities.lerp_unclamped(0, 10, 1.1);
+
+    print(value) -- 11
+
+    assert(value == 11)
+end
+
 local function lerp_test()
     local value = rhythmgameutilities.lerp(0, 10, 0.5);
 
@@ -293,6 +301,7 @@ end
 inverse_lerp_test();
 inverse_lerp_unclamped_test();
 lerp_test();
+lerp_unclamped_test();
 
 read_resolution_from_chart_data_test();
 read_tempo_changes_from_chart_data_test();

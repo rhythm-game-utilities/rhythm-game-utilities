@@ -293,6 +293,19 @@ static auto lua_lerp(lua_State *L) -> int
     return 1;
 }
 
+static auto lua_lerp_unclamped(lua_State *L) -> int
+{
+    auto a = static_cast<float>(luaL_checknumber(L, 1));
+    auto b = static_cast<float>(luaL_checknumber(L, 2));
+    auto t = static_cast<float>(luaL_checknumber(L, 3));
+
+    auto result = RhythmGameUtilities::LerpUnclamped(a, b, t);
+
+    lua_pushnumber(L, result);
+
+    return 1;
+}
+
 // Parsers/Chart
 
 static auto lua_read_resolution_from_chart_data(lua_State *L) -> int
@@ -547,6 +560,7 @@ static const luaL_Reg rhythmgameutilities_functions[] = {
     {"inverse_lerp", lua_inverse_lerp},
     {"inverse_lerp_unclamped", lua_inverse_lerp_unclamped},
     {"lerp", lua_lerp},
+    {"lerp_unclamped", lua_lerp_unclamped},
 
     {"read_resolution_from_chart_data", lua_read_resolution_from_chart_data},
     {"read_tempo_changes_from_chart_data",
