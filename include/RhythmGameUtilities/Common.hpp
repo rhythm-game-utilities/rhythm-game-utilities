@@ -95,13 +95,11 @@ inline auto Split(const std::string &contents, const char delimiter)
 
     std::string str;
 
-    int i = 0;
-
-    while (contents[i] != '\0')
+    for (const char c : contents)
     {
-        if (contents[i] != delimiter)
+        if (c != delimiter)
         {
-            str += contents[i];
+            str += c;
         }
         else
         {
@@ -109,8 +107,6 @@ inline auto Split(const std::string &contents, const char delimiter)
 
             str.clear();
         }
-
-        i += 1;
     }
 
     parts.emplace_back(str);
