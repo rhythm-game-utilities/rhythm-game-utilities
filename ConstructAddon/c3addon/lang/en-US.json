@@ -32,6 +32,24 @@
               }
             }
           },
+          "LerpUnclamped": {
+            "translated-name": "LerpUnclamped",
+            "description": "LerpUnclamped",
+            "params": {
+              "a": {
+                "name": "a",
+                "desc": "a"
+              },
+              "b": {
+                "name": "b",
+                "desc": "b"
+              },
+              "t": {
+                "name": "t",
+                "desc": "t"
+              }
+            }
+          },
           "InverseLerp": {
             "translated-name": "InverseLerp",
             "description": "InverseLerp",

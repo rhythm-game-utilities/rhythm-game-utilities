@@ -34,6 +34,9 @@ const instance = await RhythmGameUtilitiesModule();
 export function Lerp(a: number, b: number, t: number) {
   return instance.Lerp(a, b, t);
 }
+export function LerpUnclamped(a: number, b: number, t: number) {
+  return instance.LerpUnclamped(a, b, t);
+}
 export function InverseLerp(a: number, b: number, v: number) {
   return instance.InverseLerp(a, b, v);
 }
@@ -137,6 +140,7 @@ export function ReadNotesFromMidiData(data: Uint8Array): Note[] {
 
 export default {
   Lerp,
+  LerpUnclamped,
   InverseLerp,
   InverseLerpUnclamped,
 

@@ -24,6 +24,15 @@ void testInverseLerp()
     std::cout << ".";
 }
 
+void testLerpUnclamped()
+{
+    auto value = LerpUnclamped(0, 10, 1.1f);
+
+    assert(11 == value);
+
+    std::cout << ".";
+}
+
 void testLerp()
 {
     auto value = Lerp(0, 10, 0.5f);

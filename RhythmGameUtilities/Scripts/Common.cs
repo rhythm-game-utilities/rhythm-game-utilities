@@ -11,6 +11,13 @@ namespace RhythmGameUtilities
 #else
         [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
 #endif
+        public static extern float LerpUnclamped(float a, float b, float t);
+
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
+        [DllImport("__Internal")]
+#else
+        [DllImport("libRhythmGameUtilities", CallingConvention = CallingConvention.Cdecl)]
+#endif
         public static extern float Lerp(float a, float b, float t);
 
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
@@ -31,6 +38,17 @@ namespace RhythmGameUtilities
 
     public static class Common
     {
+
+        /// <summary>
+        ///     Calculates the linear interpolation between two values without clamping between a and b.
+        /// </summary>
+        /// <param name="a">The start value.</param>
+        /// <param name="b">The end value.</param>
+        /// <param name="t">The value used for interpolation.</param>
+        public static float LerpUnclamped(float a, float b, float t)
+        {
+            return CommonInternal.LerpUnclamped(a, b, t);
+        }
 
         /// <summary>
         ///     Calculates the linear interpolation between two values.

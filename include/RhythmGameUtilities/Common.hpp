@@ -24,6 +24,22 @@ namespace RhythmGameUtilities
 
 extern "C"
 {
+
+    /**
+     * Calculates the linear interpolation between two values without clamping
+     * between a and b.
+     *
+     * @param a The start value.
+     * @param b The end value.
+     * @param t The value used for interpolation.
+     * @public
+     */
+
+    PACKAGE_API auto LerpUnclamped(float a, float b, float t) -> float
+    {
+        return ((1 - t) * a) + (b * t);
+    }
+
     /**
      * Calculates the linear interpolation between two values.
      *
@@ -35,7 +51,7 @@ extern "C"
 
     PACKAGE_API auto Lerp(float a, float b, float t) -> float
     {
-        return ((1 - t) * a) + (b * t);
+        return std::clamp(LerpUnclamped(a, b, t), a, b);
     }
 
     /**
