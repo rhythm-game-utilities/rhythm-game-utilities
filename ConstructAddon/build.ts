@@ -178,4 +178,4 @@ await generateExpressionsFile(sourceFile);
 await generateInstanceFile();
 await generateLocaleFile(sourceFile);
 await generateAcesFile(sourceFile);
-await createAddonDist('ConstructAddonTemplate');
+await createAddonDist('RhythmGameUtilities');
