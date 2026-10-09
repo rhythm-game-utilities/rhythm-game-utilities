@@ -66,52 +66,44 @@ extern "C"
 inline auto ConvertSecondsToTicks(float seconds, int resolution,
                                   const std::vector<Tempo> &tempoChanges) -> int
 {
-    if (tempoChanges.empty())
+    if (tempoChanges.empty() || seconds <= 0.0F)
     {
         return 0;
     }
 
-    auto tempoChangesIterator = tempoChanges.begin();
-
-    auto totalTicks = 0;
-    auto remainingSeconds = seconds;
+    auto totalTicks = 0.0F;
+    auto accumulatedTime = 0.0F;
     auto previousTick = 0;
-    auto previousBPM = tempoChangesIterator->BPM / MILLISECONDS;
 
-    while (remainingSeconds > 0)
+    for (std::size_t index = 0; index < tempoChanges.size(); index += 1)
     {
-        int nextTempoChange = tempoChangesIterator != tempoChanges.end()
-                                  ? tempoChangesIterator->Position
-                                  : INT_MAX;
+        const auto &currentTempo = tempoChanges[index];
 
-        int nextChangeTick = nextTempoChange;
+        auto bpm = currentTempo.BPM / MILLISECONDS;
+        auto ticksPerSecond = CalculateTicksPerSecond(bpm, resolution);
 
-        float ticksPerSecond = CalculateTicksPerSecond(previousBPM, resolution);
-        float timeForSegment = (nextChangeTick - previousTick) / ticksPerSecond;
+        auto nextTick = (index + 1 < tempoChanges.size())
+                            ? tempoChanges[index + 1].Position
+                            : INT_MAX;
 
-        if (remainingSeconds <= timeForSegment)
+        auto startTick = (index == 0) ? 0 : currentTempo.Position;
+        auto segmentTicks = static_cast<float>(nextTick - startTick);
+        auto segmentDuration = segmentTicks / ticksPerSecond;
+
+        if (accumulatedTime + segmentDuration >= seconds)
         {
-            totalTicks += static_cast<int>(remainingSeconds * ticksPerSecond);
+            float remainingSeconds = seconds - accumulatedTime;
 
-            return totalTicks;
+            totalTicks += remainingSeconds * ticksPerSecond;
+
+            break;
         }
 
-        totalTicks += nextChangeTick - previousTick;
-        remainingSeconds -= timeForSegment;
-        previousTick = nextChangeTick;
-
-        if (nextChangeTick == nextTempoChange)
-        {
-            previousBPM = tempoChangesIterator->BPM / MILLISECONDS;
-            ++tempoChangesIterator;
-        }
+        accumulatedTime += segmentDuration;
+        totalTicks += segmentTicks;
     }
 
-    float ticksPerSecond = resolution * previousBPM / SECONDS_PER_MINUTE;
-
-    totalTicks += static_cast<int>(remainingSeconds * ticksPerSecond);
-
-    return totalTicks;
+    return static_cast<int>(totalTicks);
 }
 
 /**
