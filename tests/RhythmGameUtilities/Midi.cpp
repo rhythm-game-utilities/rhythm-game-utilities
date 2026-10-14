@@ -85,12 +85,48 @@ void testReadNotesFromMidiData()
     std::cout << ".";
 }
 
+// ForEachMidiEvent (Parsers/Midi.hpp) reads a status byte unconditionally on
+// every event and never handles MIDI running status — the standard
+// convention where consecutive same-type events omit the repeated status
+// byte, reusing the previous one. This is common in real-world MIDI files,
+// not an edge case. This minimal 3-note file uses running status for its
+// 2nd and 3rd NoteOn events; a correct parser returns 3 notes at ticks
+// 0/480/960 with pitches 60/62/64. The current implementation desyncs on
+// the first running-status event and does not.
+void testReadNotesFromMidiDataWithRunningStatus()
+{
+    std::vector<uint8_t> bytes = {
+        'M', 'T', 'h', 'd', 0, 0, 0, 6, 0, 0, 0, 1, 0x01, 0xE0, // header: format 0, 1 track, division 480
+        'M', 'T', 'r', 'k', 0,    0,    0,    16,              // track chunk, 16 bytes
+        0x00, 0x90, 60, 100,                                   // delta 0:   Note On ch0, note 60, vel 100
+        0x83, 0x60, 62, 100,                                   // delta 480: running status, note 62, vel 100
+        0x83, 0x60, 64, 100,                                   // delta 480: running status, note 64, vel 100
+        0x00, 0xFF, 0x2F, 0x00                                 // delta 0:   End of Track
+    };
+
+    auto notes = ReadNotesFromMidiData(bytes);
+
+    assert(size(notes) == 3);
+
+    assert(notes[0].Position == 0);
+    assert(notes[0].HandPosition == 60);
+
+    assert(notes[1].Position == 480);
+    assert(notes[1].HandPosition == 62);
+
+    assert(notes[2].Position == 960);
+    assert(notes[2].HandPosition == 64);
+
+    std::cout << ".";
+}
+
 auto main() -> int
 {
     testReadResolutionFromMidiData();
     testReadTempoChangesFromMidiData();
     testReadTimeSignatureChangesFromMidiData();
     testReadNotesFromMidiData();
+    testReadNotesFromMidiDataWithRunningStatus();
 
     return 0;
 }
