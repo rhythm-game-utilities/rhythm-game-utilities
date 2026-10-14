@@ -150,6 +150,7 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
         auto trackEnd = stream.pos + trackSize;
 
         uint32_t tick = 0;
+        uint8_t runningStatus = 0;
 
         while (stream.good() && stream.pos < trackEnd)
         {
@@ -160,7 +161,24 @@ inline auto ForEachMidiEvent(const std::vector<uint8_t> &data,
                 break;
             }
 
-            auto status = ReadChunk<uint8_t>(stream);
+            // MIDI running status: a channel voice event may omit its
+            // status byte entirely when it matches the previous event's,
+            // reusing it instead. Real-world files use this routinely, so
+            // treating every event as having an explicit status byte
+            // desyncs the rest of the track the moment one is omitted.
+            uint8_t status;
+            if ((stream.data[stream.pos] & 0x80) != 0)
+            {
+                status = ReadChunk<uint8_t>(stream);
+                if (status < 0xF0) // channel voice message; meta/sysex never set running status
+                {
+                    runningStatus = status;
+                }
+            }
+            else
+            {
+                status = runningStatus;
+            }
 
             if (status == META_EVENT)
             {
